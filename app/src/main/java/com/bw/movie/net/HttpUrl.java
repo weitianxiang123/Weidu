@@ -29,8 +29,11 @@ public class HttpUrl {
     public static final String STRING_BINDING_WECHAT="";
     //是否绑定微信账号
     //查询热门电影列表
+    public static final String STRING_HOT_MOVIE="http://172.17.8.100/movieApi/movie/v1/findHotMovieList";
     //查询正在热映电影列表
+    public static final String STRING_SHOW_MOVIE="http://172.17.8.100/movieApi/movie/v1/findReleaseMovieList";
     //查询正在上映电影列表
+    public static final String STRING_WILL_MOVIE="http://172.17.8.100/movieApi/movie/v1/findComingSoonMovieList";
     //根据电影ID查询电影信息
     //查看电影详情
     //查询用户关注的影片列表
