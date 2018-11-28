@@ -11,52 +11,12 @@
         android:id="@+id/contentView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-<<<<<<< Updated upstream
-    </FrameLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_100"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/movie"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:src="@drawable/com_icon_film_fault" />
-
-        <ImageView
-            android:id="@+id/cinema"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:src="@drawable/com_icon_cinema_default" />
-
-        <ImageView
-            android:id="@+id/mine"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:src="@drawable/com_icon_my_default" />
-    </LinearLayout>
-=======
         <fragment
             android:name="com.bw.movie.fragment.MovieFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             ></fragment>
-
     </FrameLayout>
-
-
-
-
 
 
         <ImageView
@@ -88,6 +48,5 @@
             android:src="@drawable/com_icon_my_default"
              />
 
->>>>>>> Stashed changes
 
 </RelativeLayout>
