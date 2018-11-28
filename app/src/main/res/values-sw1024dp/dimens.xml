@@ -103,4 +103,5 @@
 	<dimen name="dp_200">568.8889dp</dimen>
 	<dimen name="dp_180">512.0000dp</dimen>
 	<dimen name="dp_150">426.6667dp</dimen>
+	<dimen name="dp_220">625.7778dp</dimen>
 </resources>

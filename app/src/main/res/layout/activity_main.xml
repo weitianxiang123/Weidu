@@ -11,11 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-
-<<<<<<< HEAD
-=======
     </FrameLayout>
->>>>>>> 24991adc2b0858074201b5ec1e6a564ffdc64031
+
+
 
 
     <LinearLayout
