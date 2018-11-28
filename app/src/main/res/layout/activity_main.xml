@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+
     tools:context=".activity.MainActivity">
 
     <FrameLayout
         android:id="@+id/contentView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent">
 
+<<<<<<< Updated upstream
     </FrameLayout>
 
 
@@ -45,5 +45,49 @@
             android:gravity="center"
             android:src="@drawable/com_icon_my_default" />
     </LinearLayout>
+=======
+        <fragment
+            android:name="com.bw.movie.fragment.MovieFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            ></fragment>
 
-</LinearLayout>
+    </FrameLayout>
+
+
+
+
+
+
+        <ImageView
+            android:id="@+id/movie"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp_15"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_60"
+            android:src="@drawable/com_icon_film_fault"
+             />
+        <ImageView
+            android:id="@+id/cinema"
+            android:layout_alignParentBottom="true"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_60"
+            android:layout_marginBottom="@dimen/dp_15"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/com_icon_cinema_default"
+            />
+        <ImageView
+            android:id="@+id/mine"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/dp_15"
+            android:layout_marginRight="@dimen/dp_24"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_60"
+            android:src="@drawable/com_icon_my_default"
+             />
+
+>>>>>>> Stashed changes
+
+</RelativeLayout>
