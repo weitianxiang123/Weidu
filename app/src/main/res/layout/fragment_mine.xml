@@ -10,16 +10,26 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_220">
 
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/bg_mine" />
+
+        <ImageView
+            android:id="@+id/mine_remind"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_30"
+            android:src="@drawable/my_icon_remind_default" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:orientation="vertical">
+
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:layout_width="@dimen/dp_72"
@@ -35,6 +45,8 @@
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
         </LinearLayout>
+
+
     </RelativeLayout>
 
     <LinearLayout
@@ -53,6 +65,7 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/mine_messiage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_30">
@@ -81,6 +94,7 @@
             android:gravity="center_vertical">
 
             <RelativeLayout
+                android:id="@+id/mine_attention"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_30">
@@ -101,6 +115,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/mine_rccord"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_54">
@@ -129,6 +144,7 @@
             android:gravity="center_vertical">
 
             <RelativeLayout
+                android:id="@+id/mine_feedback"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_30">
@@ -149,6 +165,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/mine_version"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_54">
