@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bw.movie.R;
 import com.bw.movie.activity.MainActivity;
 import com.bw.movie.fragment.MineFragment;
+import com.bw.movie.fragment.MovieFragment;
 import com.bw.movie.mvp.view.AppDelegate;
 
 
@@ -27,6 +28,7 @@ public class MainActivityPresenter extends AppDelegate {
     private MainActivity activity;
     FragmentManager fragmentManager;
     private MineFragment mineFragment;
+    private MovieFragment movieFragment;
 
 
 
@@ -57,6 +59,7 @@ public class MainActivityPresenter extends AppDelegate {
         super.initData();
         activity = (MainActivity) context;
         mineFragment = new MineFragment();
+        movieFragment=new MovieFragment();
         fragmentManager = activity.getSupportFragmentManager();
 
     }
@@ -64,5 +67,10 @@ public class MainActivityPresenter extends AppDelegate {
     public void toMine(){
         fragmentManager.beginTransaction().replace(R.id.contentView, mineFragment).commit();
 
+    }
+
+    // 跳转方法
+    public void toMovie() {
+        fragmentManager.beginTransaction().replace(R.id.contentView,movieFragment).commit();
     }
 }

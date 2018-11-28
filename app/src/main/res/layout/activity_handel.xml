@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@drawable/startback"
+    tools:context=".activity.HandelActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="160dp"
+        android:text="维度影院"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/dp_30" />
+    <TextView
+        android:textSize="@dimen/dp_20"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="98dp"
+        android:textColor="#ffffff"
+        android:text="不一样的视觉盛宴"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/text_han_name"
+        android:layout_alignParentRight="true"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/dp_25"
+        android:text="3s"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <!--<TextView
+        android:id="@+id/btn_text_name"
+        android:layout_alignParentRight="true"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/dp_25"
+        android:gravity="center_horizontal"
+        android:text="点击跳转"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />-->
+</RelativeLayout>
