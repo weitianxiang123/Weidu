@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="@dimen/dp_312"
+        android:layout_height="@dimen/dp_90"
+        android:paddingBottom="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_20"
+        android:paddingTop="@dimen/dp_10">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/cinema_logo"
+            android:layout_width="@dimen/dp_70"
+            android:layout_height="@dimen/dp_70" />
+
+        <RelativeLayout
+            android:layout_width="@dimen/dp_192"
+            android:layout_height="@dimen/dp_70"
+            android:layout_toRightOf="@id/cinema_logo"
+            android:paddingLeft="@dimen/dp_20">
+
+            <TextView
+                android:id="@+id/cinema_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="影院名称"
+                android:textColor="#333333"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
+                android:id="@+id/cinema_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="影院地址"
+                android:textColor="#333333"
+                android:layout_below="@id/cinema_name"
+                android:textSize="@dimen/sp_12" />
+            <TextView
+                android:id="@+id/cinema_range"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="距离"
+                android:textColor="#333333"
+                android:layout_alignParentBottom="true"
+                android:textSize="@dimen/sp_12" />
+            <ImageView
+                android:id="@+id/isFollow"
+                android:layout_width="@dimen/dp_16"
+                android:layout_height="@dimen/dp_16"
+                android:layout_alignParentBottom="true"
+                android:background="#999999"
+                android:src="@drawable/com_icon_collection_default"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

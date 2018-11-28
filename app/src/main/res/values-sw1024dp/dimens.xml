@@ -102,7 +102,9 @@
 	<dimen name="dp_100">284.4444dp</dimen>
 	<dimen name="dp_126">358.4000dp</dimen>
 	<dimen name="dp_164">466.4889dp</dimen>
+	<dimen name="dp_192">546.1333dp</dimen>
 	<dimen name="dp_220">625.7778dp</dimen>
+	<dimen name="dp_312">887.4667dp</dimen>
 	<dimen name="sp_10">28.4444sp</dimen>
 	<dimen name="sp_11">31.2889sp</dimen>
 	<dimen name="sp_12">34.1333sp</dimen>

@@ -42,7 +42,7 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> {
                 break;
             case R.id.cinema:
                 // 影院页面
-
+                delegate.toCinema();
                 break;
             case R.id.movie:
                 // 电影页面
