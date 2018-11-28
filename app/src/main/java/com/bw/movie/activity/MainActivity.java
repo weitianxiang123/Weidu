@@ -5,6 +5,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import com.bw.movie.R;
 import com.bw.movie.mvp.base.BaseActivity;
 import com.bw.movie.presenter.MainActivityPresenter;
@@ -30,6 +31,7 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> {
     @Override
     public void initView() {
         super.initView();
+
         delegate.initView(cinema, movie, mine, contentView);
     }
 
