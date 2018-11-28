@@ -33,6 +33,8 @@ public class MainActivityPresenter extends AppDelegate{
             public void onClick(View view) {
                 // 测试
                 test0.setText("点击");
+                //张秋阳测试
+
             }
         });
     }
