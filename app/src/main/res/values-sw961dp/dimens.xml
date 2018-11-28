@@ -103,5 +103,12 @@
 	<dimen name="dp_200">533.8889dp</dimen>
 	<dimen name="dp_180">480.5000dp</dimen>
 	<dimen name="dp_150">400.4167dp</dimen>
+<<<<<<< HEAD
 	<dimen name="dp_220">587.2778dp</dimen>
+=======
+	<dimen name="dp_105">280.2917dp</dimen>
+	<dimen name="dp_205">547.2361dp</dimen>
+	<dimen name="dp_370">987.6944dp</dimen>
+	<dimen name="dp_410">1094.4722dp</dimen>
+>>>>>>> 65d92f15dc851a9417dbf278a63af61dfda81fac
 </resources>
