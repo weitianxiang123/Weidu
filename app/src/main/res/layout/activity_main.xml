@@ -6,48 +6,44 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
+
     <FrameLayout
         android:id="@+id/contentView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-<<<<<<< HEAD
-    </FrameLayout>
-
-
-=======
-
 
     </FrameLayout>
-
->>>>>>> 89a75d5fd02b9f55474a41e29da5b33b84e378fc
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_100"
         android:orientation="horizontal">
+
         <ImageView
             android:id="@+id/movie"
-            android:gravity="center"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/com_icon_film_fault"
-            android:layout_height="match_parent" />
+            android:gravity="center"
+            android:src="@drawable/com_icon_film_fault" />
+
         <ImageView
             android:id="@+id/cinema"
-            android:gravity="center"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/com_icon_cinema_default"
-            android:layout_height="match_parent" />
+            android:gravity="center"
+            android:src="@drawable/com_icon_cinema_default" />
+
         <ImageView
             android:id="@+id/mine"
-            android:gravity="center"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/com_icon_my_default"
-            android:layout_height="match_parent" />
+            android:gravity="center"
+            android:src="@drawable/com_icon_my_default" />
     </LinearLayout>
 
 </LinearLayout>
