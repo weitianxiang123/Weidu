@@ -100,6 +100,7 @@
 	<dimen name="dp_98">161.1556dp</dimen>
 	<dimen name="dp_99">162.8000dp</dimen>
 	<dimen name="dp_100">164.4444dp</dimen>
+
 	<dimen name="dp_126">207.2000dp</dimen>
 	<dimen name="dp_164">269.6889dp</dimen>
 	<dimen name="dp_200">328.8889dp</dimen>
@@ -118,4 +119,10 @@
 	<dimen name="sp_19">31.2444sp</dimen>
 	<dimen name="sp_20">32.8889sp</dimen>
 	<dimen name="sp_21">34.5333sp</dimen>
+
+	<dimen name="dp_105">172.6667dp</dimen>
+	<dimen name="dp_205">337.1111dp</dimen>
+	<dimen name="dp_370">608.4444dp</dimen>
+	<dimen name="dp_410">674.2222dp</dimen>
+>>>>>>> origin/master
 </resources>

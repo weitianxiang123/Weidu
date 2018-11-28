@@ -118,4 +118,9 @@
 	<dimen name="sp_19">40.5333sp</dimen>
 	<dimen name="sp_20">42.6667sp</dimen>
 	<dimen name="sp_21">44.8000sp</dimen>
+
+	<dimen name="dp_105">224.0000dp</dimen>
+	<dimen name="dp_205">437.3333dp</dimen>
+	<dimen name="dp_370">789.3333dp</dimen>
+	<dimen name="dp_410">874.6667dp</dimen>
 </resources>

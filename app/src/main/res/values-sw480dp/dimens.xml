@@ -118,4 +118,10 @@
 	<dimen name="sp_19">25.3333sp</dimen>
 	<dimen name="sp_20">26.6667sp</dimen>
 	<dimen name="sp_21">28.0000sp</dimen>
+
+	<dimen name="dp_105">140.0000dp</dimen>
+	<dimen name="dp_205">273.3333dp</dimen>
+	<dimen name="dp_370">493.3333dp</dimen>
+	<dimen name="dp_410">546.6667dp</dimen>
+>>>>>>> origin/master
 </resources>
