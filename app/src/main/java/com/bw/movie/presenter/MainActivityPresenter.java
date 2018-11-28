@@ -34,19 +34,9 @@ public class MainActivityPresenter extends AppDelegate{
     @Override
     public void initData() {
         super.initData();
-<<<<<<< HEAD
-        test0.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // 测试
-                test0.setText("点击");
-                //张秋阳测试
 
-            }
-        });
-=======
 
->>>>>>> 24991adc2b0858074201b5ec1e6a564ffdc64031
+
     }
     // 跳转方法
 

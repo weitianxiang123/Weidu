@@ -30,12 +30,15 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> {
     @Override
     public void initView() {
         super.initView();
-        delegate.initView(cinema,movie,mine,contentView);
+        delegate.initView(cinema, movie, mine, contentView);
     }
-    @OnClick({R.id.cinema,R.id.movie,R.id.mine})
-    public void click(View view){
+
+    @OnClick({R.id.cinema, R.id.movie, R.id.mine})
+    public void click(View view) {
         // 点击图片  放大 切换图片  跳转到相应的fragment
-        switch (view.getId()){
+        switch (view.getId()) {
+            default:
+                break;
             case R.id.cinema:
                 // 影院页面
 
