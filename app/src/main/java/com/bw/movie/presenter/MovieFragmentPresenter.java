@@ -43,20 +43,18 @@ private XRecyclerView xRecyclerView;
       moviePages.add(new MoviePage("正在上映",HttpUrl.STRING_SHOW_MOVIE));
 	  moviePages.add(new MoviePage("即将上映",HttpUrl.STRING_WILL_MOVIE));
 
-
 		View headView = View.inflate(context, R.layout.head_movie, null);
-
-
 		xRecyclerView.setLayoutManager(new LinearLayoutManager(context));
 		MoviePagerAdapter moviePagerAdapter = new MoviePagerAdapter(context);
 		moviePagerAdapter.setData(moviePages);
 		xRecyclerView.setAdapter(moviePagerAdapter);
 		xRecyclerView.addHeaderView(headView);
+
 	}
+
 
 	public void initView(XRecyclerView xRecyclerView){
     this.xRecyclerView=xRecyclerView;
-
 	}
 
 }

@@ -49,7 +49,7 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> {
                 break;
             case R.id.movie:
                 // 电影页面
-
+                   delegate.toMovie();
                 break;
             case R.id.mine:
                 // 我的页面
