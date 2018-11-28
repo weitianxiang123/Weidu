@@ -1,9 +1,11 @@
 package com.bw.movie.activity;
 
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.bw.movie.R;
@@ -28,10 +30,10 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> {
         return MainActivityPresenter.class;
     }
 
+
     @Override
     public void initView() {
         super.initView();
-
         delegate.initView(cinema, movie, mine, contentView);
     }
 
@@ -47,6 +49,11 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> {
                 break;
             case R.id.movie:
                 // 电影页面
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
                 break;
             case R.id.mine:
                 // 我的页面

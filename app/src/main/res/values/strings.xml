@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">Weidu</string>
+    <string name="app_name">冬阳天地</string>
+    <string name="movie_page_hot">正在热映</string>
+    <string name="movie_page_now">正在上映</string>
+    <string name="movie_page_will">即将上映</string>
 </resources>
