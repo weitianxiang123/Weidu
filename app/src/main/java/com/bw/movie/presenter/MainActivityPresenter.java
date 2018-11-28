@@ -1,15 +1,35 @@
 package com.bw.movie.presenter;
 
 import android.content.Context;
+
+import android.support.v4.app.FragmentManager;
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.MainActivity;
+import com.bw.movie.fragment.MineFragment;
 import com.bw.movie.mvp.view.AppDelegate;
 
-public class MainActivityPresenter extends AppDelegate{
+
+
+
+
+
+
+
+public class MainActivityPresenter extends AppDelegate {
     private Context context;
-    private TextView test0;
+    private ImageView cinema, movie, mine;
+    private FrameLayout contentView;
+    private MainActivity activity;
+    FragmentManager fragmentManager;
+    private MineFragment mineFragment;
+
+
+
     @Override
     public int getLayout() {
         return R.layout.activity_main;
@@ -21,19 +41,28 @@ public class MainActivityPresenter extends AppDelegate{
         this.context = context;
     }
 
-    public void initView(TextView test0) {
-        this.test0 = test0;
+
+
+
+    public void initView(ImageView cinema, ImageView movie, ImageView mine, FrameLayout contentView) {
+        this.cinema = cinema;
+        this.movie = movie;
+        this.mine = mine;
+        this.contentView = contentView;
+
     }
 
     @Override
     public void initData() {
         super.initData();
-        test0.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // 测试
-                test0.setText("点击");
-            }
-        });
+        activity = (MainActivity) context;
+        mineFragment = new MineFragment();
+        fragmentManager = activity.getSupportFragmentManager();
+
+    }
+    // 跳转方法
+    public void toMine(){
+        fragmentManager.beginTransaction().replace(R.id.contentView, mineFragment).commit();
+
     }
 }
