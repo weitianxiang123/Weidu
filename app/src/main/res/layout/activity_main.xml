@@ -11,11 +11,7 @@
         android:id="@+id/contentView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <fragment
-            android:name="com.bw.movie.fragment.MovieFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            ></fragment>
+
     </FrameLayout>
 
 

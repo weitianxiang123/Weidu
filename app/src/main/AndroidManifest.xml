@@ -17,6 +17,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.MessiageActivity" />
+        <activity android:name=".activity.AttentionActivity" />
+        <activity android:name=".activity.RccordActivity" />
+        <activity android:name=".activity.FeedbackActivity" />
+        <activity android:name=".activity.VersionActivity" />
+        <activity android:name=".activity.RemindActivity"></activity>
     </application>
 
 </manifest>
