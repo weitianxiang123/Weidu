@@ -37,16 +37,23 @@ private XRecyclerView xRecyclerView;
 	@Override
 	public void initData() {
 		super.initData();
-
+		//展示数据
       moviePages=new ArrayList<>();
       moviePages.add(new MoviePage("正在热映",HttpUrl.STRING_HOT_MOVIE));
       moviePages.add(new MoviePage("正在上映",HttpUrl.STRING_SHOW_MOVIE));
 	  moviePages.add(new MoviePage("即将上映",HttpUrl.STRING_WILL_MOVIE));
 
+
 		View headView = View.inflate(context, R.layout.head_movie, null);
+
+
+
+
+
 		xRecyclerView.setLayoutManager(new LinearLayoutManager(context));
 		MoviePagerAdapter moviePagerAdapter = new MoviePagerAdapter(context);
 		moviePagerAdapter.setData(moviePages);
+
 		xRecyclerView.setAdapter(moviePagerAdapter);
 		xRecyclerView.addHeaderView(headView);
 
@@ -54,7 +61,9 @@ private XRecyclerView xRecyclerView;
 
 
 	public void initView(XRecyclerView xRecyclerView){
+
     this.xRecyclerView=xRecyclerView;
+
 	}
 
 }
