@@ -7,6 +7,16 @@
 
     tools:context=".activity.MainActivity">
 
+    <TextView
+        android:id="@+id/test0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        />
+
+
+    tools:context=".activity.MainActivity">
+
     <FrameLayout
         android:id="@+id/contentView"
         android:layout_width="match_parent"
@@ -43,6 +53,7 @@
             android:layout_height="@dimen/dp_60"
             android:src="@drawable/com_icon_my_default"
              />
+
 
 
 </RelativeLayout>

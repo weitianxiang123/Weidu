@@ -4,12 +4,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.bw.movie.R;
+import com.bw.movie.mvp.base.BaseActivity;
+import com.bw.movie.presenter.AttentionActivityPresenter;
 
-public class AttentionActivity extends AppCompatActivity {
+public class AttentionActivity extends BaseActivity<AttentionActivityPresenter> {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_attention);
+    public Class<AttentionActivityPresenter> getClassDelegate() {
+        return AttentionActivityPresenter.class;
     }
+
+
 }

@@ -33,10 +33,7 @@ public class MineFragmentPresenter extends AppDelegate {
         context.startActivity(new Intent(context, MessiageActivity.class));
     }
 
-
-    public void toattention() {
-        context.startActivity(new Intent(context, AttentionActivity.class));
-    }
+    public void toattention() { context.startActivity(new Intent(context, AttentionActivity.class)); }
 
     public void torccord() {
         context.startActivity(new Intent(context, RccordActivity.class));
