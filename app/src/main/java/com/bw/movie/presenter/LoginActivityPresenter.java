@@ -2,6 +2,7 @@ package com.bw.movie.presenter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,7 +11,17 @@ import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.activity.RegActivity;
+import com.bw.movie.model.RootMessage;
 import com.bw.movie.mvp.view.AppDelegate;
+import com.bw.movie.net.HttpHelper;
+import com.bw.movie.net.HttpListener;
+import com.bw.movie.net.HttpUrl;
+import com.bw.movie.utils.Base64;
+import com.bw.movie.utils.EncryptUtil;
+import com.bw.movie.utils.ShareUtil;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 魏天祥
@@ -22,6 +33,10 @@ public class LoginActivityPresenter extends AppDelegate{
     private EditText edi_lock_password;
     private EditText edi_phone_name;
     private Button btn_login;
+    private String phone;
+    private String possword;
+    private boolean isLogin;
+    private RootMessage rootMessage;
 
     @Override
     public int getLayout() {
@@ -43,19 +58,41 @@ public class LoginActivityPresenter extends AppDelegate{
             public void onClick(View view) {
                 Intent intent=new Intent(context,RegActivity.class);
                 context.startActivity(intent);
+
             }
         });
-        String phone = edi_phone_name.getText().toString();
-        String possword = edi_lock_password.getText().toString();
+
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Toast.makeText(context,"目前登录正在维护",Toast.LENGTH_LONG).show();
+                phone = edi_phone_name.getText().toString();
+                possword = edi_lock_password.getText().toString();
+                Map<String,String> map=new HashMap<>();
+                map.put("phone",phone);
+                map.put("pwd",EncryptUtil.encrypt(possword));
+                new HttpHelper().lrPost(HttpUrl.STRING_LOGIN,map).result(new HttpListener() {
+                    @Override
+                    public void success(String data) {
+                        ShareUtil.saveLogin(data,context);
+                        isLogin();
+                    }
+                    @Override
+                    public void fail(String error) {
+                    Toast.makeText(context,""+error,Toast.LENGTH_LONG).show();
+                    }
+                });
 
             }
         });
     }
+
+    @Override
+    public void rootMessage(boolean isLogin, RootMessage rootMessage) {
+        super.rootMessage(isLogin, rootMessage);
+        this.isLogin=isLogin;
+        this.rootMessage=rootMessage;
+    }
+
     @Override
     public void initContext(Context context) {
         super.initContext(context);
