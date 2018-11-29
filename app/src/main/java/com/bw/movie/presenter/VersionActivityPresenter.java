@@ -45,7 +45,7 @@ public class VersionActivityPresenter extends AppDelegate {
         map.put("userId", result.getUserId() + "");
         map.put("sessionId", result.getSessionId());
         map.put("ak", "0110010010000");
-        getString(0, HttpUrl.APP_VERSION_CODE, map, false);
+        getString(0, HttpUrl.APP_VERSION_CODE, map,false);
 
     }
 

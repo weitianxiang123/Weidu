@@ -42,6 +42,7 @@ public class HttpUrl {
     //根据电影ID查询电影信息
     //查看电影详情
     //查询用户关注的影片列表
+    public static final String STRING_ATTENTION_CINEMA = "cinema/v1/verify/findCinemaPageList";
     //关注电影
     //取消关注电影
     //查询影片评论列表
@@ -58,6 +59,7 @@ public class HttpUrl {
     //查询推荐影院信息
     public static final String RECOMMEND_CINEMA="cinema/v1/findRecommendCinemas";
     //查询电影信息明细
+    public static final String CINEMA_INFO = "cinema/v1/findCinemaInfo";
     //查询所有电影院
     //查询用户关注的影院信息
     //关注影院
@@ -67,6 +69,7 @@ public class HttpUrl {
     //影院评论点赞
     //意见反馈
     //查询新版本
+    public static final String APP_VERSION_CODE = "tool/v1/findNewVersion";
     //查询系统消息列表
     //系统消息读取状态修改
     //查询用户当前未读消息数量
