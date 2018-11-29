@@ -60,6 +60,7 @@ public class MainActivityPresenter extends AppDelegate {
 
     // 跳转方法
     public void toMine() {
+
         fragmentManager.beginTransaction().replace(R.id.contentView, mineFragment).commit();
 
     }

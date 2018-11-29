@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bw.movie.model.RootMessage;
 import com.bw.movie.net.HttpHelper;
 import com.bw.movie.net.HttpListener;
+import com.bw.movie.utils.ShareUtil;
 import com.google.gson.Gson;
 
 import java.util.Map;
@@ -18,6 +20,9 @@ import java.util.Map;
 public abstract class AppDelegate implements IDelegate {
     private View rootView;
     private SparseArray<View> views = new SparseArray<>();
+    private Context context;
+    private boolean isLogin;
+    private RootMessage rootMessage;
     @Override
     public void initData() {
 
@@ -30,7 +35,7 @@ public abstract class AppDelegate implements IDelegate {
 
     @Override
     public void initContext(Context context) {
-
+         this.context=context;
     }
 
     @Override
@@ -123,6 +128,32 @@ public abstract class AppDelegate implements IDelegate {
 
     public void successString(int type,String data){}
     public <T> void successBean(int type,T bean){}
-    public void error(String error){}
+    public void error(String error){}//关于请求网络
+
+
+
+    //获取用户登陆的数据,每次修改状态需要重新调用
+    public void isLogin(){
+      isLogin= ShareUtil.isLogin(context);
+      if (isLogin)
+      {//用户已经登录
+           rootMessage = ShareUtil.getRootMessage(context);
+      }else
+      {
+            rootMessage=null;
+      }
+      rootMessage(isLogin,rootMessage);
+    }
+
+   public void rootMessage(boolean isLogin,RootMessage rootMessage){
+
+    }
+
+
+    private void getRootMessage(){
+        RootMessage rootMessage = ShareUtil.getRootMessage(context);
+
+    }
+
 }
 

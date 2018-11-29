@@ -1,22 +1,28 @@
 package com.bw.movie.presenter;
 
-import android.app.Activity;
+
 import android.content.Context;
-import android.support.v4.app.Fragment;
+
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
+
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
+import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.adapter.MovieHeadAdapter;
-import com.bw.movie.adapter.MovieItemAdapter;
+
 import com.bw.movie.adapter.MoviePagerAdapter;
-import com.bw.movie.adapter.MovieViewPagerAdapter;
+
 import com.bw.movie.model.MovieItem;
 import com.bw.movie.model.MoviePage;
+import com.bw.movie.model.RootMessage;
 import com.bw.movie.mvp.view.AppDelegate;
+import com.bw.movie.net.HttpHelper;
+import com.bw.movie.net.HttpListener;
 import com.bw.movie.net.HttpUrl;
+import com.bw.movie.utils.EncryptUtil;
+import com.bw.movie.utils.ShareUtil;
 import com.google.gson.Gson;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -25,6 +31,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.FormBody;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import recycler.coverflow.RecyclerCoverFlow;
 
 /**
@@ -34,6 +43,9 @@ import recycler.coverflow.RecyclerCoverFlow;
  * 首页中的电影页面碎片
  */
 public class MovieFragmentPresenter extends AppDelegate{
+	private boolean isLogin;
+	private RootMessage rootMessage;
+
 private List<MoviePage> moviePages;
 private Context context;
 private XRecyclerView xRecyclerView;
@@ -60,8 +72,6 @@ private FragmentManager fragmentManager;
       moviePages.add(new MoviePage("正在上映",HttpUrl.STRING_SHOW_MOVIE));
 	  moviePages.add(new MoviePage("即将上映",HttpUrl.STRING_WILL_MOVIE));
 
-
-
 		View headView = View.inflate(context, R.layout.head_movie, null);
 		RecyclerCoverFlow recycleRotate = headView.findViewById(R.id.recycleRotate);//旋转控件
 		itemAdapter = new MovieHeadAdapter(context);
@@ -75,10 +85,42 @@ private FragmentManager fragmentManager;
 
 		xRecyclerView.setLayoutManager(new LinearLayoutManager(context));
 		MoviePagerAdapter moviePagerAdapter = new MoviePagerAdapter(context);
-		moviePagerAdapter.setData(moviePages);
+		moviePagerAdapter.setData(moviePages);//设置适配器
 
 		xRecyclerView.setAdapter(moviePagerAdapter);
-		xRecyclerView.addHeaderView(headView);
+		xRecyclerView.addHeaderView(headView);//设置头View
+
+		//测试登录
+
+		/*Map<String, RequestBody> map2 = new HashMap<>();
+
+		MediaType mediaType=MediaType.parse("application/x-www-form-urlencoded");
+
+		RequestBody phone=RequestBody.create(mediaType,"15033705919");
+		RequestBody pwd=RequestBody.create(mediaType,EncryptUtil.encrypt("123qwe"));*/
+
+		Map<String, String> map2 = new HashMap<>();
+		map2.put("phone","15033705919");
+		map2.put("pwd",EncryptUtil.encrypt("123qwe"));
+
+		new HttpHelper().lrPost(HttpUrl.STRING_LOGIN,map2).result(new HttpListener() {
+			@Override
+			public void success(String data) {
+				ShareUtil.saveLogin(data,context);
+				isLogin();//刷新，存储用户数据
+				Toast.makeText(context, ""+isLogin+rootMessage.getResult().getUserInfo().getNickName(), Toast.LENGTH_SHORT).show();
+			}
+
+			@Override
+			public void fail(String error) {
+				Toast.makeText(context, ""+error, Toast.LENGTH_SHORT).show();
+			}
+		});
+
+		//数据持久化
+
+		/*postString(2,HttpUrl.STRING_LOGIN,map2,false);*/
+
 
 	}
 
@@ -89,6 +131,7 @@ private FragmentManager fragmentManager;
     this.fragmentManager=childFragmentManager;
 	}
 
+	//网络请求成功返回
 	@Override
 	public void successString(int type, String data) {
 		super.successString(type, data);
@@ -99,7 +142,28 @@ private FragmentManager fragmentManager;
 				   itemAdapter.setData(movieItem);
 				   itemAdapter.notifyDataSetChanged();
 				   break;
+			   case 2:
+
+				   Toast.makeText(context, ""+data, Toast.LENGTH_SHORT).show();
+			   	break;
 		   }
+
+	}
+
+	@Override
+	public void error(String error) {
+		super.error(error);
+		Toast.makeText(context, ""+error, Toast.LENGTH_SHORT).show();
+
+	}
+
+
+	//获取用户数据
+	@Override
+	public void rootMessage(boolean isLogin, RootMessage rootMessage) {
+		super.rootMessage(isLogin, rootMessage);
+      this.isLogin=isLogin;
+      this.rootMessage=rootMessage;
 
 	}
 }

@@ -46,6 +46,6 @@ public abstract class BaseFragment<T extends AppDelegate> extends Fragment{
         initView();
         delegate.initData();
     }
-    public void initView(){};
+    public void initView(){}
 }
 

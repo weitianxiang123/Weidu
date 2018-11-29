@@ -8,6 +8,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -62,6 +63,18 @@ public class HttpHelper {
         return this;
     }
 
+    public HttpHelper lrPost(String url,Map<String, String> map)
+    {
+        if (map==null){
+            map = new HashMap<>();
+        }
+        mbBaseService.lrPost(url,map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+        return this;
+    }
+
     // 观察者
     private Observer observer = new Observer<ResponseBody>(){
         @Override
@@ -90,6 +103,8 @@ public class HttpHelper {
 
         }
     };
+
+
     // 传递接口
     private HttpListener listener;
     public void result(HttpListener listener){
