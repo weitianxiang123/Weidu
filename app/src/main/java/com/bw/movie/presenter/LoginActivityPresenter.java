@@ -1,5 +1,6 @@
 package com.bw.movie.presenter;
 
+import com.bw.movie.R;
 import com.bw.movie.mvp.view.AppDelegate;
 
 /**
@@ -9,6 +10,6 @@ import com.bw.movie.mvp.view.AppDelegate;
 public class LoginActivityPresenter extends AppDelegate{
     @Override
     public int getLayout() {
-        return 0;
+        return R.layout.activity_login;
     }
 }

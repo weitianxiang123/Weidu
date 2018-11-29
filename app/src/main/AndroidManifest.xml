@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bw.movie">
-
-    <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name=".application.App"
         android:allowBackup="true"
@@ -24,12 +22,12 @@
         <activity android:name=".activity.RccordActivity" />
         <activity android:name=".activity.FeedbackActivity" />
         <activity android:name=".activity.VersionActivity" />
-        <activity android:name=".activity.RemindActivity" />
-        <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.GuideActivity" />
-        <activity android:name=".activity.HandelActivity" />
-        <activity android:name=".activity.CinemaInfoActivity" />
-        <activity android:name=".activity.MovieDetailsActivity"></activity>
+        <activity android:name=".activity.RemindActivity"/>
+        <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.GuideActivity"/>
+
+        <activity android:name=".activity.HandelActivity"></activity>
+        <activity android:name=".activity.CinemaInfoActivity"></activity>
     </application>
 
 </manifest>

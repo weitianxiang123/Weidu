@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bw.movie.R;
 import com.bw.movie.activity.MainActivity;
+import com.bw.movie.cview.MySearchView;
 import com.bw.movie.fragment.CinemaListFragment;
 import com.bw.movie.mvp.view.AppDelegate;
 
@@ -21,7 +23,8 @@ public class CinemaFragmentPresenter extends AppDelegate{
     private Context context;
     private ImageView toLocation;
     private TextView city,recommendCinema,nearbyCinema;
-    private RelativeLayout search;
+    //private RelativeLayout search;
+    private MySearchView search;
     private ViewPager cinemaPager;
     private List<Fragment> fragments = new ArrayList<>();
     private MainActivity activity;
@@ -36,7 +39,7 @@ public class CinemaFragmentPresenter extends AppDelegate{
         this.context = context;
     }
 
-    public void initView(ImageView toLocation, TextView city, RelativeLayout search, TextView recommendCinema, TextView nearbyCinema, ViewPager cinemaPager) {
+    public void initView(ImageView toLocation, TextView city, MySearchView search, TextView recommendCinema, TextView nearbyCinema, ViewPager cinemaPager) {
         this.toLocation = toLocation;
         this.city = city;
         this.recommendCinema = recommendCinema;
@@ -53,6 +56,7 @@ public class CinemaFragmentPresenter extends AppDelegate{
         fragments.add(new CinemaListFragment());
         fragments.add(new CinemaListFragment());
 
+        // 适配两页内容
         cinemaPager.setAdapter(new FragmentPagerAdapter(activity.getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int i) {
@@ -72,6 +76,13 @@ public class CinemaFragmentPresenter extends AppDelegate{
             @Override
             public int getCount() {
                 return fragments.size();
+            }
+        });
+        // 搜索
+        search.setOnSearchListener(new MySearchView.OnSearchListener() {
+            @Override
+            public void Search(String txt) {
+                Log.i("search",txt);
             }
         });
     }
