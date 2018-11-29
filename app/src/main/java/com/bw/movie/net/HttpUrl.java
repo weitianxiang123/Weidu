@@ -44,6 +44,7 @@ public class HttpUrl {
     //查询用户关注的影片列表
     public static final String STRING_ATTENTION_CINEMA = "cinema/v1/verify/findCinemaPageList";
     //关注电影
+    public static  final String STRING_ATTENTION_MOVIE="movie/v1/verify/followMovie";
     //取消关注电影
     //查询影片评论列表
     //添加用户对影片的评论

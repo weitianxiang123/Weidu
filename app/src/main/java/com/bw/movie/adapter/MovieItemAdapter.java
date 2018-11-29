@@ -1,13 +1,16 @@
 package com.bw.movie.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.MovieDetailsActivity;
 import com.bw.movie.model.MovieItem;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -19,6 +22,8 @@ import com.facebook.drawee.view.SimpleDraweeView;
 public class MovieItemAdapter extends RecyclerView.Adapter<MovieItemAdapter.MyViewHolder> {
     private MovieItem data;
     private Context context;
+/*    private MovieItemClickListener listener;*/
+
 
 	public MovieItemAdapter(Context context) {
 		this.context = context;
@@ -37,9 +42,21 @@ public class MovieItemAdapter extends RecyclerView.Adapter<MovieItemAdapter.MyVi
 	}
 
 	@Override
-	public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+	public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
+
     myViewHolder.image.setImageURI(data.getResult().get(i).getImageUrl());
     myViewHolder.name.setText(data.getResult().get(i).getName());
+
+    //设置点击事件
+		myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(context, MovieDetailsActivity.class);
+
+				context.startActivity(intent);
+			}
+		});
+
 	}
 
 	@Override
@@ -56,6 +73,17 @@ public class MovieItemAdapter extends RecyclerView.Adapter<MovieItemAdapter.MyVi
 			super(itemView);
 	   image=itemView.findViewById(R.id.frescoImage);
 	   name=itemView.findViewById(R.id.movieName);
+
+
 		}
 	}
+/*	//这个适配器的条目监听
+	public interface  MovieItemClickListener{
+		public void onClick(int index,View view);
+	}*/
+
+/*  public void	setItemClickListener(MovieItemClickListener listener){
+		this.listener=listener;
+	}*/
+
 }

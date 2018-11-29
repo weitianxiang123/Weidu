@@ -85,7 +85,7 @@ public abstract class AppDelegate implements IDelegate {
 
     // 请求网络 返回String
     private void doHttpString(String method, final int type, String url, Map<String,String> map,boolean weatherHead){
-        HttpHelper helper = new HttpHelper();
+        HttpHelper helper = new HttpHelper(context);
         if ("GET".equals(method)){
             helper.get(url,map,weatherHead);
         }else {
@@ -106,7 +106,7 @@ public abstract class AppDelegate implements IDelegate {
 
     // 请求网络 返回 JavaBean
     private <T> void doHttpBean(String method, final int type, String url, Map<String,String> map, final Class<T> cls,boolean weatherHead){
-        HttpHelper helper = new HttpHelper();
+        HttpHelper helper = new HttpHelper(context);
         if ("GET".equals(method)){
             helper.get(url,map,weatherHead);
         }else {
