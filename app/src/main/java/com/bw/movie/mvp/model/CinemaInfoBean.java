@@ -12,6 +12,15 @@ public class CinemaInfoBean implements IModel{
     private String message;
     private String status;
 
+    @Override
+    public String toString() {
+        return "CinemaInfoBean{" +
+                "result=" + result +
+                ", message='" + message + '\'' +
+                ", status='" + status + '\'' +
+                '}';
+    }
+
     public ResultBean getResult() {
         return result;
     }
@@ -65,6 +74,21 @@ public class CinemaInfoBean implements IModel{
         private String phone;
         private int rank;
         private String vehicleRoute;
+
+        @Override
+        public String toString() {
+            return "ResultBean{" +
+                    "address='" + address + '\'' +
+                    ", businessHoursContent='" + businessHoursContent + '\'' +
+                    ", followCinema=" + followCinema +
+                    ", id=" + id +
+                    ", logo='" + logo + '\'' +
+                    ", name='" + name + '\'' +
+                    ", phone='" + phone + '\'' +
+                    ", rank=" + rank +
+                    ", vehicleRoute='" + vehicleRoute + '\'' +
+                    '}';
+        }
 
         public String getAddress() {
             return address;

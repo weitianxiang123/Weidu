@@ -27,7 +27,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"/>
-        <RelativeLayout
+        <!--<RelativeLayout
             android:id="@+id/search"
             android:layout_width="@dimen/dp_48"
             android:background="@drawable/cinema_search_bg"
@@ -37,7 +37,13 @@
                 android:layout_width="@dimen/dp_24"
                 android:layout_height="@dimen/dp_24"
                 android:src="@drawable/com_icon_search_default"/>
-        </RelativeLayout>
+        </RelativeLayout>-->
+        <com.bw.movie.cview.MySearchView
+            android:id="@+id/search"
+            android:layout_width="@dimen/dp_220"
+            android:layout_height="@dimen/dp_24">
+
+        </com.bw.movie.cview.MySearchView>
 
     </LinearLayout>
     
