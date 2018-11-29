@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:visibility="visible"
+        android:id="@+id/faker"
+        android:layout_width="@dimen/dp_48"
+        android:layout_height="@dimen/dp_24"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/cinema_search_bg"
+        android:paddingLeft="@dimen/dp_6">
+
+        <ImageView
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:src="@drawable/com_icon_search_default" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/contentLayout"
+        android:layout_width="@dimen/dp_220"
+        android:layout_height="@dimen/dp_24"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/cinema_search_bg"
+        android:paddingLeft="@dimen/dp_6"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/search_img"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:layout_marginRight="@dimen/dp_10"
+            android:src="@drawable/com_icon_search_default" />
+
+        <EditText
+            android:gravity="center_vertical"
+            android:id="@+id/search_edit"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_24"
+            android:layout_toRightOf="@id/search_img"
+            android:textColor="#f2f2f2"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/toSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_24"
+            android:text="搜索"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/sp_12" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

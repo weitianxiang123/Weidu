@@ -4,12 +4,11 @@ import com.bw.movie.R;
 import com.bw.movie.mvp.view.AppDelegate;
 
 /**
- * 作者：owner on 2018/11/28 18:47
+ * 作者：owner on 2018/11/29 17:21
  */
-public class FeedbackActivityPresenter extends AppDelegate {
+public class AttentionMovieFragmentPresenter extends AppDelegate {
     @Override
     public int getLayout() {
-        return R.layout.activity_feedback;
+        return R.layout.fragment_attention_movie;
     }
-
 }

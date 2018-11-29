@@ -3,7 +3,7 @@
     <!-- 设置边框颜色和宽度-->
     <stroke
         android:width="3dp"
-        android:color="#e8e8e8" />
+        android:color="#f2f2f2" />
     <solid android:color="#FFFFFF" />
     <corners android:radius="4dp" />
 </shape>
