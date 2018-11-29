@@ -6,10 +6,10 @@
         android:color="#e8e8e8" />
     <solid android:color="#FFFFFF" />
     <corners android:radius="4dp" />
-    <padding
-        android:bottom="@dimen/dp_5"
-        android:left="@dimen/dp_35"
-        android:right="@dimen/dp_35"
-        android:top="@dimen/dp_5"
-        />
+    <!--<padding-->
+        <!--android:bottom="@dimen/dp_5"-->
+        <!--android:left="@dimen/dp_35"-->
+        <!--android:right="@dimen/dp_35"-->
+        <!--android:top="@dimen/dp_5"-->
+        <!--/>-->
 </shape>

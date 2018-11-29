@@ -6,69 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".activity.AttentionActivity">
 
-    <!--<LinearLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginTop="@dimen/dp_50"-->
-    <!--android:gravity="center_horizontal"-->
-    <!--android:orientation="horizontal">-->
 
-    <!--<TextView-->
-
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginRight="@dimen/dp_16"-->
-    <!--android:background="@drawable/shape_attention_seleced_bg"-->
-    <!--android:text="电影"-->
-    <!--android:textColor="#FFFFFF"-->
-    <!--android:textSize="@dimen/dp_14" />-->
-
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginLeft="@dimen/dp_16"-->
-    <!--android:background="@drawable/shape_attention_bg"-->
-    <!--android:text="影院"-->
-    <!--android:textSize="@dimen/dp_14" />-->
-
-    <RadioGroup
-        android:id="@+id/attention_RadioGroup"
+    <LinearLayout
+        android:id="@+id/attention_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dp_25"
         android:layout_marginTop="@dimen/dp_50"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
-        <RadioButton
+        <TextView
             android:id="@+id/attention_movie"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/dp_16"
-            android:background="@drawable/shape_attention_seleced_bg"
-            android:button="@null"
+            android:layout_width="@dimen/dp_83"
+            android:layout_height="@dimen/dp_25"
+            android:layout_marginRight="@dimen/dp_32"
+            android:background="@drawable/cinema_txt_select"
+            android:gravity="center"
             android:text="电影"
-            android:textColor="#FFFFFF"
-            android:textSize="@dimen/dp_14" />
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
 
-        <RadioButton
-            android:id="@+id/attention_cinema"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_16"
-            android:background="@drawable/shape_attention_bg"
-            android:button="@null"
+        <TextView
+            android:id="@+id/nearby_cinema"
+            android:layout_width="@dimen/dp_83"
+            android:layout_height="@dimen/dp_25"
+            android:background="@drawable/cinema_txt_default"
+            android:gravity="center"
             android:text="影院"
-            android:textSize="@dimen/dp_14" />
-    </RadioGroup>
+            android:textColor="#333333"
+            android:textSize="14sp" />
+    </LinearLayout>
 
-    <com.jcodecraeer.xrecyclerview.XRecyclerView
-        android:id="@+id/attention_xrecyclerview"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/attention_RadioGroup"
-        android:layout_marginLeft="@dimen/dp_24"
-        android:layout_marginRight="@dimen/dp_24"
-        android:layout_marginTop="@dimen/dp_30" />
+        android:layout_below="@+id/attention_layout"
+        android:layout_marginTop="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_24"
+        android:paddingRight="@dimen/dp_24">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/mine_attention_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v4.view.ViewPager>
+    </RelativeLayout>
+
 
     <include layout="@layout/include_finish_this" />
 </RelativeLayout>
