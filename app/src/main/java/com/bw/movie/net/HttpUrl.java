@@ -8,7 +8,7 @@ public class HttpUrl {
     //注册
     public static final String STRING_REG = "";
     //登录
-    public static final String STRING_LOGIN = "";
+    public static final String STRING_LOGIN = "user/v1/login";
     //查询用户首页信息
     public static final String STRING_SELECT = "";
     //修改用户信息

@@ -7,6 +7,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bw.movie.R;
+import com.bw.movie.cview.MySearchView;
 import com.bw.movie.mvp.base.BaseFragment;
 import com.bw.movie.presenter.CinemaFragmentPresenter;
 
@@ -18,8 +19,10 @@ public class CinemaFragment extends BaseFragment<CinemaFragmentPresenter>{
     ImageView toLocation;
     @BindView(R.id.city)
     TextView city;
+    /*@BindView(R.id.search)
+    RelativeLayout search;*/
     @BindView(R.id.search)
-    RelativeLayout search;
+    MySearchView search;
     @BindView(R.id.recommendCinema)
     TextView recommendCinema;
     @BindView(R.id.nearbyCinema)

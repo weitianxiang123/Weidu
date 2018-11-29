@@ -67,7 +67,10 @@ public class CinemaInfoActivityPresenter extends AppDelegate {
         switch (type){
             case 0:
                 CinemaInfoBean infoBean = (CinemaInfoBean) bean;
-                Toast.makeText(context,infoBean.toString(),Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context,infoBean.toString(),Toast.LENGTH_SHORT).show();
+                cinemaLogo.setImageURI(infoBean.getResult().getLogo());
+                cinemaLocation.setText(infoBean.getResult().getAddress());
+                cinemaName.setText(infoBean.getResult().getName());
                 break;
         }
     }
