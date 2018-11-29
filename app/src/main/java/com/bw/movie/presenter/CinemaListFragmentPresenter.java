@@ -55,7 +55,7 @@ public class CinemaListFragmentPresenter extends AppDelegate {
         map.put("longitude", longitude);
         map.put("latitude", latitude);
 
-        getBean(0, HttpUrl.RECOMMEND_CINEMA, map, RecommendCinemaBean.class);
+        getBean(0, HttpUrl.RECOMMEND_CINEMA, map, RecommendCinemaBean.class,false);
         // 适配
         LinearLayoutManager manager = new LinearLayoutManager(context);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
