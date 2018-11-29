@@ -6,9 +6,8 @@
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/frescoImage"
-        android:layout_width="@dimen/dp_126"
-        android:layout_height="@dimen/dp_164"
-        android:layout_marginRight="@dimen/dp_20"
+        android:layout_width="@dimen/dp_158"
+        android:layout_height="@dimen/dp_223"
         fresco:roundedCornerRadius="@dimen/dp_8"
         fresco:roundTopLeft="true"
         fresco:roundTopRight="true"
@@ -17,25 +16,19 @@
         />
     <!--透明背景-->
     <RelativeLayout
-        android:layout_width="@dimen/dp_126"
-        android:layout_height="@dimen/dp_40"
+        android:layout_width="@dimen/dp_158"
+        android:layout_height="@dimen/dp_36"
         android:layout_alignParentBottom="true"
-        android:alpha="0.4"
+        android:alpha="0.5"
         android:background="@drawable/shape_bottom_corner_000000_8"
         ></RelativeLayout>
     <!--电影名称-->
     <RelativeLayout
-        android:layout_width="@dimen/dp_126"
-        android:layout_height="@dimen/dp_40"
+        android:layout_width="@dimen/dp_158"
+        android:layout_height="@dimen/dp_36"
         android:layout_alignParentBottom="true">
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="@dimen/dp_3"
-            android:layout_height="@dimen/dp_24"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/dp_10"
-            android:background="@drawable/shape_e8175e_440a33_90"></View>
+
 
         <TextView
             android:id="@+id/movieName"
@@ -43,12 +36,22 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/dp_10"
-            android:layout_toRightOf="@id/view"
             android:text="哈哈哈啊"
             android:textColor="#ffffff"
             android:textSize="@dimen/sp_14"
-
             />
+        <TextView
+            android:id="@+id/movieLong"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_10"
+            android:text="哈哈哈啊"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/sp_12"
+            />
+
     </RelativeLayout>
 
 </RelativeLayout>
