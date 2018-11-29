@@ -25,20 +25,35 @@ public class HttpHelper {
     }
 
     // Get请求
-    public HttpHelper get(String url, Map<String,String> map){
+    public HttpHelper get(String url, Map<String,String> map,boolean weatherHead){
         if (map==null){
             map = new HashMap<>();
+        }
+
+        if (weatherHead)
+        {
+            //包含请求头
+
+         return this;
         }
         mbBaseService.get(url,map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
+
         return this;
     }
     // Post请求
-    public HttpHelper post(String url, Map<String,String> map){
+    public HttpHelper post(String url, Map<String,String> map,boolean weatherHead){
         if (map==null){
             map = new HashMap<>();
+        }
+
+        if (weatherHead)
+        {
+            //包含请求头
+
+            return this;
         }
         mbBaseService.post(url,map)
                 .subscribeOn(Schedulers.io())

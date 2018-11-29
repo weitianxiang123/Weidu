@@ -42,6 +42,8 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> {
         super.initView();
         delegate.initView(cinema, movie, mine, contentView);
 
+        delegate.toMovie();
+        selectButton(MOVIE);
     }
 
     @OnClick({R.id.cinema, R.id.movie, R.id.mine})
@@ -60,8 +62,6 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> {
 
 
                 delegate.toMovie();
-
-
                 selectButton(MOVIE);
 
                 break;
