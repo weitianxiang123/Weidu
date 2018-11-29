@@ -4,12 +4,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.bw.movie.R;
+import com.bw.movie.mvp.base.BaseActivity;
+import com.bw.movie.presenter.MessiageActivityPresenter;
 
-public class MessiageActivity extends AppCompatActivity {
+public class MessiageActivity extends BaseActivity<MessiageActivityPresenter> {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_messiage);
+    public Class<MessiageActivityPresenter> getClassDelegate() {
+        return MessiageActivityPresenter.class;
     }
 }

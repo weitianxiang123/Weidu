@@ -32,4 +32,7 @@
             android:textSize="@dimen/dp_14" />
 
     </LinearLayout>
+    <include
+        layout="@layout/include_finish_this"
+        />
 </RelativeLayout>

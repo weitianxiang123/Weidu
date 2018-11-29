@@ -47,7 +47,6 @@ public class MainActivityPresenter extends AppDelegate {
         movieFragment=new MovieFragment();
         fragmentManager = activity.getSupportFragmentManager();
 
-
     }
 
 
