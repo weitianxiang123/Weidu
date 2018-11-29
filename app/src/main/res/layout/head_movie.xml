@@ -2,12 +2,56 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<ImageView
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/dp_186"
-    android:src="@drawable/bg_movie"
-    />
 
-    
-    
+    <ImageView
+        android:id="@+id/bgImage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_186"
+        android:src="@drawable/bg_movie" />
+
+    <RelativeLayout
+        android:id="@+id/layoutLocation"
+        android:layout_width="@dimen/dp_48"
+        android:layout_height="@dimen/dp_48">
+
+        <ImageView
+            android:id="@+id/imageLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/com_icon_loc_white_default" />
+
+
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/textLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_48"
+        android:layout_toRightOf="@id/layoutLocation"
+        android:textSize="@dimen/sp_14"
+        android:textColor="#ffffff"
+        android:gravity="center_vertical"
+        android:text="新加坡"
+        />
+
+    <recycler.coverflow.RecyclerCoverFlow
+        android:id="@+id/recycleRotate"
+        android:layout_width="@dimen/dp_312"
+        android:layout_height="@dimen/dp_223"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_85">
+
+    </recycler.coverflow.RecyclerCoverFlow>
+
+
+    <View
+        android:layout_width="@dimen/dp_312"
+        android:layout_height="3dp"
+        android:layout_below="@id/recycleRotate"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_20"
+        android:background="@drawable/shape_999999_e8175e_440a33">
+    </View>
+
 </RelativeLayout>

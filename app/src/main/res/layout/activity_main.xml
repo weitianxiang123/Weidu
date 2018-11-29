@@ -7,15 +7,8 @@
 
     tools:context=".activity.MainActivity">
 
-    <TextView
-        android:id="@+id/test0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        />
 
 
-    tools:context=".activity.MainActivity">
 
     <FrameLayout
         android:id="@+id/contentView"
@@ -25,35 +18,33 @@
     </FrameLayout>
 
 
-        <ImageView
-            android:id="@+id/movie"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/dp_15"
-            android:layout_marginLeft="@dimen/dp_24"
-            android:layout_width="@dimen/dp_60"
-            android:layout_height="@dimen/dp_60"
-            android:src="@drawable/com_icon_film_fault"
-             />
-        <ImageView
-            android:id="@+id/cinema"
-            android:layout_alignParentBottom="true"
-            android:layout_width="@dimen/dp_60"
-            android:layout_height="@dimen/dp_60"
-            android:layout_marginBottom="@dimen/dp_15"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/com_icon_cinema_default"
-            />
-        <ImageView
-            android:id="@+id/mine"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="@dimen/dp_15"
-            android:layout_marginRight="@dimen/dp_24"
-            android:layout_width="@dimen/dp_60"
-            android:layout_height="@dimen/dp_60"
-            android:src="@drawable/com_icon_my_default"
-             />
+    <ImageView
+        android:id="@+id/movie"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dp_15"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:src="@drawable/com_icon_film_fault" />
 
+    <ImageView
+        android:id="@+id/cinema"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_15"
+        android:src="@drawable/com_icon_cinema_default" />
+
+    <ImageView
+        android:id="@+id/mine"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_24"
+        android:src="@drawable/com_icon_my_default" />
 
 
 </RelativeLayout>

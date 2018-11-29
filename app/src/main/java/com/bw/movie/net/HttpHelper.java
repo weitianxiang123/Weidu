@@ -13,8 +13,9 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 public class HttpHelper {
+    // 联网工具类,待修改
     private BaseService mbBaseService;
-    private static String BASE_URL = "http://172.17.8.100/movieApi/";
+    private static String BASE_URL = "http://mobile.bwstudent.com/movieApi/";
     public HttpHelper(){
         Retrofit retrofit = new Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

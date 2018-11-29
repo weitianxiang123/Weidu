@@ -56,6 +56,7 @@ public class HttpUrl {
     //支付【支持微信和支付宝支付】
     //根据影院ID查询该影院下即将上映的电影列表
     //查询推荐影院信息
+    public static final String RECOMMEND_CINEMA="cinema/v1/findRecommendCinemas";
     //查询电影信息明细
     //查询所有电影院
     //查询用户关注的影院信息

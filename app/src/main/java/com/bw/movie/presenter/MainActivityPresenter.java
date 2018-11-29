@@ -10,15 +10,10 @@ import android.widget.TextView;
 
 import com.bw.movie.R;
 import com.bw.movie.activity.MainActivity;
+import com.bw.movie.fragment.CinemaFragment;
 import com.bw.movie.fragment.MineFragment;
 import com.bw.movie.fragment.MovieFragment;
 import com.bw.movie.mvp.view.AppDelegate;
-
-
-
-
-
-
 
 
 public class MainActivityPresenter extends AppDelegate {
@@ -28,8 +23,8 @@ public class MainActivityPresenter extends AppDelegate {
     private MainActivity activity;
     FragmentManager fragmentManager;
     private MineFragment mineFragment;
+    private CinemaFragment cinemaFragment;
     private MovieFragment movieFragment;
-
 
 
     @Override
@@ -42,8 +37,6 @@ public class MainActivityPresenter extends AppDelegate {
         super.initContext(context);
         this.context = context;
     }
-
-
 
 
     public void initView(ImageView cinema, ImageView movie, ImageView mine, FrameLayout contentView) {
@@ -59,18 +52,26 @@ public class MainActivityPresenter extends AppDelegate {
         super.initData();
         activity = (MainActivity) context;
         mineFragment = new MineFragment();
-        movieFragment=new MovieFragment();
+        cinemaFragment = new CinemaFragment();
+        movieFragment = new MovieFragment();
         fragmentManager = activity.getSupportFragmentManager();
 
     }
+
     // 跳转方法
-    public void toMine(){
+    public void toMine() {
         fragmentManager.beginTransaction().replace(R.id.contentView, mineFragment).commit();
 
     }
 
     // 跳转方法
     public void toMovie() {
-        fragmentManager.beginTransaction().replace(R.id.contentView,movieFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.contentView, movieFragment).commit();
     }
+
+    public void toCinema() {
+        fragmentManager.beginTransaction().replace(R.id.contentView, cinemaFragment).commit();
+    }
+
+
 }

@@ -11,4 +11,6 @@ public class AttentionActivityPresenter extends AppDelegate {
     public int getLayout() {
         return R.layout.activity_attention;
     }
+
+
 }

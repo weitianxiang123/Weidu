@@ -26,6 +26,7 @@ public class MovieFragment extends BaseFragment<MovieFragmentPresenter> {
 	@Override
 	public void initView() {
 		super.initView();
-	delegate.initView(xRecyclerView);
+	delegate.initView(xRecyclerView,getChildFragmentManager());
+
 	}
 }
