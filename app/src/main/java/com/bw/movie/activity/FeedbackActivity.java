@@ -4,12 +4,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.bw.movie.R;
+import com.bw.movie.mvp.base.BaseActivity;
+import com.bw.movie.presenter.FeedbackActivityPresenter;
 
-public class FeedbackActivity extends AppCompatActivity {
+public class FeedbackActivity extends BaseActivity<FeedbackActivityPresenter> {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_feedback);
+    public Class<FeedbackActivityPresenter> getClassDelegate() {
+        return FeedbackActivityPresenter.class;
     }
+
+
 }

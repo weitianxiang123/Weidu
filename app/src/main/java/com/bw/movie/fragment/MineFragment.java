@@ -45,6 +45,7 @@ public class MineFragment extends BaseFragment<MineFragmentPresenter> {
                 break;
             //我的信息
             case R.id.mine_messiage:
+
                 delegate.tomessiage();
                 break;
             //我的关注

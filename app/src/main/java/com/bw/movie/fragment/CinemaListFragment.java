@@ -1,5 +1,7 @@
 package com.bw.movie.fragment;
 
+import android.os.Bundle;
+
 import com.bw.movie.R;
 import com.bw.movie.mvp.base.BaseFragment;
 import com.bw.movie.presenter.CinemaListFragmentPresenter;
@@ -18,6 +20,8 @@ public class CinemaListFragment extends BaseFragment<CinemaListFragmentPresenter
     @Override
     public void initView() {
         super.initView();
-        delegate.initView(mCinemaList);
+        Bundle arguments = getArguments();
+        boolean flag = arguments.getBoolean("flag");
+        delegate.initView(mCinemaList,flag);
     }
 }

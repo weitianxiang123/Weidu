@@ -1,15 +1,13 @@
 package com.bw.movie.activity;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import com.bw.movie.mvp.base.BaseActivity;
+import com.bw.movie.presenter.RemindActivityPresenter;
 
-import com.bw.movie.R;
+public class RemindActivity extends BaseActivity<RemindActivityPresenter> {
 
-public class RemindActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_remind);
+    public Class<RemindActivityPresenter> getClassDelegate() {
+        return RemindActivityPresenter.class;
     }
 }
