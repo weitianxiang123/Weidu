@@ -88,37 +88,11 @@ public class MainActivityPresenter extends AppDelegate {
     }
 
 
-    @OnClick({R.id.cinema, R.id.movie, R.id.mine})
-    public void click(View view) {
-        // 点击图片  放大 切换图片  跳转到相应的fragment
-        switch (view.getId()) {
-            default:
-                break;
-            case R.id.cinema:
-                // 影院页面
-                toCinema();
-                selectButton(CINEMA);
-                break;
-            case R.id.movie:
-                // 电影页面
 
-
-                toMovie();
-                selectButton(MOVIE);
-
-                break;
-            case R.id.mine:
-                // 我的页面
-                 toMine();
-
-                selectButton(MINE);
-                break;
-        }
-    }
 
 
     //设置选中的Button
-    void selectButton(int button) {
+    public void selectButton(int button) {
 
         switch (button) {
             case CINEMA:
