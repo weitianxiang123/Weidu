@@ -1,13 +1,19 @@
 package com.bw.movie.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.CinemaInfoActivity;
+import com.bw.movie.mvp.model.CinemaBean;
 import com.bw.movie.mvp.model.RecommendCinemaBean;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -17,12 +23,12 @@ import java.util.List;
 
 public class RecommendCinemaListAdapter extends XRecyclerView.Adapter<RecommendCinemaListAdapter.MyHolder>{
     private Context context;
-    private List<RecommendCinemaBean.ResultBean.NearbyCinemaListBean> list0 = new ArrayList<>();
+    private List<CinemaBean> list0 = new ArrayList<>();
 
     public RecommendCinemaListAdapter(Context context) {
         this.context = context;
     }
-    public void setList0(List<RecommendCinemaBean.ResultBean.NearbyCinemaListBean> list0){
+    public void setList0(List<CinemaBean> list0){
         this.list0 = list0;
         notifyDataSetChanged();
     }
@@ -30,19 +36,38 @@ public class RecommendCinemaListAdapter extends XRecyclerView.Adapter<RecommendC
     @NonNull
     @Override
     public MyHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = View.inflate(context, R.layout.cinema_list_item,null);
+        View view = View.inflate(context, R.layout.cinema_list_item, null);
         MyHolder myHolder = new MyHolder(view);
         return myHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyHolder myHolder, int i) {
-        RecommendCinemaBean.ResultBean.NearbyCinemaListBean bean = list0.get(i);
+    public void onBindViewHolder(@NonNull MyHolder myHolder, final int i) {
+        CinemaBean bean = list0.get(i);
         myHolder.logo.setImageURI(bean.getLogo());
         myHolder.name.setText(bean.getName());
         myHolder.location.setText(bean.getAddress());
         myHolder.range.setText(bean.getDistance()+"");
 
+        // 点击跳转到影院详情页面
+        myHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Toast.makeText(context,"按钮",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, CinemaInfoActivity.class);
+                intent.putExtra("cinemaId",list0.get(i).getId());
+                context.startActivity(intent);
+            }
+        });
+
+        myHolder.isFollow.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                // 点击完毕之后关注  取消关注
+
+                return true;
+            }
+        });
     }
 
     @Override

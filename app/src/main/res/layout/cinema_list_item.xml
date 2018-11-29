@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:gravity="center"
     android:layout_height="match_parent">
 
     <RelativeLayout
@@ -17,7 +18,7 @@
             android:layout_height="@dimen/dp_70" />
 
         <RelativeLayout
-            android:layout_width="@dimen/dp_192"
+            android:layout_width="@dimen/dp_212"
             android:layout_height="@dimen/dp_70"
             android:layout_toRightOf="@id/cinema_logo"
             android:paddingLeft="@dimen/dp_20">
@@ -34,7 +35,6 @@
                 android:id="@+id/cinema_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_10"
                 android:text="影院地址"
                 android:textColor="#333333"
                 android:layout_below="@id/cinema_name"
@@ -43,7 +43,6 @@
                 android:id="@+id/cinema_range"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_10"
                 android:text="距离"
                 android:textColor="#333333"
                 android:layout_alignParentBottom="true"
