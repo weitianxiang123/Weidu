@@ -46,7 +46,7 @@ public class CinemaListFragmentPresenter extends AppDelegate{
         Map<String,String> map = new HashMap<>();
         map.put("page",page+"");
         map.put("count",10+"");
-        getBean(0, HttpUrl.RECOMMEND_CINEMA,map, RecommendCinemaBean.class);
+        getBean(0, HttpUrl.RECOMMEND_CINEMA,map, RecommendCinemaBean.class,false);
         // 适配
         LinearLayoutManager manager = new LinearLayoutManager(context);
         manager.setOrientation(LinearLayoutManager.VERTICAL);

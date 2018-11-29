@@ -32,5 +32,5 @@ public abstract class BaseActivity<T extends AppDelegate> extends AppCompatActiv
         initView();
 
     }
-    public void initView(){};
+    public void initView(){}
 }

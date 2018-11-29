@@ -70,7 +70,7 @@ private FragmentManager fragmentManager;
 		Map<String, String> map = new HashMap<>();
 		map.put("page", "1");
 		map.put("count", "20");
-		getString(1,HttpUrl.STRING_HOT_MOVIE,map);//请求网络数据
+		getString(1,HttpUrl.STRING_HOT_MOVIE,map,false);//请求网络数据
 
 
 		xRecyclerView.setLayoutManager(new LinearLayoutManager(context));
