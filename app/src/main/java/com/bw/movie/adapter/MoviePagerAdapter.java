@@ -30,6 +30,7 @@ import java.util.Map;
 public class MoviePagerAdapter extends RecyclerView.Adapter<MoviePagerAdapter.MyViewHolder> {
 	private Context context;
 	private List<MoviePage> data;
+	private MovieItem movieItem;
 
 	public MoviePagerAdapter(Context context) {
 		this.context = context;
@@ -48,7 +49,7 @@ public class MoviePagerAdapter extends RecyclerView.Adapter<MoviePagerAdapter.My
 	}
 
 	@Override
-	public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+	public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
 		myViewHolder.title.setText(data.get(i).getName());
 
 		LinearLayoutManager manager = new LinearLayoutManager(context);
@@ -57,17 +58,21 @@ public class MoviePagerAdapter extends RecyclerView.Adapter<MoviePagerAdapter.My
 		myViewHolder.recyclerView.setLayoutManager(manager);
 
 		final MovieItemAdapter adapter = new MovieItemAdapter(context);
-
-		myViewHolder.recyclerView.setAdapter(adapter);
-
+				myViewHolder.recyclerView.setAdapter(adapter);
+                  /*        adapter.setItemClickListener(new MovieItemAdapter.MovieItemClickListener() {
+							  @Override
+							  public void onClick(int index, View view) {
+								  Toast.makeText(context, ""+movieItem.getResult().get(i).getName(), Toast.LENGTH_SHORT).show();
+							  }
+						  });*/
 		Map<String, String> map = new HashMap<>();
 		map.put("page", "1");
 		map.put("count", "20");
 		//执行网络请求
-		new HttpHelper().get(data.get(i).getUrl(), map,false).result(new HttpListener() {
+		new HttpHelper(context).get(data.get(i).getUrl(), map,false).result(new HttpListener() {
 			@Override
 			public void success(String data) {
-				MovieItem movieItem = new Gson().fromJson(data, MovieItem.class);
+				movieItem = new Gson().fromJson(data, MovieItem.class);
 				adapter.setData(movieItem);
 				adapter.notifyDataSetChanged();
 			}

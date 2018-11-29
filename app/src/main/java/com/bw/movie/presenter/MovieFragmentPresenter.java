@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
+import android.webkit.URLUtil;
 import android.widget.Toast;
 
 import com.bw.movie.R;
@@ -66,6 +67,7 @@ private FragmentManager fragmentManager;
 	@Override
 	public void initData() {
 		super.initData();
+		isLogin();
 		//展示数据
       moviePages=new ArrayList<>();
       moviePages.add(new MoviePage("正在热映",HttpUrl.STRING_HOT_MOVIE));
@@ -96,19 +98,22 @@ private FragmentManager fragmentManager;
 
 		MediaType mediaType=MediaType.parse("application/x-www-form-urlencoded");
 
-		RequestBody phone=RequestBody.create(mediaType,"15033705919");
+		RequestBody phone=Reques、tBody.create(mediaType,"15033705919");
 		RequestBody pwd=RequestBody.create(mediaType,EncryptUtil.encrypt("123qwe"));*/
-
 		Map<String, String> map2 = new HashMap<>();
 		map2.put("phone","15033705919");
 		map2.put("pwd",EncryptUtil.encrypt("123qwe"));
 
-		new HttpHelper().lrPost(HttpUrl.STRING_LOGIN,map2).result(new HttpListener() {
+		new HttpHelper(context).lrPost(HttpUrl.STRING_LOGIN,map2).result(new HttpListener() {
 			@Override
 			public void success(String data) {
 				ShareUtil.saveLogin(data,context);
 				isLogin();//刷新，存储用户数据
-				Toast.makeText(context, ""+isLogin+rootMessage.getResult().getUserInfo().getNickName(), Toast.LENGTH_SHORT).show();
+
+				//关注
+         Map<String,String> map3=new HashMap<>();
+		 map3.put("movieId","19");
+		 getString(3, HttpUrl.STRING_ATTENTION_MOVIE,map3,true);
 			}
 
 			@Override
@@ -121,7 +126,10 @@ private FragmentManager fragmentManager;
 
 		/*postString(2,HttpUrl.STRING_LOGIN,map2,false);*/
 
+		//测试关注
 
+
+		Toast.makeText(context, ""+isLogin+rootMessage.getResult().getUserInfo().getNickName(), Toast.LENGTH_SHORT).show();
 	}
 
 
@@ -143,9 +151,10 @@ private FragmentManager fragmentManager;
 				   itemAdapter.notifyDataSetChanged();
 				   break;
 			   case 2:
-
 				   Toast.makeText(context, ""+data, Toast.LENGTH_SHORT).show();
 			   	break;
+			   case 3:
+				   Toast.makeText(context, ""+data, Toast.LENGTH_SHORT).show();
 		   }
 
 	}
