@@ -27,6 +27,7 @@
         <activity android:name=".activity.GuideActivity"/>
 
         <activity android:name=".activity.HandelActivity"></activity>
+        <activity android:name=".activity.CinemaInfoActivity"></activity>
     </application>
 
 </manifest>
