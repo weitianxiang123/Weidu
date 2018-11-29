@@ -50,7 +50,7 @@ public class GuideActivity extends AppCompatActivity implements ViewPager.OnPage
         ib_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(GuideActivity.this,MainActivity.class));
+                startActivity(new Intent(GuideActivity.this,HandelActivity.class));
                 finish();
             }
         });

@@ -28,8 +28,9 @@ public abstract class BaseActivity<T extends AppDelegate> extends AppCompatActiv
         setContentView(delegate.getRootView());
         ButterKnife.bind(this);
         delegate.initContext(this);
-        initView();
         delegate.initData();
+        initView();
+
     }
-    public void initView(){};
+    public void initView(){}
 }

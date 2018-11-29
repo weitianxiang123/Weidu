@@ -22,7 +22,7 @@ public class StartActivity extends AppCompatActivity {
         if (isFirstUse) {
             startActivity(new Intent(this, GuideActivity.class));
         } else {
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, HandelActivity.class));
         }
         finish();
         //实例化Editor对象

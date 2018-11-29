@@ -38,9 +38,13 @@ dependencies {
     implementation 'com.facebook.fresco:fresco:1.11.0'
 
 
+
+
     //xRecycleView
     implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'com.android.support:design:28.0.0'
 
+    //旋转木马相册
+    implementation 'com.chenlittleping:recyclercoverflow:1.0.6'
 }

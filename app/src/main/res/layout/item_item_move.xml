@@ -14,14 +14,13 @@
         fresco:roundTopRight="true"
         fresco:roundBottomLeft="true"
         fresco:roundBottomRight="true"
-
         />
     <!--透明背景-->
     <RelativeLayout
         android:layout_width="@dimen/dp_126"
         android:layout_height="@dimen/dp_40"
         android:layout_alignParentBottom="true"
-        android:alpha="0.3"
+        android:alpha="0.4"
         android:background="@drawable/shape_bottom_corner_000000_8"
         ></RelativeLayout>
     <!--电影名称-->

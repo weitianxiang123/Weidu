@@ -64,7 +64,7 @@ public class MoviePagerAdapter extends RecyclerView.Adapter<MoviePagerAdapter.My
 		map.put("page", "1");
 		map.put("count", "20");
 		//执行网络请求
-		new HttpHelper().get(data.get(i).getUrl(), map).result(new HttpListener() {
+		new HttpHelper().get(data.get(i).getUrl(), map,false).result(new HttpListener() {
 			@Override
 			public void success(String data) {
 				MovieItem movieItem = new Gson().fromJson(data, MovieItem.class);

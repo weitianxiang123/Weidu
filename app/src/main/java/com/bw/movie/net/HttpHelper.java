@@ -13,8 +13,9 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 public class HttpHelper {
+    // 联网工具类,待修改
     private BaseService mbBaseService;
-    private static String BASE_URL = "http://172.17.8.100/movieApi/";
+    private static String BASE_URL = "http://mobile.bwstudent.com/movieApi/";
     public HttpHelper(){
         Retrofit retrofit = new Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -24,20 +25,35 @@ public class HttpHelper {
     }
 
     // Get请求
-    public HttpHelper get(String url, Map<String,String> map){
+    public HttpHelper get(String url, Map<String,String> map,boolean weatherHead){
         if (map==null){
             map = new HashMap<>();
+        }
+
+        if (weatherHead)
+        {
+            //包含请求头
+
+         return this;
         }
         mbBaseService.get(url,map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
+
         return this;
     }
     // Post请求
-    public HttpHelper post(String url, Map<String,String> map){
+    public HttpHelper post(String url, Map<String,String> map,boolean weatherHead){
         if (map==null){
             map = new HashMap<>();
+        }
+
+        if (weatherHead)
+        {
+            //包含请求头
+
+            return this;
         }
         mbBaseService.post(url,map)
                 .subscribeOn(Schedulers.io())
