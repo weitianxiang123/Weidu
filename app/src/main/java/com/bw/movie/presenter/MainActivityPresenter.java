@@ -16,12 +16,6 @@ import com.bw.movie.fragment.MovieFragment;
 import com.bw.movie.mvp.view.AppDelegate;
 
 
-
-
-
-
-
-
 public class MainActivityPresenter extends AppDelegate {
     private Context context;
     private ImageView cinema, movie, mine;
@@ -31,7 +25,6 @@ public class MainActivityPresenter extends AppDelegate {
     private MineFragment mineFragment;
     private CinemaFragment cinemaFragment;
     private MovieFragment movieFragment;
-
 
 
     @Override
@@ -44,8 +37,6 @@ public class MainActivityPresenter extends AppDelegate {
         super.initContext(context);
         this.context = context;
     }
-
-
 
 
     public void initView(ImageView cinema, ImageView movie, ImageView mine, FrameLayout contentView) {
@@ -62,22 +53,25 @@ public class MainActivityPresenter extends AppDelegate {
         activity = (MainActivity) context;
         mineFragment = new MineFragment();
         cinemaFragment = new CinemaFragment();
-        movieFragment=new MovieFragment();
+        movieFragment = new MovieFragment();
         fragmentManager = activity.getSupportFragmentManager();
 
     }
+
     // 跳转方法
-    public void toMine(){
+    public void toMine() {
         fragmentManager.beginTransaction().replace(R.id.contentView, mineFragment).commit();
 
     }
 
     // 跳转方法
     public void toMovie() {
-        fragmentManager.beginTransaction().replace(R.id.contentView,movieFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.contentView, movieFragment).commit();
     }
 
     public void toCinema() {
-        fragmentManager.beginTransaction().replace(R.id.contentView,cinemaFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.contentView, cinemaFragment).commit();
     }
+
+
 }
