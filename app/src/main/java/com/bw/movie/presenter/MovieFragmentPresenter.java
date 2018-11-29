@@ -52,6 +52,7 @@ private Context context;
 private XRecyclerView xRecyclerView;
 private FragmentManager fragmentManager;
 	private MovieHeadAdapter itemAdapter;
+	private RecyclerCoverFlow recycleRotate;
 
 	@Override
 	public int getLayout() {
@@ -75,7 +76,8 @@ private FragmentManager fragmentManager;
 	  moviePages.add(new MoviePage("即将上映",HttpUrl.STRING_WILL_MOVIE));
 
 		View headView = View.inflate(context, R.layout.head_movie, null);
-		RecyclerCoverFlow recycleRotate = headView.findViewById(R.id.recycleRotate);//旋转控件
+		//旋转控件
+		recycleRotate = headView.findViewById(R.id.recycleRotate);
 		itemAdapter = new MovieHeadAdapter(context);
 
 		recycleRotate.setAdapter(itemAdapter);
@@ -100,27 +102,25 @@ private FragmentManager fragmentManager;
 
 		RequestBody phone=Reques、tBody.create(mediaType,"15033705919");
 		RequestBody pwd=RequestBody.create(mediaType,EncryptUtil.encrypt("123qwe"));*/
-		Map<String, String> map2 = new HashMap<>();
+	/*	Map<String, String> map2 = new HashMap<>();
 		map2.put("phone","15033705919");
-		map2.put("pwd",EncryptUtil.encrypt("123qwe"));
+		map2.put("pwd",EncryptUtil.encrypt("123qwe"));*/
 
-		new HttpHelper(context).lrPost(HttpUrl.STRING_LOGIN,map2).result(new HttpListener() {
+/*		new HttpHelper(context).lrPost(HttpUrl.STRING_LOGIN,map2).result(new HttpListener() {
 			@Override
 			public void success(String data) {
 				ShareUtil.saveLogin(data,context);
 				isLogin();//刷新，存储用户数据
 
 				//关注
-         Map<String,String> map3=new HashMap<>();
-		 map3.put("movieId","19");
-		 getString(3, HttpUrl.STRING_ATTENTION_MOVIE,map3,true);
+
 			}
 
 			@Override
 			public void fail(String error) {
 				Toast.makeText(context, ""+error, Toast.LENGTH_SHORT).show();
 			}
-		});
+		});*/
 
 		//数据持久化
 
@@ -129,7 +129,10 @@ private FragmentManager fragmentManager;
 		//测试关注
 
 
-		Toast.makeText(context, ""+isLogin+rootMessage.getResult().getUserInfo().getNickName(), Toast.LENGTH_SHORT).show();
+		/*Toast.makeText(context, ""+isLogin+rootMessage.getResult().getUserInfo().getNickName(), Toast.LENGTH_SHORT).show();*/
+		Map<String,String> map3=new HashMap<>();
+		map3.put("movieId","19");
+		getString(3, HttpUrl.STRING_ATTENTION_MOVIE,map3,true);
 	}
 
 
@@ -149,6 +152,8 @@ private FragmentManager fragmentManager;
 				   MovieItem movieItem = new Gson().fromJson(data, MovieItem.class);
 				   itemAdapter.setData(movieItem);
 				   itemAdapter.notifyDataSetChanged();
+				   recycleRotate.scrollToPosition(movieItem.getResult().size()/2);
+
 				   break;
 			   case 2:
 				   Toast.makeText(context, ""+data, Toast.LENGTH_SHORT).show();
