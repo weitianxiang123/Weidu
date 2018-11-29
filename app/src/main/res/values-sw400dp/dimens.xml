@@ -116,6 +116,7 @@
 	<dimen name="sp_19">21.1111sp</dimen>
 	<dimen name="sp_20">22.2222sp</dimen>
 	<dimen name="sp_21">23.3333sp</dimen>
+	<dimen name="dp_120">133.3333dp</dimen>
 	<dimen name="dp_200">222.2222dp</dimen>
 	<dimen name="dp_180">200.0000dp</dimen>
 	<dimen name="dp_150">166.6667dp</dimen>
@@ -123,4 +124,8 @@
 	<dimen name="dp_205">227.7778dp</dimen>
 	<dimen name="dp_370">411.1111dp</dimen>
 	<dimen name="dp_410">455.5556dp</dimen>
+	<dimen name="dp_190">211.1111dp</dimen>
+	<dimen name="dp_340">377.7778dp</dimen>
+	<dimen name="dp_480">533.3333dp</dimen>
+	<dimen name="dp_300">333.3333dp</dimen>
 </resources>
