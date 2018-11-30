@@ -54,6 +54,7 @@ public class HttpUrl {
     //添加用户对评论的回复
     //电影评论点赞
     //根据影院ID查询该影院当前排期的电影列表
+    public static final String MOVIE_BY_CINEMA_ID = "movie/v1/findMovieListByCinemaId";
     //根据电影ID和影院ID查询电影排期列表
     public static final String CINEMA_MOVIE_INFO = "movie/v1/findMovieScheduleList";
     //根据电影ID查询当前排片该电影的影院列表
