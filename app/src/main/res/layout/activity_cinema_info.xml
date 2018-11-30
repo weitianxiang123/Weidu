@@ -78,13 +78,13 @@
         android:layout_height="match_parent"
         android:paddingLeft="@dimen/dp_24"
         android:paddingRight="@dimen/dp_24"
-        android:layout_below="@id/line">
-        <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/line">
+        <com.jcodecraeer.xrecyclerview.XRecyclerView
             android:id="@+id/movieOptionList"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        </android.support.v7.widget.RecyclerView>
+        </com.jcodecraeer.xrecyclerview.XRecyclerView>
     </RelativeLayout>
     <!--弹出详情评论信息-->
     <RelativeLayout

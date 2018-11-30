@@ -9,6 +9,7 @@ import com.bw.movie.R;
 import com.bw.movie.mvp.base.BaseActivity;
 import com.bw.movie.presenter.CinemaInfoActivityPresenter;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import butterknife.BindView;
 import recycler.coverflow.RecyclerCoverFlow;
@@ -27,7 +28,7 @@ public class CinemaInfoActivity extends BaseActivity<CinemaInfoActivityPresenter
     @BindView(R.id.recycleRotate)
     RecyclerCoverFlow mRecyclerCoverFlow;
     @BindView(R.id.movieOptionList)
-    RecyclerView mMovieOptionList;
+    XRecyclerView mMovieOptionList;
     @Override
     public Class<CinemaInfoActivityPresenter> getClassDelegate() {
         return CinemaInfoActivityPresenter.class;
