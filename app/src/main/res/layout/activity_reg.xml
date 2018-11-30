@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/btn_bitmap"
+    android:gravity="center_horizontal"
+    >
+    <RelativeLayout
+        android:layout_marginTop="@dimen/dp_80"
+        android:layout_width="@dimen/dp_300"
+        android:gravity="center"
+        android:layout_height="@dimen/dp_40">
+        <ImageView
+            android:id="@+id/ima_view1"
+            android:src="@drawable/register_icon_name_default_xhdpi"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_30" />
+        <EditText
+            android:id="@+id/edi_reg_name"
+            android:textColor="#ffffff"
+            android:hint="昵称"
+            android:paddingLeft="@dimen/dp_10"
+            android:background="@drawable/shape_login"
+            android:layout_toRightOf="@+id/ima_view1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30" />
+        <View
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/dp_30"
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffffff" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="@dimen/dp_120"
+        android:layout_width="@dimen/dp_300"
+        android:gravity="center"
+        android:layout_height="@dimen/dp_40">
+        <ImageView
+            android:id="@+id/ima_view3"
+            android:src="@drawable/register_icon_sex_default_xhdpi"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_30" />
+        <EditText
+            android:id="@+id/edi_reg_sex"
+            android:textColor="#ffffff"
+            android:hint="性别"
+            android:paddingLeft="@dimen/dp_10"
+            android:background="@drawable/shape_login"
+            android:layout_toRightOf="@+id/ima_view3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30" />
+        <View
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/dp_30"
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffffff" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="@dimen/dp_170"
+        android:layout_width="@dimen/dp_300"
+        android:gravity="center"
+        android:layout_height="@dimen/dp_40">
+        <ImageView
+            android:id="@+id/ima_view4"
+            android:src="@drawable/register_icon_date_default_xhdpi"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_30" />
+        <EditText
+            android:id="@+id/edi_reg_date"
+            android:textColor="#ffffff"
+            android:hint="出生日期"
+            android:paddingLeft="@dimen/dp_10"
+            android:background="@drawable/shape_login"
+            android:layout_toRightOf="@+id/ima_view4"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30" />
+        <View
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/dp_30"
+            android:id="@+id/view4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffffff" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="@dimen/dp_220"
+        android:layout_width="@dimen/dp_300"
+        android:gravity="center"
+        android:layout_height="@dimen/dp_40">
+        <ImageView
+            android:id="@+id/ima_view5"
+            android:src="@drawable/log_icon_phone_default_hdpi"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_30" />
+        <EditText
+            android:id="@+id/edi_reg_phone"
+            android:textColor="#ffffff"
+            android:hint="手机号"
+            android:paddingLeft="@dimen/dp_10"
+            android:background="@drawable/shape_login"
+            android:layout_toRightOf="@+id/ima_view5"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30" />
+        <View
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/dp_30"
+            android:id="@+id/view5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffffff" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="@dimen/dp_270"
+        android:layout_width="@dimen/dp_300"
+        android:gravity="center"
+        android:layout_height="@dimen/dp_40">
+        <ImageView
+            android:id="@+id/ima_view6"
+            android:src="@drawable/register_icon_mail_default_xhdpi"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_30" />
+        <EditText
+            android:id="@+id/edi_reg_mail"
+            android:textColor="#ffffff"
+            android:hint="邮箱"
+            android:paddingLeft="@dimen/dp_10"
+            android:background="@drawable/shape_login"
+            android:layout_toRightOf="@+id/ima_view6"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30" />
+        <View
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/dp_30"
+            android:id="@+id/view6"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffffff" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="@dimen/dp_320"
+        android:layout_width="@dimen/dp_300"
+        android:gravity="center"
+        android:layout_height="@dimen/dp_40">
+        <ImageView
+            android:id="@+id/ima_view2"
+            android:src="@drawable/log_icon_lock_default_xxhdpi"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_30" />
+        <EditText
+            android:textColor="#ffffff"
+            android:hint="登录密码"
+            android:id="@+id/edi_reg_lock"
+            android:paddingLeft="@dimen/dp_10"
+            android:background="@drawable/shape_login"
+            android:layout_toRightOf="@+id/ima_view2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30" />
+        <View
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/dp_30"
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffffff" />
+    </RelativeLayout>
+    <Button
+        android:id="@+id/btn_reg"
+        android:layout_marginTop="@dimen/dp_370"
+        android:textColor="#fef2e5"
+        android:background="#f77a25"
+        android:text="注册"
+        android:layout_width="@dimen/dp_300"
+        android:layout_height="@dimen/dp_40" />
+
+
+</RelativeLayout>

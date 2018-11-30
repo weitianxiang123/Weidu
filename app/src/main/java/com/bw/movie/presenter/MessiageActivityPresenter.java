@@ -24,7 +24,7 @@ public class MessiageActivityPresenter extends AppDelegate {
     private TextView mMessiageMobile;
     private TextView mMessiageEmil;
     private RootMessage.ResultBean.UserInfoBean userInfo;
-    private TextView exitTextView;
+    private TextView mUserExit;
 
     @Override
     public int getLayout() {
@@ -36,22 +36,15 @@ public class MessiageActivityPresenter extends AppDelegate {
         this.context = context;
     }
 
-    public void initView(SimpleDraweeView mMessageHead, TextView exitTextView, TextView mMessiageName, TextView mMessiageSex, TextView mMessiageData, TextView mMessiageMobile, TextView mMessiageEmil) {
-        this.mMessageHead = mMessageHead;
-        this.mMessiageName = mMessiageName;
-        this.mMessiageSex = mMessiageSex;
-        this.mMessiageData = mMessiageData;
-        this.mMessiageMobile = mMessiageMobile;
-        this.mMessiageEmil = mMessiageEmil;
-        this.exitTextView = exitTextView;
-    }
 
     @Override
     public void initData() {
         super.initData();
 
+
         RootMessage rootData = ShareUtil.getRootMessage(context);
         userInfo = rootData.getResult().getUserInfo();
+
         mMessageHead.setImageURI(userInfo.getHeadPic());
         mMessiageName.setText(userInfo.getNickName());
         if (userInfo.getSex() == 1) {
@@ -62,11 +55,20 @@ public class MessiageActivityPresenter extends AppDelegate {
         }
         mMessiageData.setText(userInfo.getLastLoginTime() + "");
         mMessiageMobile.setText(userInfo.getPhone());
-//        //mMessiageEmil.setText(userInfo.get);
+        //mMessiageEmil.setText(userInfo.get);
     }
 
     public void exitUser() {
         ShareUtil.unLogin(context);
-        ((Activity)context).finish();
+        ((Activity) context).finish();
+    }
+
+    public void initView(SimpleDraweeView mMessageHead, TextView mMessiageName, TextView mMessiageSex, TextView mMessiageData, TextView mMessiageMobile, TextView mMessiageEmil) {
+        this.mMessageHead = mMessageHead;
+        this.mMessiageName = mMessiageName;
+        this.mMessiageSex = mMessiageSex;
+        this.mMessiageData = mMessiageData;
+        this.mMessiageMobile = mMessiageMobile;
+        this.mMessiageEmil = mMessiageEmil;
     }
 }
