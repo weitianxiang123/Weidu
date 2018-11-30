@@ -102,25 +102,22 @@ private FragmentManager fragmentManager;
 
 		RequestBody phone=Reques、tBody.create(mediaType,"15033705919");
 		RequestBody pwd=RequestBody.create(mediaType,EncryptUtil.encrypt("123qwe"));*/
-	/*	Map<String, String> map2 = new HashMap<>();
+		Map<String, String> map2 = new HashMap<>();
 		map2.put("phone","15033705919");
-		map2.put("pwd",EncryptUtil.encrypt("123qwe"));*/
+		map2.put("pwd",EncryptUtil.encrypt("123qwe"));
 
-/*		new HttpHelper(context).lrPost(HttpUrl.STRING_LOGIN,map2).result(new HttpListener() {
+		new HttpHelper(context).lrPost(HttpUrl.STRING_LOGIN,map2).result(new HttpListener() {
 			@Override
 			public void success(String data) {
 				ShareUtil.saveLogin(data,context);
 				isLogin();//刷新，存储用户数据
-
-				//关注
-
 			}
 
 			@Override
 			public void fail(String error) {
 				Toast.makeText(context, ""+error, Toast.LENGTH_SHORT).show();
 			}
-		});*/
+		});
 
 		//数据持久化
 
@@ -130,9 +127,7 @@ private FragmentManager fragmentManager;
 
 
 		/*Toast.makeText(context, ""+isLogin+rootMessage.getResult().getUserInfo().getNickName(), Toast.LENGTH_SHORT).show();*/
-		Map<String,String> map3=new HashMap<>();
-		map3.put("movieId","19");
-		getString(3, HttpUrl.STRING_ATTENTION_MOVIE,map3,true);
+
 	}
 
 

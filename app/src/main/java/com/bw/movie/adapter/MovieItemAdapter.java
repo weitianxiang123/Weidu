@@ -52,7 +52,7 @@ public class MovieItemAdapter extends RecyclerView.Adapter<MovieItemAdapter.MyVi
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(context, MovieDetailsActivity.class);
-
+                     intent.putExtra("movieId",data.getResult().get(i).getId());
 				context.startActivity(intent);
 			}
 		});
@@ -73,7 +73,6 @@ public class MovieItemAdapter extends RecyclerView.Adapter<MovieItemAdapter.MyVi
 			super(itemView);
 	   image=itemView.findViewById(R.id.frescoImage);
 	   name=itemView.findViewById(R.id.movieName);
-
 
 		}
 	}

@@ -41,6 +41,7 @@ public class HttpUrl {
 
     //根据电影ID查询电影信息
     //查看电影详情
+    public  static final String STRING_DETAIL_MOVIE="movie/v1/findMoviesDetail";
     //查询用户关注的影片列表
     public static final String STRING_ATTENTION_CINEMA = "cinema/v1/verify/findCinemaPageList";
     //关注电影

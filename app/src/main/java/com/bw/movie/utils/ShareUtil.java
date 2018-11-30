@@ -28,6 +28,8 @@ public class ShareUtil {
 
 	public static boolean isLogin(Context context){
 		//判断用户是否登录
+		if (context==null)
+			return false;
 		SharedPreferences sp = context.getSharedPreferences(LOGIN, Context.MODE_PRIVATE);
 		boolean b = sp.getBoolean(LOGIN_WEATHER, false);
 		return b;

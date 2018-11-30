@@ -2,6 +2,7 @@ package com.bw.movie.presenter;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.model.AttentionCinema;
@@ -33,9 +34,9 @@ public class AttentionCinemaFragmentPresenter extends AppDelegate {
 
     @Override
     public void initContext(Context context) {
+        super.initContext(context);
         this.context = context;
     }
-
 
     public void initView(XRecyclerView mXRecyclerView) {
         this.mXRecyclerView = mXRecyclerView;
@@ -47,11 +48,10 @@ public class AttentionCinemaFragmentPresenter extends AppDelegate {
         Map<String, String> map = new HashMap<>();
         RootMessage rootData = ShareUtil.getRootMessage(context);
         RootMessage.ResultBean userInfo = rootData.getResult();
-        map.put("userId", userInfo.getUserId() + "");
-        map.put("sessionId", userInfo.getSessionId());
         map.put("page", "1");
         map.put("count", "10");
         getBean(1, HttpUrl.STRING_ATTENTION_CINEMA, map, AttentionCinema.class, true);
+
 
     }
 
@@ -69,4 +69,5 @@ public class AttentionCinemaFragmentPresenter extends AppDelegate {
                 break;
         }
     }
+
 }
