@@ -1,5 +1,6 @@
 package com.bw.movie.presenter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -82,6 +83,7 @@ public class LoginActivityPresenter extends AppDelegate{
                         String status = loginBean.getStatus();
                         if ("0000".equals(status)){
                             context.startActivity(new Intent(context, MessiageActivity.class));
+                            ((Activity)context).finish();
                         }else {
                             Toast.makeText(context, ""+loginBean.getMessage(), Toast.LENGTH_SHORT).show();
                         }

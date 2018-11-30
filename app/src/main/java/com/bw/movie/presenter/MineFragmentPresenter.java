@@ -44,20 +44,20 @@ public class MineFragmentPresenter extends AppDelegate {
     }
 
     public void toattention() {
-        //if (login) {
+        if (ShareUtil.isLogin(context)) {
             context.startActivity(new Intent(context, AttentionActivity.class));
-       // } else {
-         //   toast();
-       // }
+        } else {
+            toast();
+        }
     }
 
 
     public void torccord() {
-       // if (login) {
+        if (ShareUtil.isLogin(context)) {
             context.startActivity(new Intent(context, RccordActivity.class));
-       // } else {
-        //    toast();
-       // }
+        } else {
+            toast();
+        }
     }
 
     public void tofeedback() {
@@ -69,11 +69,19 @@ public class MineFragmentPresenter extends AppDelegate {
     }
 
     public void toversion() {
-        context.startActivity(new Intent(context, VersionActivity.class));
+        if (ShareUtil.isLogin(context)) {
+            context.startActivity(new Intent(context, VersionActivity.class));
+        } else {
+            toast();
+        }
     }
 
     public void toremind() {
-        context.startActivity(new Intent(context, RemindActivity.class));
+        if (ShareUtil.isLogin(context)) {
+            context.startActivity(new Intent(context, RemindActivity.class));
+        } else {
+            toast();
+        }
     }
 
     private void toast() {

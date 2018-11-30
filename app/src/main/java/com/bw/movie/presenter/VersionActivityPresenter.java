@@ -2,6 +2,7 @@ package com.bw.movie.presenter;
 
 import android.content.Context;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.model.AttentionCinema;
@@ -40,9 +41,10 @@ public class VersionActivityPresenter extends AppDelegate {
     @Override
     public void initData() {
         super.initData();
+        Toast.makeText(context, "asd", Toast.LENGTH_SHORT).show();
         Map<String, String> map = new HashMap<>();
         RootMessage.ResultBean result = ShareUtil.getRootMessage(context).getResult();
-        map.put("userId", result.getUserId() + "");
+        map.put("userId", result.getUserId()+ "");
         map.put("sessionId", result.getSessionId());
         map.put("ak", "0110010010000");
         getString(0, HttpUrl.APP_VERSION_CODE, map,false);
