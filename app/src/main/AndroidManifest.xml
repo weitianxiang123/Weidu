@@ -29,6 +29,7 @@
         <activity android:name=".activity.HandelActivity"></activity>
         <activity android:name=".activity.CinemaInfoActivity"></activity>
         <activity android:name=".activity.MovieDetailsActivity"></activity>
+        <activity android:name=".activity.CinemaSearchActivity"></activity>
     </application>
 
 </manifest>
