@@ -41,6 +41,7 @@ public class MessiageActivityPresenter extends AppDelegate {
     public void initData() {
         super.initData();
 
+
         RootMessage rootData = ShareUtil.getRootMessage(context);
         userInfo = rootData.getResult().getUserInfo();
 

@@ -77,11 +77,12 @@ public class LoginActivityPresenter extends AppDelegate{
                 new HttpHelper(context).lrPost(HttpUrl.STRING_LOGIN,map).result(new HttpListener() {
                     @Override
                     public void success(String data) {
-                        ShareUtil.saveLogin(data,context);
-                        isLogin();
+
                         LoginBean loginBean = new Gson().fromJson(data, LoginBean.class);
                         String status = loginBean.getStatus();
                         if ("0000".equals(status)){
+                            ShareUtil.saveLogin(data,context);
+                            isLogin();
                             context.startActivity(new Intent(context, MessiageActivity.class));
                             ((Activity)context).finish();
                         }else {
