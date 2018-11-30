@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -74,11 +75,12 @@ public class LoginActivityPresenter extends AppDelegate{
 
             }
         });
+        pref= PreferenceManager.getDefaultSharedPreferences(context);
         boolean isRemenber=pref.getBoolean("remember_password",false);
         if(isRemenber){
             //将账号和密码都设置到文本中
-            account = pref.getString("account","");
-            password = pref.getString("password","");
+            account = pref.getString("account",phone);
+            password = pref.getString("password",possword);
             edi_phone_name.setText(account);
             edi_lock_password.setText(password);
             btn_remember_password.setChecked(true);
@@ -89,10 +91,11 @@ public class LoginActivityPresenter extends AppDelegate{
                 phone = edi_phone_name.getText().toString();
                 possword = edi_lock_password.getText().toString();
                 editor = pref.edit();
+
                 if(btn_remember_password.isChecked()){
                     editor.putBoolean("remember_password",true);
-                    editor.putString("account",account);
-                    editor.putString("password",password);
+                    editor.putString("account",phone);
+                    editor.putString("password",possword);
                 }else {
                     editor.clear();
                 }
@@ -114,7 +117,6 @@ public class LoginActivityPresenter extends AppDelegate{
                         }else {
                             Toast.makeText(context, ""+loginBean.getMessage(), Toast.LENGTH_SHORT).show();
                         }
-
                     }
                     @Override
                     public void fail(String error) {

@@ -6,7 +6,7 @@ package com.bw.movie.net;
  */
 public class HttpUrl {
     //注册
-    public static final String STRING_REG="";
+    public static final String STRING_REG="user/v1/registerUser";
     //登录
     public static final String STRING_LOGIN="user/v1/login";
     //查询用户首页信息
