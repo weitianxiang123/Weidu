@@ -10,7 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.MessiageActivity;
 import com.bw.movie.activity.RegActivity;
+import com.bw.movie.model.LoginBean;
 import com.bw.movie.model.RootMessage;
 import com.bw.movie.mvp.view.AppDelegate;
 import com.bw.movie.net.HttpHelper;
@@ -19,6 +21,7 @@ import com.bw.movie.net.HttpUrl;
 import com.bw.movie.utils.Base64;
 import com.bw.movie.utils.EncryptUtil;
 import com.bw.movie.utils.ShareUtil;
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -70,15 +73,23 @@ public class LoginActivityPresenter extends AppDelegate{
                 Map<String,String> map=new HashMap<>();
                 map.put("phone",phone);
                 map.put("pwd",EncryptUtil.encrypt(possword));
-                new HttpHelper().lrPost(HttpUrl.STRING_LOGIN,map).result(new HttpListener() {
+                new HttpHelper(context).lrPost(HttpUrl.STRING_LOGIN,map).result(new HttpListener() {
                     @Override
                     public void success(String data) {
                         ShareUtil.saveLogin(data,context);
                         isLogin();
+                        LoginBean loginBean = new Gson().fromJson(data, LoginBean.class);
+                        String status = loginBean.getStatus();
+                        if ("0000".equals(status)){
+                            context.startActivity(new Intent(context, MessiageActivity.class));
+                        }else {
+                            Toast.makeText(context, ""+loginBean.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+
                     }
                     @Override
                     public void fail(String error) {
-                    Toast.makeText(context,""+error,Toast.LENGTH_LONG).show();
+                        Toast.makeText(context,"登录失败"+error,Toast.LENGTH_LONG).show();
                     }
                 });
 

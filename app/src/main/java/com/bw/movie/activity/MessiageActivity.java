@@ -13,9 +13,7 @@ public class MessiageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messiage);
 
-        Intent intent=new Intent(MessiageActivity.this,LoginActivity.class);
-        startActivity(intent);
-        finish();
+
 
     }
 }
