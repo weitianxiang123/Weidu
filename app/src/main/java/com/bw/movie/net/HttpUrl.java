@@ -42,7 +42,8 @@ public class HttpUrl {
     //根据电影ID查询电影信息
     //查看电影详情
     //查询用户关注的影片列表
-    public static final String STRING_ATTENTION_CINEMA = "cinema/v1/verify/findCinemaPageList";
+    public static final String STRING_ATTENTION_MOVIES = "movie/v1/verify/findMoviePageList";
+
     //关注电影
     public static  final String STRING_ATTENTION_MOVIE="movie/v1/verify/followMovie";
     //取消关注电影
@@ -63,6 +64,8 @@ public class HttpUrl {
     public static final String CINEMA_INFO = "cinema/v1/findCinemaInfo";
     //查询所有电影院
     //查询用户关注的影院信息
+    public static final String STRING_ATTENTION_CINEMA = "cinema/v1/verify/findCinemaPageList";
+
     //关注影院
     //取消关注影院
     //查询影院用户评论列表

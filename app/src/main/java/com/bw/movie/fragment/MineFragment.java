@@ -5,11 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.bw.movie.R;
 import com.bw.movie.mvp.base.BaseFragment;
 import com.bw.movie.presenter.MineFragmentPresenter;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -31,13 +34,19 @@ public class MineFragment extends BaseFragment<MineFragmentPresenter> {
     RelativeLayout mVersionRelativeLayout;
     @BindView(R.id.mine_remind)
     ImageView mRemindRelativeLayout;
+    @BindView(R.id.logo_layout)
+    LinearLayout logoLinearLayout;
+    @BindView(R.id.head_img)
+    SimpleDraweeView headSimpleDraweeView;
+    @BindView(R.id.login_state)
+    TextView stateTextView;
 
     @Override
     public Class<MineFragmentPresenter> getClassDelegate() {
         return MineFragmentPresenter.class;
     }
 
-    @OnClick({R.id.mine_messiage, R.id.mine_attention, R.id.mine_rccord, R.id.mine_feedback, R.id.mine_version, R.id.mine_remind})
+    @OnClick({R.id.mine_messiage, R.id.mine_attention, R.id.mine_rccord, R.id.mine_feedback, R.id.mine_version, R.id.mine_remind, R.id.logo_layout})
     public void click(View view) {
 
         switch (view.getId()) {
@@ -68,6 +77,9 @@ public class MineFragment extends BaseFragment<MineFragmentPresenter> {
             case R.id.mine_remind:
                 delegate.toremind();
                 break;
+            case R.id.logo_layout:
+                delegate.logoLayout();
+                break;
 
         }
 
@@ -76,7 +88,12 @@ public class MineFragment extends BaseFragment<MineFragmentPresenter> {
     @Override
     public void initView() {
         super.initView();
-
+    delegate.initView(stateTextView,headSimpleDraweeView);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        delegate.mineResume();
+    }
 }

@@ -14,6 +14,7 @@ public class AttentionCinemaFragment extends BaseFragment<AttentionCinemaFragmen
     XRecyclerView mXRecyclerView;
     @Override
     public Class<AttentionCinemaFragmentPresenter> getClassDelegate() {
+
         return AttentionCinemaFragmentPresenter.class;
     }
 
