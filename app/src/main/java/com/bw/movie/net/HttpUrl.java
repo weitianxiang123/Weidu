@@ -6,7 +6,7 @@ package com.bw.movie.net;
  */
 public class HttpUrl {
     //注册
-    public static final String STRING_REG="";
+    public static final String STRING_REG="user/v1/registerUser";
     //登录
     public static final String STRING_LOGIN="user/v1/login";
     //查询用户首页信息
@@ -41,6 +41,7 @@ public class HttpUrl {
 
     //根据电影ID查询电影信息
     //查看电影详情
+    public  static final String STRING_DETAIL_MOVIE="movie/v1/findMoviesDetail";
     //查询用户关注的影片列表
     public static final String STRING_ATTENTION_MOVIES = "movie/v1/verify/findMoviePageList";
 
@@ -54,15 +55,18 @@ public class HttpUrl {
     //电影评论点赞
     //根据影院ID查询该影院当前排期的电影列表
     //根据电影ID和影院ID查询电影排期列表
+    public static final String CINEMA_MOVIE_INFO = "movie/v1/findMovieScheduleList";
     //根据电影ID查询当前排片该电影的影院列表
     //购票下单
     //支付【支持微信和支付宝支付】
     //根据影院ID查询该影院下即将上映的电影列表
+    public static final String MOVIE_BY_CINEMA_ID = "movie/v1/findMovieListByCinemaId";
     //查询推荐影院信息
     public static final String RECOMMEND_CINEMA="cinema/v1/findRecommendCinemas";
     //查询电影信息明细
     public static final String CINEMA_INFO = "cinema/v1/findCinemaInfo";
     //查询所有电影院
+    public static final String CINEMA_SEARCH_ALL = "cinema/v1/findAllCinemas";
     //查询用户关注的影院信息
     public static final String STRING_ATTENTION_CINEMA = "cinema/v1/verify/findCinemaPageList";
 

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:layout_width="@dimen/dp_312"
+        android:layout_height="@dimen/dp_70"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_10">
+        <TextView
+            android:id="@+id/screeningHall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="放映厅"
+            android:textColor="#666666"
+            android:textSize="@dimen/sp_12"/>
+        <TextView
+            android:layout_marginLeft="@dimen/dp_20"
+            android:id="@+id/language"
+            android:textSize="@dimen/sp_12"
+            android:layout_toRightOf="@id/screeningHall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="国语3D"/>
+        <LinearLayout
+            android:layout_below="@id/screeningHall"
+            android:layout_width="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/beginTime"
+                android:text="15:45"
+                android:textSize="24sp"
+                android:textColor="#333333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <View
+                android:id="@+id/line"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:layout_marginRight="@dimen/dp_5"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="2dp"
+                android:background="#666666"/>
+            <TextView
+                android:id="@+id/endTime"
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/sp_18"
+                android:layout_height="wrap_content"
+                android:text="17:50"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_14"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="4dp"
+                android:text="end"/>
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/into"
+            android:src="@drawable/com_icon_my_default"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24" />
+        <TextView
+            android:textSize="36sp"
+            android:id="@+id/price"
+            android:layout_toLeftOf="@id/into"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_10"
+            android:text="32.0"/>
+        <TextView
+            android:text="¥"
+            android:textSize="@dimen/sp_18"
+            android:layout_marginRight="@dimen/dp_6"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </RelativeLayout>
+</RelativeLayout>

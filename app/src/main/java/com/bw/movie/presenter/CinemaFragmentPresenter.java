@@ -1,6 +1,7 @@
 package com.bw.movie.presenter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -11,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.CinemaSearchActivity;
 import com.bw.movie.activity.MainActivity;
 import com.bw.movie.cview.MySearchView;
 import com.bw.movie.fragment.CinemaListFragment;
@@ -82,7 +84,9 @@ public class CinemaFragmentPresenter extends AppDelegate{
         search.setOnSearchListener(new MySearchView.OnSearchListener() {
             @Override
             public void Search(String txt) {
-                Log.i("search",txt);
+                Intent intent = new Intent(context, CinemaSearchActivity.class);
+                intent.putExtra("searchString",txt);
+                context.startActivity(intent);
             }
         });
     }

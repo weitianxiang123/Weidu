@@ -27,11 +27,11 @@ public class HttpHelper {
     private boolean isLogin;
     private RootMessage rootMessage;
 
-    public HttpHelper(Context context) {
-        this.context = context;
+    public HttpHelper(Context context){
+        this.context=context;
 
         //获取用户登陆信息
-        isLogin();
+         isLogin();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -57,19 +57,21 @@ public class HttpHelper {
     }
 
     // Get请求
-    public HttpHelper get(String url, Map<String, String> map, boolean weatherHead) {
-        if (map == null) {
+    public HttpHelper get(String url, Map<String,String> map,boolean weatherHead){
+        if (map==null){
             map = new HashMap<>();
         }
 
-        if (weatherHead && isLogin) {
+        if (weatherHead&&isLogin)
+        {
             //包含请求头，登录状态为已登录
-            if (rootMessage != null) {
-                weatherHead(url, map, false);
+            if (rootMessage!=null)
+            {
+                weatherHead(url,map,false);
                 return this;
             }
         }
-        mbBaseService.get(url, map)
+        mbBaseService.get(url,map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
@@ -78,21 +80,23 @@ public class HttpHelper {
     }
 
     // Post请求
-    public HttpHelper post(String url, Map<String, String> map, boolean weatherHead) {
-        if (map == null) {
+    public HttpHelper post(String url, Map<String,String> map,boolean weatherHead){
+        if (map==null){
             map = new HashMap<>();
         }
 
-        if (weatherHead && isLogin) {
+        if (weatherHead&&isLogin)
+        {
             //包含请求头，登录状态为已登录
-            if (rootMessage != null) {
+            if (rootMessage!=null)
+            {
 
-                weatherHead(url, map, true);
+             weatherHead(url,map,true);
                 return this;
             }
         }
-        /*  Log.i("HttpHelper","weatherHead,我没有执行"+url);*/
-        mbBaseService.post(url, map)
+      /*  Log.i("HttpHelper","weatherHead,我没有执行"+url);*/
+        mbBaseService.post(url,map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
@@ -101,18 +105,20 @@ public class HttpHelper {
 
 
     //执行带请求头的请求
-    public void weatherHead(String url, Map<String, String> map, boolean isPost) {
+    public void weatherHead(String url,Map<String,String> map,boolean isPost){
         String sessionId = rootMessage.getResult().getSessionId();
         int userId = rootMessage.getResult().getUserId();
-        if (isPost) {
-            mbBaseService.headPost(url, map, userId, sessionId)
+        if (isPost)
+        {
+            mbBaseService.headPost(url,map,userId,sessionId)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(observer);
-        } else {
+        }else
+        {
 
-            Log.i("HttpHelper", "weatherHead,我执行了");
-            mbBaseService.headGet(url, map, userId, sessionId)
+            Log.i("HttpHelper","weatherHead,我执行了");
+            mbBaseService.headGet(url,map,userId,sessionId)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(observer);
@@ -120,11 +126,12 @@ public class HttpHelper {
     }
 
 
-    public HttpHelper lrPost(String url, Map<String, String> map) {
-        if (map == null) {
+    public HttpHelper lrPost(String url,Map<String, String> map)
+    {
+        if (map==null){
             map = new HashMap<>();
         }
-        mbBaseService.lrPost(url, map)
+        mbBaseService.lrPost(url,map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
@@ -132,7 +139,7 @@ public class HttpHelper {
     }
 
     // 观察者
-    private Observer observer = new Observer<ResponseBody>() {
+    private Observer observer = new Observer<ResponseBody>(){
         @Override
         public void onSubscribe(Disposable d) {
 
@@ -162,18 +169,19 @@ public class HttpHelper {
 
     // 传递接口
     private HttpListener listener;
-
-    public void result(HttpListener listener) {
+    public void result(HttpListener listener){
         this.listener = listener;
     }
 
 
-    public void isLogin() {
-        isLogin = ShareUtil.isLogin(context);
-        if (isLogin) {//用户已经登录
+    public void isLogin(){
+        isLogin= ShareUtil.isLogin(context);
+        if (isLogin)
+        {//用户已经登录
             rootMessage = ShareUtil.getRootMessage(context);
-        } else {
-            rootMessage = null;
+        }else
+        {
+            rootMessage=null;
         }
 
     }
