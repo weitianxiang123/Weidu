@@ -31,5 +31,6 @@ public class StartActivity extends AppCompatActivity {
         editor.putBoolean("isFirstUse", false);
         //提交修改
         editor.commit();
+
     }
 }

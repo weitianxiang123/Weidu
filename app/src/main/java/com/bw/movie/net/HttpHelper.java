@@ -100,7 +100,6 @@ public class HttpHelper {
                     .subscribe(observer);
         }else
         {
-
             Log.i("HttpHelper","weatherHead,我执行了");
             mbBaseService.headGet(url,map,userId,sessionId)
                     .subscribeOn(Schedulers.io())

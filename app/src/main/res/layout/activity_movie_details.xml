@@ -137,6 +137,7 @@
 <include layout="@layout/include_finish_this"></include>
 
     <TextView
+        android:id="@+id/textBuy"
         android:layout_width="@dimen/dp_60"
         android:layout_height="@dimen/dp_60"
         android:background="@drawable/shape_fad961_f66b1c_45_buy"
