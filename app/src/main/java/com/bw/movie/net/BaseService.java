@@ -29,7 +29,7 @@ public interface BaseService {
 
     @GET
     @Headers({"ak:0110010010000","Content-Type:application/x-www-form-urlencoded"})
-    Observable<ResponseBody> headGet(@Url String url, @QueryMap Map<String,String> map,@Header("userId") String userId,@Header("sessionId") String sessionId);
+    Observable<ResponseBody> headGet(@Url String url, @QueryMap Map<String,String> map,@Header("userId") int userId,@Header("sessionId") String sessionId);
 
     @POST
     @Headers({"ak:0110010010000","Content-Type:application/x-www-form-urlencoded"})
@@ -38,7 +38,7 @@ public interface BaseService {
 
     @POST
     @Headers({"ak:0110010010000","Content-Type:application/x-www-form-urlencoded"})
-    Observable<ResponseBody> headPost(@Url String url, @QueryMap Map<String,String> map,@Header("userId") String userId,@Header("sessionId") String sessionId);
+    Observable<ResponseBody> headPost(@Url String url, @QueryMap Map<String,String> map,@Header("userId") int userId, @Header("sessionId") String sessionId);
 
 
   /*  @POST

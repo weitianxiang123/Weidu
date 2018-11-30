@@ -11,4 +11,5 @@ public class FeedbackActivityPresenter extends AppDelegate {
     public int getLayout() {
         return R.layout.activity_feedback;
     }
+
 }

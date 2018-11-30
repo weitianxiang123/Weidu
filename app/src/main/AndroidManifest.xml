@@ -25,9 +25,10 @@
         <activity android:name=".activity.RemindActivity"/>
         <activity android:name=".activity.MainActivity"/>
         <activity android:name=".activity.GuideActivity"/>
-
+        <activity android:name=".activity.LoginActivity"></activity>
         <activity android:name=".activity.HandelActivity"></activity>
         <activity android:name=".activity.CinemaInfoActivity"></activity>
+        <activity android:name=".activity.MovieDetailsActivity"></activity>
     </application>
 
 </manifest>

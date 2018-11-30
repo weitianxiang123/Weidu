@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MovieDetailsActivity"
+    android:background="@drawable/bg_movie_details"
+    >
+<ImageView
+    android:id="@+id/imageImage"
+    android:layout_width="@dimen/dp_24"
+    android:layout_height="@dimen/dp_24"
+    android:layout_marginLeft="@dimen/dp_24"
+    android:layout_marginTop="30dp"
+    android:src="@drawable/com_icon_movie_default"
+    />
+
+    <TextView
+        android:id="@+id/textMovieName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imageImage"
+        android:layout_marginLeft="@dimen/dp_6"
+        android:layout_marginTop="@dimen/dp_30"
+        android:textSize="@dimen/sp_14"
+        android:textColor="#ffffff"
+        android:text="电影详情"
+        />
+
+<ImageView
+    android:id="@+id/imageHard"
+    android:layout_width="@dimen/dp_24"
+    android:layout_height="@dimen/dp_24"
+    android:layout_alignParentRight="true"
+    android:layout_marginRight="@dimen/dp_24"
+    android:layout_marginTop="@dimen/dp_30"
+    android:src="@drawable/com_icon_collection_default"
+    />
+
+    <TextView
+        android:id="@+id/textMovieName2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_70"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/sp_20"
+        android:textColor="#ffffff"
+        android:text="这是一个电影"
+        />
+    
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/imageMovie"
+        android:layout_below="@id/textMovieName2"
+        android:layout_marginTop="30dp"
+        android:layout_width="@dimen/dp_259"
+        android:layout_height="@dimen/dp_350"
+       android:background="#ff0"
+        android:layout_centerHorizontal="true"
+        />
+
+
+    <!-- 渐变-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_100"
+        android:background="@drawable/shape_0_100"
+        android:layout_alignParentBottom="true"
+        ></View>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_24"
+        android:layout_below="@id/imageMovie"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginRight="@dimen/dp_24"
+        >
+        <TextView
+            android:id="@+id/textDetails"
+            android:layout_width="@dimen/dp_58"
+            android:layout_height="@dimen/dp_24"
+            android:background="@drawable/shape_e8175e_440a33_45"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/sp_14"
+            android:text="详情"
+            android:gravity="center"
+            />
+     <View
+         android:layout_width="0dp"
+         android:layout_height="match_parent"
+         android:layout_weight="1">
+     </View>
+        <TextView
+            android:id="@+id/textAdvanceNotice"
+            android:layout_width="@dimen/dp_58"
+            android:layout_height="@dimen/dp_24"
+            android:background="@drawable/shape_e8175e_440a33_45"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/sp_14"
+            android:text="预告"
+            android:gravity="center"
+            />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+        </View>
+        <TextView
+            android:id="@+id/textStagePhoto"
+            android:layout_width="@dimen/dp_58"
+            android:layout_height="@dimen/dp_24"
+            android:background="@drawable/shape_e8175e_440a33_45"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/sp_14"
+            android:text="剧照"
+            android:gravity="center"
+            />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+        </View>
+        <TextView
+            android:id="@+id/textEvaluate"
+            android:layout_width="@dimen/dp_58"
+            android:layout_height="@dimen/dp_24"
+            android:background="@drawable/shape_e8175e_440a33_45"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/sp_14"
+            android:text="影评"
+            android:gravity="center"
+            />
+    </LinearLayout>
+
+
+    <!--返回-->
+<include layout="@layout/include_finish_this"></include>
+
+    <TextView
+        android:id="@+id/textBuy"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
+        android:background="@drawable/shape_fad961_f66b1c_45_buy"
+        android:text="购票"
+        android:textSize="@dimen/sp_18"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_24"
+        android:layout_alignParentRight="true"
+        />
+</RelativeLayout>
