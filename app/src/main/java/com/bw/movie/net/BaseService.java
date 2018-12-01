@@ -55,4 +55,7 @@ public interface BaseService {
 
     @GET
     Observable<ResponseBody> mineGet(@Url String url, @QueryMap Map<String, String> map, @HeaderMap Map<String, String> headMap);
+
+    @POST
+    Observable<ResponseBody> minePost(@Url String url, @QueryMap Map<String, String> map, @HeaderMap Map<String, String> headMap);
 }

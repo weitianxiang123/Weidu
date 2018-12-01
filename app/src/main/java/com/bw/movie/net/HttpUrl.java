@@ -60,8 +60,7 @@ public class HttpUrl {
     //根据电影ID查询当前排片该电影的影院列表
     //购票下单
     //支付【支持微信和支付宝支付】
-    //根据影院ID查询该影院下即将上映的电影列表
-    public static final String MOVIE_BY_CINEMA_ID = "movie/v1/findMovieListByCinemaId";
+
     //查询推荐影院信息
     public static final String RECOMMEND_CINEMA="cinema/v1/findRecommendCinemas";
     //查询电影信息明细
@@ -77,6 +76,7 @@ public class HttpUrl {
     //影院评论
     //影院评论点赞
     //意见反馈
+    public static final String APP_FEED_BACK = "tool/v1/verify/recordFeedBack";
     //查询新版本
     public static final String APP_VERSION_CODE = "tool/v1/findNewVersion";
     //查询系统消息列表

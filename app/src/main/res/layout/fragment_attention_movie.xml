@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:text="我是电影"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/attention_movie_xrecycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

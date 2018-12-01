@@ -29,7 +29,6 @@ import java.util.Map;
  */
 public class AttentionCinemaFragmentPresenter extends AppDelegate {
     private Context context;
-    private List<AttentionMovieBean.ResultBean> result;
     private XRecyclerView mXRecyclerView;
     private AttentionCinemaAdpter attentionCinemaAdpter;
     private List<AttentionMovieBean.ResultBean> nearbyCinemaListAll = new ArrayList<>();
@@ -57,13 +56,19 @@ public class AttentionCinemaFragmentPresenter extends AppDelegate {
     public void initData() {
         super.initData();
         doHttp(page);
-
-        mXRecyclerView.setLoadingMoreEnabled(true);
+        attentionCinemaAdpter = new AttentionCinemaAdpter(context);
+        //设置管理器
+        LinearLayoutManager manager = new LinearLayoutManager(context);
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        mXRecyclerView.setLayoutManager(manager);
+        mXRecyclerView.setAdapter(attentionCinemaAdpter);
+        //开启上拉加载 但是当前page只有一页只能关闭加载不然会发生空白
+       // mXRecyclerView.setLoadingMoreEnabled(true);
+        mXRecyclerView.setPullRefreshEnabled(true);
         mXRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-                attentionCinemaAdpter.setList(nearbyCinemaList);
-                mXRecyclerView.loadMoreComplete();
+                doHttp(page);
             }
 
             @Override
@@ -75,8 +80,8 @@ public class AttentionCinemaFragmentPresenter extends AppDelegate {
     }
 
     private void doHttp(int page) {
-        Map<String, String> map = new HashMap<>();
-        Map<String, String> headerMap = new HashMap<>();
+            Map<String, String> map = new HashMap<>();
+            Map<String, String> headerMap = new HashMap<>();
         RootMessage rootMessage = ShareUtil.getRootMessage(context);
         RootMessage.ResultBean result = rootMessage.getResult();
         headerMap.put("userId", result.getUserId() + "");
@@ -89,17 +94,13 @@ public class AttentionCinemaFragmentPresenter extends AppDelegate {
                 Log.i("AttentionCinemaFragment", data);
                 AttentionMovieBean attentionCinema = new Gson().fromJson(data, AttentionMovieBean.class);
                 nearbyCinemaList = attentionCinema.getResult();
-
-                attentionCinemaAdpter = new AttentionCinemaAdpter(context);
+                if (nearbyCinemaList.size()==0){
+                    return;
+                }
                 nearbyCinemaListAll.addAll(nearbyCinemaList);
                 attentionCinemaAdpter.setList(nearbyCinemaList);
-                //设置管理器
-                LinearLayoutManager manager = new LinearLayoutManager(context);
-                manager.setOrientation(LinearLayoutManager.VERTICAL);
-                mXRecyclerView.setLayoutManager(manager);
-                mXRecyclerView.setAdapter(attentionCinemaAdpter);
-
                 mXRecyclerView.loadMoreComplete();
+                mXRecyclerView.refreshComplete();
             }
 
             @Override

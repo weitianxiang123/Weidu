@@ -55,6 +55,20 @@ public class HttpHelper {
                 .subscribe(observer);
         return this;
     }
+    //mineGet
+    public HttpHelper minePost(String url, Map<String, String> map, Map<String, String> headMap) {
+        if (map == null) {
+            map = new HashMap<>();
+        }
+        if (headMap == null) {
+            headMap = new HashMap<>();
+        }
+        mbBaseService.minePost(url, map, headMap)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+        return this;
+    }
 
     // Get请求
     public HttpHelper get(String url, Map<String,String> map,boolean weatherHead){
