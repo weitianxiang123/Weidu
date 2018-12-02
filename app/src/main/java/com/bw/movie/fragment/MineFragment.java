@@ -77,6 +77,7 @@ public class MineFragment extends BaseFragment<MineFragmentPresenter> {
             case R.id.mine_remind:
                 delegate.toremind();
                 break;
+            //homefragment头像点击事件
             case R.id.logo_layout:
                 delegate.logoLayout();
                 break;
@@ -88,7 +89,7 @@ public class MineFragment extends BaseFragment<MineFragmentPresenter> {
     @Override
     public void initView() {
         super.initView();
-    delegate.initView(stateTextView,headSimpleDraweeView);
+        delegate.initView(stateTextView, headSimpleDraweeView);
     }
 
     @Override
