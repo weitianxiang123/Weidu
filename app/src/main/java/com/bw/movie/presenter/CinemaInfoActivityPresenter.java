@@ -1,13 +1,24 @@
 package com.bw.movie.presenter;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.CinemaInfoActivity;
 import com.bw.movie.adapter.CinemaMovieInfoAdapter;
 import com.bw.movie.adapter.CinemaMovieListAdapter;
+import com.bw.movie.fragment.AlertCinemaDetailFragment;
+import com.bw.movie.fragment.AlertCinemaRecommendFragment;
 import com.bw.movie.mvp.model.CinemaInfoBean;
 import com.bw.movie.mvp.model.CinemaMovie;
 import com.bw.movie.mvp.model.CinemaMovieInfoBean;
@@ -29,9 +40,11 @@ import recycler.coverflow.RecyclerCoverFlow;
  * */
 public class CinemaInfoActivityPresenter extends AppDelegate implements CoverFlowLayoutManger.OnSelected {
     private Context context;
-    private TextView cinemaName,cinemaLocation;
+    private TextView cinemaName,cinemaLocation,toDetail,toCommend;
+    private RelativeLayout info_alert;
+    private ViewPager info_pager;
     private SimpleDraweeView cinemaLogo;
-    private ImageView showInfo;
+    private ImageView showInfo,closeImg;
     private RecyclerCoverFlow mRecyclerCoverFlow;
     private XRecyclerView mMovieOptionList;
     private int cinemaId;
@@ -41,6 +54,8 @@ public class CinemaInfoActivityPresenter extends AppDelegate implements CoverFlo
     private List<CinemaMovieInfoBean.ResultBean> MovieInfoList = new ArrayList<>();
     private CinemaMovieListAdapter movieListAdapter;
     private CinemaMovieInfoAdapter movieInfoAdapter;
+    // 弹出页2个fragment
+    private List<Fragment> fragments = new ArrayList<>();
 
     @Override
     public int getLayout() {
@@ -53,7 +68,8 @@ public class CinemaInfoActivityPresenter extends AppDelegate implements CoverFlo
         this.context = context;
     }
 
-    public void initView(TextView cinemaName, SimpleDraweeView cinemaLogo, TextView cinemaLocation, ImageView showInfo, RecyclerCoverFlow mRecyclerCoverFlow, XRecyclerView mMovieOptionList, int cinemaId) {
+    // 接收控件
+    public void initView(TextView cinemaName, SimpleDraweeView cinemaLogo, TextView cinemaLocation, ImageView showInfo, RecyclerCoverFlow mRecyclerCoverFlow, XRecyclerView mMovieOptionList, int cinemaId, RelativeLayout info_alert, TextView toDetail, TextView toCommend, ImageView closeImg, ViewPager info_pager) {
         this.cinemaName = cinemaName;
         this.cinemaLogo = cinemaLogo;
         this.cinemaLocation = cinemaLocation;
@@ -61,6 +77,12 @@ public class CinemaInfoActivityPresenter extends AppDelegate implements CoverFlo
         this.mRecyclerCoverFlow = mRecyclerCoverFlow;
         this.mMovieOptionList = mMovieOptionList;
         this.cinemaId = cinemaId;
+
+        this.info_alert = info_alert;
+        this.toDetail = toDetail;
+        this.toCommend = toCommend;
+        this.closeImg = closeImg;
+        this.info_pager = info_pager;
     }
 
     @Override
@@ -82,6 +104,29 @@ public class CinemaInfoActivityPresenter extends AppDelegate implements CoverFlo
         mMovieOptionList.setAdapter(movieInfoAdapter);
         // 监听3D画廊滑动
         mRecyclerCoverFlow.setOnItemSelectedListener(this);
+        // 生成fragments集合内容
+        initFragments();
+        // 适配弹出页内容
+        info_pager.setAdapter(new FragmentPagerAdapter(((CinemaInfoActivity)context).getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int i) {
+                Fragment fragment = fragments.get(i);
+                Bundle bundle = new Bundle();
+                bundle.putInt("cinemaId",cinemaId);
+                fragment.setArguments(bundle);
+                return fragment;
+            }
+
+            @Override
+            public int getCount() {
+                return fragments.size();
+            }
+        });
+    }
+
+    private void initFragments() {
+        fragments.add(new AlertCinemaDetailFragment());
+        fragments.add(new AlertCinemaRecommendFragment());
     }
 
     @Override
@@ -94,6 +139,7 @@ public class CinemaInfoActivityPresenter extends AppDelegate implements CoverFlo
                 cinemaLogo.setImageURI(infoBean.getResult().getLogo());
                 cinemaLocation.setText(infoBean.getResult().getAddress());
                 cinemaName.setText(infoBean.getResult().getName());
+
                 break;
             case 1:
                 // 请求到了该影院即将上映电影列表  获取其中id  可以查询排期
@@ -108,6 +154,7 @@ public class CinemaInfoActivityPresenter extends AppDelegate implements CoverFlo
                 // 请求到了电影排期信息  开始展示
                 CinemaMovieInfoBean movieInfoBean = (CinemaMovieInfoBean) bean;
                 //Toast.makeText(context,movieInfoBean.getResult().size()+"",Toast.LENGTH_SHORT).show();
+                MovieInfoList.clear();
                 MovieInfoList = movieInfoBean.getResult();
                 movieInfoAdapter.setList(MovieInfoList);
                 break;
@@ -125,5 +172,44 @@ public class CinemaInfoActivityPresenter extends AppDelegate implements CoverFlo
             getBean(2,HttpUrl.CINEMA_MOVIE_INFO,map, CinemaMovieInfoBean.class,false);
         }
 
+    }
+
+    public void closeAlert() {
+        // 关闭
+        int height = context.getResources().getDisplayMetrics().heightPixels;
+        //float y = info_alert.getY();
+        // 设置动画
+        ObjectAnimator animator = ObjectAnimator.ofFloat(info_alert, "translationY",(int)0,height);
+        animator.setDuration(500);
+        animator.start();
+        // 彻底移除
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                info_alert.setVisibility(View.GONE);
+            }
+        }, 500);
+
+    }
+
+    public void toDetails() {
+        // 前往详情
+        info_pager.setCurrentItem(0);
+    }
+
+    public void toComment() {
+        // 前往评论
+        info_pager.setCurrentItem(1);
+    }
+
+    public void showAlert() {
+        // 展示弹窗
+        // 获取宽度
+        int height = context.getResources().getDisplayMetrics().heightPixels;
+        // 设置动画  让它从下面滑出来
+        ObjectAnimator animator = ObjectAnimator.ofFloat(info_alert, "translationY",height,(float)0);
+        animator.setDuration(500);
+        animator.start();
+        info_alert.setVisibility(View.VISIBLE);
     }
 }
