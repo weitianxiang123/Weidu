@@ -26,6 +26,7 @@
             android:src="@drawable/my_icon_remind_default" />
 
         <LinearLayout
+            android:id="@+id/logo_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -33,16 +34,19 @@
 
 
             <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/head_img"
                 android:layout_width="@dimen/dp_72"
                 android:layout_height="@dimen/dp_72"
-                android:background="@drawable/img_mine_head" />
+                android:background="@drawable/img_mine_head"
+                app:roundAsCircle="true" />
 
             <TextView
+                android:id="@+id/login_state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/dp_10"
-                android:text="冬天来了"
+                android:text="登录"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -100,12 +104,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_30">
 
-                <ImageView
+                <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/my_icon_attention"
                     android:layout_width="@dimen/dp_24"
                     android:layout_height="@dimen/dp_24"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/my_icon_attention_default" />
+                    android:background="@drawable/my_icon_attention_default" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -188,6 +192,6 @@
         </LinearLayout>
 
     </LinearLayout>
-=======
->>>>>>> 99af7f353aadcb21bfeef9e9108ab5d7c2c66457
+    =======
+    >>>>>>> 99af7f353aadcb21bfeef9e9108ab5d7c2c66457
 </LinearLayout>

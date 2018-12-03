@@ -41,6 +41,35 @@ public class HttpHelper {
         mbBaseService = retrofit.create(BaseService.class);
     }
 
+    //mineGet
+    public HttpHelper mineGet(String url, Map<String, String> map, Map<String, String> headMap) {
+        if (map == null) {
+            map = new HashMap<>();
+        }
+        if (headMap == null) {
+            headMap = new HashMap<>();
+        }
+        mbBaseService.mineGet(url, map, headMap)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+        return this;
+    }
+    //mineGet
+    public HttpHelper minePost(String url, Map<String, String> map, Map<String, String> headMap) {
+        if (map == null) {
+            map = new HashMap<>();
+        }
+        if (headMap == null) {
+            headMap = new HashMap<>();
+        }
+        mbBaseService.minePost(url, map, headMap)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+        return this;
+    }
+
     // Get请求
     public HttpHelper get(String url, Map<String,String> map,boolean weatherHead){
         if (map==null){
@@ -63,6 +92,7 @@ public class HttpHelper {
 
         return this;
     }
+
     // Post请求
     public HttpHelper post(String url, Map<String,String> map,boolean weatherHead){
         if (map==null){
@@ -100,6 +130,7 @@ public class HttpHelper {
                     .subscribe(observer);
         }else
         {
+
             Log.i("HttpHelper","weatherHead,我执行了");
             mbBaseService.headGet(url,map,userId,sessionId)
                     .subscribeOn(Schedulers.io())

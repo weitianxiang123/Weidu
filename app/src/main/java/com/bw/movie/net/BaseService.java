@@ -10,6 +10,7 @@ import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.HeaderMap;
 import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -38,7 +39,8 @@ public interface BaseService {
 
     @POST
     @Headers({"ak:0110010010000","Content-Type:application/x-www-form-urlencoded"})
-    Observable<ResponseBody> headPost(@Url String url, @QueryMap Map<String,String> map,@Header("userId") int userId, @Header("sessionId") String sessionId);
+    Observable<ResponseBody> headPost(@Url String url, @QueryMap Map<String,String> map,@Header("userId") int userId,
+                                      @Header("sessionId") String sessionId);
 
 
   /*  @POST
@@ -51,5 +53,9 @@ public interface BaseService {
     @Headers({"ak:0110010010000","Content-Type:application/x-www-form-urlencoded"})
     Observable<ResponseBody> lrPost(@Url String url, @FieldMap Map<String, String> map);
 
+    @GET
+    Observable<ResponseBody> mineGet(@Url String url, @QueryMap Map<String, String> map, @HeaderMap Map<String, String> headMap);
 
+    @POST
+    Observable<ResponseBody> minePost(@Url String url, @QueryMap Map<String, String> map, @HeaderMap Map<String, String> headMap);
 }

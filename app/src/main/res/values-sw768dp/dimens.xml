@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<dimen name="dp_f30">-64.0000dp</dimen>
 	<dimen name="dp_1">2.1333dp</dimen>
 	<dimen name="dp_2">4.2667dp</dimen>
 	<dimen name="dp_3">6.4000dp</dimen>
@@ -123,11 +122,11 @@
 	<dimen name="dp_180">384.0000dp</dimen>
 	<dimen name="dp_150">320.0000dp</dimen>
 	<dimen name="dp_105">224.0000dp</dimen>
+	<dimen name="dp_103">219.7333dp</dimen>
 	<dimen name="dp_109">232.5333dp</dimen>
-	<dimen name="dp_111">236.8000dp</dimen>
-	<dimen name="dp_149">317.8667dp</dimen>
+	<dimen name="dp_128">273.0667dp</dimen>
+	<dimen name="dp_148">315.7333dp</dimen>
 	<dimen name="dp_205">437.3333dp</dimen>
-	<dimen name="dp_284">605.8667dp</dimen>
 	<dimen name="dp_312">665.6000dp</dimen>
 	<dimen name="dp_259">552.5333dp</dimen>
 	<dimen name="dp_350">746.6667dp</dimen>

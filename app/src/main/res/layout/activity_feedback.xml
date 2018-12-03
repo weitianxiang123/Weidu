@@ -24,7 +24,7 @@
         android:gravity="center_horizontal">
 
         <EditText
-            android:id="@+id/version_ed"
+            android:id="@+id/feedback_ed"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_64"
             android:background="@drawable/version_ed_bg"
@@ -32,10 +32,11 @@
             android:textSize="@dimen/sp_10" />
 
         <Button
+            android:id="@+id/feedback_bt"
             android:layout_width="@dimen/dp_48"
             android:layout_height="@dimen/dp_25"
             android:layout_alignParentRight="true"
-            android:layout_below="@id/version_ed"
+            android:layout_below="@id/feedback_ed"
             android:layout_marginTop="@dimen/dp_20"
             android:background="@drawable/shape_e8175e_440a33"
             android:text="提交"
