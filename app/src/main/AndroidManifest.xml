@@ -28,7 +28,10 @@
         <activity android:name=".activity.LoginActivity"></activity>
         <activity android:name=".activity.HandelActivity"></activity>
         <activity android:name=".activity.CinemaInfoActivity"></activity>
-        <activity android:name=".activity.MovieDetailsActivity"></activity>
+        <activity android:name=".activity.MovieDetailsActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            ></activity>
     </application>
 
 </manifest>

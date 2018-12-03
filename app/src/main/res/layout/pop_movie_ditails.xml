@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clipChildren="false"
+    >
+
+    <View
+        android:id="@+id/viewNull"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_120">
+
+    </View>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipChildren="false"
+        android:background="@drawable/shape_pop"
+        >
+
+        <RelativeLayout
+            android:id="@+id/layoutAdd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            >
+            <!--这里放置子VIew-->
+
+        </RelativeLayout>
+        <ImageView
+            android:id="@+id/imageCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/com_icon_down_default"
+            />
+    </RelativeLayout>
+    
+
+</LinearLayout>
