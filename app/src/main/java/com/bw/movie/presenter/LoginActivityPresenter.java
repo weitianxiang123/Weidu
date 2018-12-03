@@ -34,7 +34,7 @@ import java.util.Map;
  * 魏天祥
  * 2018/11/29
  */
-public class LoginActivityPresenter extends AppDelegate{
+public class LoginActivityPresenter extends AppDelegate {
     private Context context;
     private TextView btnskip;
     private EditText edi_lock_password;
@@ -57,11 +57,11 @@ public class LoginActivityPresenter extends AppDelegate{
     }
 
     public void onfindId(TextView btnskip, EditText edi_lock_password, EditText edi_phone_name, Button btn_login, CheckBox btn_remember_password) {
-        this.btnskip=btnskip;
-        this.btn_login=btn_login;
-        this.edi_lock_password=edi_lock_password;
-        this.edi_phone_name=edi_phone_name;
-        this.btn_remember_password=btn_remember_password;
+        this.btnskip = btnskip;
+        this.btn_login = btn_login;
+        this.edi_lock_password = edi_lock_password;
+        this.edi_phone_name = edi_phone_name;
+        this.btn_remember_password = btn_remember_password;
     }
 
     @Override
@@ -70,17 +70,17 @@ public class LoginActivityPresenter extends AppDelegate{
         btnskip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(context,RegActivity.class);
+                Intent intent = new Intent(context, RegActivity.class);
                 context.startActivity(intent);
 
             }
         });
-        pref= PreferenceManager.getDefaultSharedPreferences(context);
-        boolean isRemenber=pref.getBoolean("remember_password",false);
-        if(isRemenber){
+        pref = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean isRemenber = pref.getBoolean("remember_password", false);
+        if (isRemenber) {
             //将账号和密码都设置到文本中
-            account = pref.getString("account",phone);
-            password = pref.getString("password",possword);
+            account = pref.getString("account", phone);
+            password = pref.getString("password", possword);
             edi_phone_name.setText(account);
             edi_lock_password.setText(password);
             btn_remember_password.setChecked(true);
@@ -92,35 +92,42 @@ public class LoginActivityPresenter extends AppDelegate{
                 possword = edi_lock_password.getText().toString();
                 editor = pref.edit();
 
-                if(btn_remember_password.isChecked()){
-                    editor.putBoolean("remember_password",true);
-                    editor.putString("account",phone);
-                    editor.putString("password",possword);
-                }else {
-                    editor.clear();
+                editor.putString("account", phone);
+                editor.putString("password", possword);
+                if (btn_remember_password.isChecked()) {
+                    editor.putBoolean("remember_password", true);
+                } else {
+                    editor.putBoolean("remember_password", false);
                 }
                 editor.apply();
-                Map<String,String> map=new HashMap<>();
-                map.put("phone",phone);
-                map.put("pwd",EncryptUtil.encrypt(possword));
-                new HttpHelper(context).lrPost(HttpUrl.STRING_LOGIN,map).result(new HttpListener() {
+                Map<String, String> map = new HashMap<>();
+                map.put("phone", phone);
+                final String encrypt = EncryptUtil.encrypt(possword);
+                map.put("pwd", encrypt);
+                new HttpHelper(context).lrPost(HttpUrl.STRING_LOGIN, map).result(new HttpListener() {
                     @Override
                     public void success(String data) {
 
                         LoginBean loginBean = new Gson().fromJson(data, LoginBean.class);
                         String status = loginBean.getStatus();
-                        if ("0000".equals(status)){
-                            ShareUtil.saveLogin(data,context);
+                        if ("0000".equals(status)) {
+                            ShareUtil.saveLogin(data, context);
                             isLogin();
+//                            context.getSharedPreferences("mobileAndpwd", Context.MODE_PRIVATE)
+//                                    .edit()
+//                                    .putString("mobile", phone)
+//                                    .putString("pwd", encrypt)
+//                                    .commit();
                             context.startActivity(new Intent(context, MessiageActivity.class));
-                            ((Activity)context).finish();
-                        }else {
-                            Toast.makeText(context, ""+loginBean.getMessage(), Toast.LENGTH_SHORT).show();
+                            ((Activity) context).finish();
+                        } else {
+                            Toast.makeText(context, "" + loginBean.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
+
                     @Override
                     public void fail(String error) {
-                        Toast.makeText(context,"登录失败"+error,Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "登录失败" + error, Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -131,13 +138,13 @@ public class LoginActivityPresenter extends AppDelegate{
     @Override
     public void rootMessage(boolean isLogin, RootMessage rootMessage) {
         super.rootMessage(isLogin, rootMessage);
-        this.isLogin=isLogin;
-        this.rootMessage=rootMessage;
+        this.isLogin = isLogin;
+        this.rootMessage = rootMessage;
     }
 
     @Override
     public void initContext(Context context) {
         super.initContext(context);
-        this.context=context;
+        this.context = context;
     }
 }

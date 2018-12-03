@@ -1,5 +1,7 @@
 package com.bw.movie.net;
 
+import com.bw.movie.utils.ShareUtil;
+
 import java.util.Map;
 
 
@@ -56,6 +58,7 @@ public interface BaseService {
     @GET
     Observable<ResponseBody> mineGet(@Url String url, @QueryMap Map<String, String> map, @HeaderMap Map<String, String> headMap);
 
+    @FormUrlEncoded
     @POST
-    Observable<ResponseBody> minePost(@Url String url, @QueryMap Map<String, String> map, @HeaderMap Map<String, String> headMap);
+    Observable<ResponseBody> minePost(@Url String url, @FieldMap Map<String, String> map, @HeaderMap Map<String, String> headMap);
 }

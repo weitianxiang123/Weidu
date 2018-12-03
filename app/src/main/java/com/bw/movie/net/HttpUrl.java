@@ -12,7 +12,7 @@ public class HttpUrl {
     //查询用户首页信息
     public static final String STRING_SELECT = "";
     //修改用户信息
-    public static final String STRING_UPDATA_USER = "";
+    public static final String STRING_UPDATA_USER = "user/v1/verify/modifyUserInfo";
     //上传用户头像
     public static final String STRING_BTN_HEAD = "";
     //修改密码

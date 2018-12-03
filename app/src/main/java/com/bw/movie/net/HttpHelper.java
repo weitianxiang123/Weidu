@@ -140,7 +140,7 @@ public class HttpHelper {
     }
 
 
-    public HttpHelper lrPost(String url,Map<String, String> map)
+    public HttpHelper  lrPost(String url,Map<String, String> map)
     {
         if (map==null){
             map = new HashMap<>();

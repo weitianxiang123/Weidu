@@ -33,7 +33,8 @@
         <activity android:name=".activity.MovieDetailsActivity" />
         <activity android:name=".activity.CinemaSearchActivity" />
         <activity android:name=".activity.RegActivity" />
-        <activity android:name=".activity.FeedBackSuccessActivity"></activity>
+        <activity android:name=".activity.FeedBackSuccessActivity" />
+        <activity android:name=".activity.UpdateInfoActivity"></activity>
     </application>
 
 </manifest>
