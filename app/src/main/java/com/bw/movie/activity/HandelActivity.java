@@ -13,7 +13,7 @@ import com.bw.movie.R;
 public class HandelActivity extends AppCompatActivity {
 
     private TextView text_han_name;
-    private int text_time=3;
+    private int text_time=1;
     private Handler handle=new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -21,8 +21,7 @@ public class HandelActivity extends AppCompatActivity {
             if (msg.what==0){
                 if (text_time>1){
                     text_time--;
-                    text_han_name.setText(text_time+"s");
-                    handle.sendEmptyMessageDelayed(0,2000);
+                    handle.sendEmptyMessageDelayed(0,1000);
                 }else{
                     Intent intent=new Intent(HandelActivity.this,MainActivity.class);
                     startActivity(intent);
@@ -35,8 +34,7 @@ public class HandelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_handel);
-        text_han_name = findViewById(R.id.text_han_name);
 
-        handle.sendEmptyMessageDelayed(0,2000);
+        handle.sendEmptyMessageDelayed(0,1000);
     }
 }

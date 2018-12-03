@@ -10,4 +10,5 @@ public class RemindActivity extends BaseActivity<RemindActivityPresenter> {
     public Class<RemindActivityPresenter> getClassDelegate() {
         return RemindActivityPresenter.class;
     }
+
 }

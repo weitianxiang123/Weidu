@@ -7,7 +7,7 @@ package com.bw.movie.model;
 public class LoginBean {
 
     /**
-     * result : {"sessionId":"15434973029241380","userId":1380,"userInfo":{"birthday":763315200000,"headPic":"http://mobile.bwstudent.com/images/movie/head_pic/bwjy.jpg","id":1380,"lastLoginTime":1543497300000,"nickName":"我黄日天","phone":"15033705919","sex":1}}
+     * result : {"sessionId":"15434973029241380","userId":1380,"userInfo":{"birthday":763315200000,"headPic":"http://mobile.bwstudent.com/images/movie/head_pic/bwjy.jpg","id":1380,"lastLoginTime":1543497300000,"nickName":"张秋阳","phone":"15033705919","sex":"男"}}
      * message : 登陆成功
      * status : 0000
      */

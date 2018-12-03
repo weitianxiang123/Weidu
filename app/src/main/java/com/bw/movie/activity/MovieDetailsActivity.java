@@ -1,9 +1,12 @@
 package com.bw.movie.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bw.movie.R;
@@ -13,6 +16,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.jzvd.Jzvd;
 
 public class MovieDetailsActivity extends BaseActivity<MovieDetailsActivityPresenter> {
 @BindView(R.id.textMovieName)
@@ -33,13 +37,15 @@ public class MovieDetailsActivity extends BaseActivity<MovieDetailsActivityPrese
 	TextView textEvaluate;//影评
 	@BindView(R.id.textBuy)
 	TextView textBuy;//buy
+     @BindView(R.id.layoutFather)
+	RelativeLayout layoutFather;
 
-
-
+    RecyclerView re;
 
 
 	@Override
 	public Class<MovieDetailsActivityPresenter> getClassDelegate() {
+
 		return MovieDetailsActivityPresenter.class;
 	}
 
@@ -47,7 +53,7 @@ public class MovieDetailsActivity extends BaseActivity<MovieDetailsActivityPrese
 	public void initView() {
 		super.initView();
      //反回视图
-		delegate.initView(name1,hard,name2,imageMovie,textDetails,textAdvanceNotice,textStagePhoto,textEvaluate,textBuy);
+		delegate.initView(name1,hard,name2,imageMovie,textDetails,textAdvanceNotice,textStagePhoto,textEvaluate,textBuy,layoutFather);
 
 	}
 
@@ -55,9 +61,50 @@ public class MovieDetailsActivity extends BaseActivity<MovieDetailsActivityPrese
 	public void onClick(View view){
 		switch (view.getId())
 		{
+			case R.id.imageHard:
+				delegate.giveHart();
+				break;
+			case R.id.textDetails:
+				delegate.showDitailsPop();
+				break;
+			case R.id.textAdvanceNotice:
+				delegate.showAdvancePop();
+				break;
+			case R.id.textStagePhoto:
+				delegate.showStagephotoPop();
+				break;
+			case R.id.textEvaluate:
+				delegate.showEvaluatePop();
+				break;
+			case R.id.textBuy:
+				startActivity(new Intent(this,SelectSeatActivity.class));
+				break;
 
 
 		}
+	}
+
+	@Override
+	public void onBackPressed() {
+		if (delegate.popOnBackDown())
+		{
+			return;
+		}
+
+	if (Jzvd.backPress())
+	{
+		//按下back退出视频
+		return;
+	}
+		super.onBackPressed();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		//停止视频播放
+	    Jzvd.releaseAllVideos();
+
 	}
 }
 

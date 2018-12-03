@@ -1,6 +1,7 @@
 package com.bw.movie.activity;
 
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -23,6 +24,8 @@ public class LoginActivity extends BaseActivity<LoginActivityPresenter>{
     EditText edi_phone_name;
     @BindView(R.id.btn_login)
     Button btn_login;
+    @BindView(R.id.btn_remember_password)
+    CheckBox btn_remember_password;
     @Override
     public Class<LoginActivityPresenter> getClassDelegate() {
         return LoginActivityPresenter.class;
@@ -30,6 +33,6 @@ public class LoginActivity extends BaseActivity<LoginActivityPresenter>{
     @Override
     public void initView() {
         super.initView();
-        delegate.onfindId(btnskip,edi_lock_password,edi_phone_name,btn_login);
+        delegate.onfindId(btnskip,edi_lock_password,edi_phone_name,btn_login,btn_remember_password);
     }
 }

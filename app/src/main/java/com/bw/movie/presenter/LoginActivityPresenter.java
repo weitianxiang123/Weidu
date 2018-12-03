@@ -3,9 +3,12 @@ package com.bw.movie.presenter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,19 +42,26 @@ public class LoginActivityPresenter extends AppDelegate{
     private Button btn_login;
     private String phone;
     private String possword;
+    private CheckBox btn_remember_password;
     private boolean isLogin;
     private RootMessage rootMessage;
+    private SharedPreferences pref;
+    private SharedPreferences.Editor editor;
+    private String account;
+    private String password;
+
 
     @Override
     public int getLayout() {
         return R.layout.activity_login;
     }
 
-    public void onfindId(TextView btnskip, EditText edi_lock_password, EditText edi_phone_name, Button btn_login) {
+    public void onfindId(TextView btnskip, EditText edi_lock_password, EditText edi_phone_name, Button btn_login, CheckBox btn_remember_password) {
         this.btnskip=btnskip;
         this.btn_login=btn_login;
         this.edi_lock_password=edi_lock_password;
         this.edi_phone_name=edi_phone_name;
+        this.btn_remember_password=btn_remember_password;
     }
 
     @Override
@@ -65,12 +75,31 @@ public class LoginActivityPresenter extends AppDelegate{
 
             }
         });
-
+        pref= PreferenceManager.getDefaultSharedPreferences(context);
+        boolean isRemenber=pref.getBoolean("remember_password",false);
+        if(isRemenber){
+            //将账号和密码都设置到文本中
+            account = pref.getString("account",phone);
+            password = pref.getString("password",possword);
+            edi_phone_name.setText(account);
+            edi_lock_password.setText(password);
+            btn_remember_password.setChecked(true);
+        }
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 phone = edi_phone_name.getText().toString();
                 possword = edi_lock_password.getText().toString();
+                editor = pref.edit();
+
+                if(btn_remember_password.isChecked()){
+                    editor.putBoolean("remember_password",true);
+                    editor.putString("account",phone);
+                    editor.putString("password",possword);
+                }else {
+                    editor.clear();
+                }
+                editor.apply();
                 Map<String,String> map=new HashMap<>();
                 map.put("phone",phone);
                 map.put("pwd",EncryptUtil.encrypt(possword));
@@ -88,7 +117,6 @@ public class LoginActivityPresenter extends AppDelegate{
                         }else {
                             Toast.makeText(context, ""+loginBean.getMessage(), Toast.LENGTH_SHORT).show();
                         }
-
                     }
                     @Override
                     public void fail(String error) {

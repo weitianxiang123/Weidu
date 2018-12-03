@@ -2,6 +2,7 @@ package com.bw.movie.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.Toast;
 
 import com.bw.movie.model.RootMessage;
 import com.google.gson.Gson;

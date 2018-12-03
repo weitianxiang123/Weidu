@@ -7,6 +7,7 @@ import java.util.List;
  */
 public class AttentionCinema {
 
+
     /**
      * result : [{"address":"东城区滨河路乙1号雍和航星园74-76号楼","followCinema":false,"id":1,"logo":"http://172.17.8.100/images/movie/logo/qcgx.jpg","name":"青春光线电影院"},{"address":"西城区前门大街大栅栏街36号","followCinema":false,"id":2,"logo":"http://172.17.8.100/images/movie/logo/dgl.jpg","name":"大观楼电影院"}]
      * message : 查询成功

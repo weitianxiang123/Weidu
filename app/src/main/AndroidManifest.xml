@@ -22,14 +22,17 @@
         <activity android:name=".activity.RccordActivity" />
         <activity android:name=".activity.FeedbackActivity" />
         <activity android:name=".activity.VersionActivity" />
-        <activity android:name=".activity.RemindActivity"/>
-        <activity android:name=".activity.MainActivity"/>
-        <activity android:name=".activity.GuideActivity"/>
-        <activity android:name=".activity.LoginActivity"></activity>
-        <activity android:name=".activity.HandelActivity"></activity>
-        <activity android:name=".activity.CinemaInfoActivity"></activity>
-        <activity android:name=".activity.MovieDetailsActivity"></activity>
-        <activity android:name=".activity.CinemaSearchActivity"></activity>
+        <activity android:name=".activity.RemindActivity" />
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.GuideActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.HandelActivity" />
+        <activity android:name=".activity.CinemaInfoActivity" />
+        <activity android:name=".activity.MovieDetailsActivity" />
+        <activity android:name=".activity.CinemaSearchActivity" />
+        <activity android:name=".activity.RegActivity" />
+        <activity android:name=".activity.FeedBackSuccessActivity" />
+        <activity android:name=".activity.SelectSeatActivity"></activity>
         <activity android:name=".activity.BuyTicketDetailActivity"></activity>
     </application>
 
