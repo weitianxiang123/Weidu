@@ -30,6 +30,7 @@
         <activity android:name=".activity.CinemaInfoActivity"></activity>
         <activity android:name=".activity.MovieDetailsActivity"></activity>
         <activity android:name=".activity.CinemaSearchActivity"></activity>
+        <activity android:name=".activity.BuyTicketDetailActivity"></activity>
     </application>
 
 </manifest>
