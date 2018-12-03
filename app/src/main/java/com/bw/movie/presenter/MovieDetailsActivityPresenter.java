@@ -105,6 +105,7 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
 		movieId = intent.getIntExtra("movieId", 1);
 
 
+
 		//获取电影信息
 		Map<String, String> map3 = new HashMap<>();
 		map3.put("movieId", "" + movieId);
@@ -117,6 +118,8 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
 		fatherView.findViewById(R.id.viewNull).setOnClickListener(this);
 		popupWindow = new PopupWindow(fatherView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 		popupWindow.setFocusable(true);
+
+
 
 	}
 

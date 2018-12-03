@@ -1,5 +1,6 @@
 package com.bw.movie.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -76,6 +77,7 @@ public class MovieDetailsActivity extends BaseActivity<MovieDetailsActivityPrese
 				delegate.showEvaluatePop();
 				break;
 			case R.id.textBuy:
+				startActivity(new Intent(this,SelectSeatActivity.class));
 				break;
 
 
