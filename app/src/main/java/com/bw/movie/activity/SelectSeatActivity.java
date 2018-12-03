@@ -43,7 +43,6 @@ public class SelectSeatActivity extends AppCompatActivity {
 
 			@Override
 			public void unCheck(int row, int column) {
-
 			}
 
 			@Override
