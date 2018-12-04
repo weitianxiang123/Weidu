@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bw.movie">
+
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+
     <application
         android:name=".application.App"
         android:allowBackup="true"
@@ -32,7 +37,10 @@
         <activity android:name=".activity.CinemaSearchActivity" />
         <activity android:name=".activity.RegActivity" />
         <activity android:name=".activity.FeedBackSuccessActivity" />
+        <activity android:name=".activity.UpdateInfoActivity"></activity>
         <activity android:name=".activity.SelectSeatActivity"></activity>
+        <activity android:name=".activity.BuyTicketDetailActivity"></activity>
+        <activity android:name=".activity.MovieListActivity"></activity>
         <activity android:name=".activity.BuyTicketDetailActivity"></activity>
     </application>
 

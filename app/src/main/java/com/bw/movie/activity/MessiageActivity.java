@@ -1,6 +1,8 @@
 package com.bw.movie.activity;
 
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -11,6 +13,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import butterknife.OnLongClick;
 
 public class MessiageActivity extends BaseActivity<MessiageActivityPresenter> {
 
@@ -38,6 +41,12 @@ public class MessiageActivity extends BaseActivity<MessiageActivityPresenter> {
     TextView mMessiageEmil;
     @BindView(R.id.messiage_info_resert)
     RelativeLayout mMessiageInfoResert;
+    @BindView(R.id.update_layout)
+    LinearLayout mRelativeLayout;
+    @BindView(R.id.update_layout2)
+    LinearLayout mRelativeLayout2;
+    @BindView(R.id.update_bt_start)
+    Button btStartButton;
 
     @Override
     public Class<MessiageActivityPresenter> getClassDelegate() {
@@ -47,17 +56,43 @@ public class MessiageActivity extends BaseActivity<MessiageActivityPresenter> {
     @Override
     public void initView() {
         super.initView();
-        delegate.initView(mMessageHead,mMessiageName,mMessiageSex,mMessiageData,mMessiageMobile,mMessiageEmil);
+        delegate.initView(mMessageHead, mMessiageName, mMessiageSex, mMessiageData, mMessiageMobile, mMessiageEmil, mUserExit, btStartButton);
     }
 
-    @OnClick(R.id.user_exit)
+    @OnClick({R.id.user_exit,R.id.update_bt_start})
     public void onClick(View v) {
         switch (v.getId()) {
             default:
                 break;
             case R.id.user_exit:
+                //点击退出
                 delegate.exitUser();
                 break;
+            case R.id.update_bt_start:
+                delegate.startBt();
+                break;
         }
+    }
+
+    @OnLongClick({R.id.update_layout,R.id.update_layout2})
+    public boolean OnLongClick(View view) {
+        switch (view.getId()) {
+            default:
+                break;
+            case R.id.update_layout:
+                delegate.OnLongTouch();
+                break;
+            case R.id.update_layout2:
+                delegate.OnLongTouch();
+                break;
+        }
+
+        return false;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        delegate.refresh();
     }
 }

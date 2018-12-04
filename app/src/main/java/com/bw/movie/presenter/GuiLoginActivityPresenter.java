@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -15,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.GuiRegActivity;
+import com.bw.movie.activity.HandelActivity;
 import com.bw.movie.activity.MessiageActivity;
 import com.bw.movie.activity.RegActivity;
 import com.bw.movie.model.LoginBean;
@@ -23,7 +24,6 @@ import com.bw.movie.mvp.view.AppDelegate;
 import com.bw.movie.net.HttpHelper;
 import com.bw.movie.net.HttpListener;
 import com.bw.movie.net.HttpUrl;
-import com.bw.movie.utils.Base64;
 import com.bw.movie.utils.EncryptUtil;
 import com.bw.movie.utils.ShareUtil;
 import com.google.gson.Gson;
@@ -33,9 +33,9 @@ import java.util.Map;
 
 /**
  * 魏天祥
- * 2018/11/29
+ * 2018/12/3
  */
-public class LoginActivityPresenter extends AppDelegate{
+public class GuiLoginActivityPresenter extends AppDelegate {
     private Context context;
     private TextView btnskip;
     private EditText edi_lock_password;
@@ -57,8 +57,8 @@ public class LoginActivityPresenter extends AppDelegate{
         return R.layout.activity_login;
     }
 
-    public void onfindId(TextView btnskip, EditText edi_lock_password, EditText edi_phone_name, Button btn_login, CheckBox btn_remember_password, ImageView btn_weixin) {
-        this.btnskip=btnskip;
+    public void onfindId(EditText edi_phone_name, EditText edi_lock_password, CheckBox btn_remember_password, CheckBox btn_automatic_login, TextView btn_skip_reg, Button btn_login, ImageView btn_weixin) {
+        this.btnskip=btn_skip_reg;
         this.btn_login=btn_login;
         this.edi_lock_password=edi_lock_password;
         this.edi_phone_name=edi_phone_name;
@@ -72,14 +72,8 @@ public class LoginActivityPresenter extends AppDelegate{
         btnskip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(context,RegActivity.class);
+                Intent intent=new Intent(context,GuiRegActivity.class);
                 context.startActivity(intent);
-            }
-        });
-        btn_weixin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context,"目前微信登录正在维护",Toast.LENGTH_LONG).show();
             }
         });
         pref= PreferenceManager.getDefaultSharedPreferences(context);
@@ -92,12 +86,19 @@ public class LoginActivityPresenter extends AppDelegate{
             edi_lock_password.setText(password);
             btn_remember_password.setChecked(true);
         }
+        btn_weixin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context,"目前微信登录正在维护",Toast.LENGTH_LONG).show();
+            }
+        });
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 phone = edi_phone_name.getText().toString();
                 possword = edi_lock_password.getText().toString();
                 editor = pref.edit();
+
                 if(btn_remember_password.isChecked()){
                     editor.putBoolean("remember_password",true);
                     editor.putString("account",phone);
@@ -108,7 +109,7 @@ public class LoginActivityPresenter extends AppDelegate{
                 editor.apply();
                 Map<String,String> map=new HashMap<>();
                 map.put("phone",phone);
-                map.put("pwd",EncryptUtil.encrypt(possword));
+                map.put("pwd", EncryptUtil.encrypt(possword));
                 new HttpHelper(context).lrPost(HttpUrl.STRING_LOGIN,map).result(new HttpListener() {
                     @Override
                     public void success(String data) {
@@ -118,7 +119,7 @@ public class LoginActivityPresenter extends AppDelegate{
                         if ("0000".equals(status)){
                             ShareUtil.saveLogin(data,context);
                             isLogin();
-                            context.startActivity(new Intent(context, MessiageActivity.class));
+                            context.startActivity(new Intent(context, HandelActivity.class));
                             ((Activity)context).finish();
                         }else {
                             Toast.makeText(context, ""+loginBean.getMessage(), Toast.LENGTH_SHORT).show();
@@ -135,15 +136,19 @@ public class LoginActivityPresenter extends AppDelegate{
     }
 
     @Override
+    public void initContext(Context context) {
+        super.initContext(context);
+        this.context=context;
+    }
+
+    @Override
     public void rootMessage(boolean isLogin, RootMessage rootMessage) {
         super.rootMessage(isLogin, rootMessage);
         this.isLogin=isLogin;
         this.rootMessage=rootMessage;
     }
 
-    @Override
-    public void initContext(Context context) {
-        super.initContext(context);
-        this.context=context;
-    }
+
+
+
 }
