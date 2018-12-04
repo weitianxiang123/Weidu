@@ -41,7 +41,6 @@
         <activity android:name=".activity.SelectSeatActivity"></activity>
         <activity android:name=".activity.BuyTicketDetailActivity"></activity>
         <activity android:name=".activity.MovieListActivity"></activity>
-        <activity android:name=".activity.BuyTicketDetailActivity"></activity>
     </application>
 
 </manifest>
