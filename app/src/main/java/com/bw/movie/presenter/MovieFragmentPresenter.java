@@ -3,11 +3,15 @@ package com.bw.movie.presenter;
 
 import android.content.Context;
 
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.support.v4.app.FragmentManager;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.webkit.URLUtil;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bw.movie.R;
@@ -23,10 +27,12 @@ import com.bw.movie.net.HttpHelper;
 import com.bw.movie.net.HttpListener;
 import com.bw.movie.net.HttpUrl;
 import com.bw.movie.utils.EncryptUtil;
+import com.bw.movie.utils.LocationUtils;
 import com.bw.movie.utils.ShareUtil;
 import com.google.gson.Gson;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -78,8 +84,27 @@ private FragmentManager fragmentManager;
 		View headView = View.inflate(context, R.layout.head_movie, null);
 		//旋转控件
 		recycleRotate = headView.findViewById(R.id.recycleRotate);
-		itemAdapter = new MovieHeadAdapter(context);
+		TextView textLocation=headView.findViewById(R.id.textLocation);
 
+		//定位
+		Location location = LocationUtils.getInstance(context).getLngAndLat(context);
+		Geocoder geocoder;
+		if (location!=null)
+		{
+			geocoder=new Geocoder(context);
+			try {
+				List<Address> addressList = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+				Address address = addressList.get(0);
+				String locality = address.getLocality();
+
+				textLocation.setText(locality);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+		itemAdapter = new MovieHeadAdapter(context);
 		recycleRotate.setAdapter(itemAdapter);
 		Map<String, String> map = new HashMap<>();
 		map.put("page", "1");
