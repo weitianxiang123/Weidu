@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/dp_24"
+    android:paddingRight="@dimen/dp_24"
+    android:paddingTop="@dimen/dp_30">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_10">
+
+            <TextView
+                android:id="@+id/cinemaName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="影院名称"
+                android:textColor="#666666"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
+                android:id="@+id/cinemaLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cinemaName"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="影院地址"
+                android:textColor="#666666"
+                android:textSize="@dimen/sp_12" />
+
+            <ImageView
+
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/detail_icon_location_default" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="@dimen/dp_312"
+            android:layout_height="@dimen/dp_142"
+            android:background="@drawable/movie_detail_bg">
+            <!--<ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/movie_detail_mine_bg"/>-->
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/movieLogo"
+                android:layout_width="@dimen/dp_103"
+                android:layout_height="@dimen/dp_130"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_6" />
+
+            <LinearLayout
+                android:layout_width="@dimen/dp_180"
+                android:layout_height="@dimen/dp_130"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_toRightOf="@id/movieLogo"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/dp_8">
+
+                <TextView
+                    android:id="@+id/movieName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    android:text="电影名称"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/sp_20" />
+
+                <TextView
+                    android:id="@+id/movieType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    android:text="电影类型"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/sp_12" />
+
+                <TextView
+                    android:id="@+id/movieDirector"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    android:text="导演"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/sp_12" />
+
+                <TextView
+                    android:id="@+id/movieDuration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    android:text="电影时长"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/sp_12" />
+
+                <TextView
+                    android:id="@+id/moviePlaceOrigin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="电影产地"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/sp_12" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <com.jcodecraeer.xrecyclerview.XRecyclerView
+            android:id="@+id/xRecyclerList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_10">
+
+        </com.jcodecraeer.xrecyclerview.XRecyclerView>
+    </LinearLayout>
+</RelativeLayout>
