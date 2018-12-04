@@ -34,8 +34,10 @@
         <activity android:name=".activity.CinemaSearchActivity" />
         <activity android:name=".activity.RegActivity" />
         <activity android:name=".activity.FeedBackSuccessActivity" />
+        <activity android:name=".activity.UpdateInfoActivity"></activity>
         <activity android:name=".activity.SelectSeatActivity"></activity>
         <activity android:name=".activity.BuyTicketDetailActivity"></activity>
+        <activity android:name=".activity.MovieListActivity"></activity>
     </application>
 
 </manifest>
