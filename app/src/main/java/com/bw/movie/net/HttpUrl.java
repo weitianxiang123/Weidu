@@ -79,7 +79,9 @@ public class HttpUrl {
     public static final String STRING_ATTENTION_CINEMA = "cinema/v1/verify/findCinemaPageList";
 
     //关注影院
+    public static final String CINEMA_FOLLOW = "cinema/v1/verify/followCinema";
     //取消关注影院
+    public static final String CINEMA_FOLLOW_CANCEL = "cinema/v1/verify/cancelFollowCinema";
     //查询影院用户评论列表
     public static final String CINEMA_COMMENT_ALL = "cinema/v1/findAllCinemaComment";
     //影院评论
