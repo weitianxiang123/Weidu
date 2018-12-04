@@ -269,7 +269,7 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
 			 public void onClick(View v) {
 				 imageEvaluateBottomPeople.setVisibility(View.GONE);
 				 layoutEditPeople.setVisibility(View.VISIBLE);
-				 showSoftInputFromWindow(activity,editEvaluatePeople);//弹出键盘
+				/* showSoftInputFromWindow(activity,editEvaluatePeople);//弹出键盘*/
 			 }
 		 });
 
