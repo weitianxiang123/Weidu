@@ -36,6 +36,7 @@
         <activity android:name=".activity.FeedBackSuccessActivity" />
         <activity android:name=".activity.SelectSeatActivity" />
         <activity android:name=".activity.MovieListActivity"></activity>
+        <activity android:name=".activity.BuyTicketDetailActivity"></activity>
     </application>
 
 </manifest>
