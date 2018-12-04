@@ -1,16 +1,19 @@
 package com.bw.movie.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.MovieListActivity;
 import com.bw.movie.model.MovieItem;
 import com.bw.movie.model.MoviePage;
 import com.bw.movie.net.HttpHelper;
@@ -59,17 +62,19 @@ public class MoviePagerAdapter extends RecyclerView.Adapter<MoviePagerAdapter.My
 
 		final MovieItemAdapter adapter = new MovieItemAdapter(context);
 				myViewHolder.recyclerView.setAdapter(adapter);
-                  /*        adapter.setItemClickListener(new MovieItemAdapter.MovieItemClickListener() {
-							  @Override
-							  public void onClick(int index, View view) {
-								  Toast.makeText(context, ""+movieItem.getResult().get(i).getName(), Toast.LENGTH_SHORT).show();
-							  }
-						  });*/
+				myViewHolder.layoutTitle.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						Intent intent = new Intent(context, MovieListActivity.class);
+						intent.putExtra("type",i);
+						context.startActivity(intent);
+					}
+				});
 		Map<String, String> map = new HashMap<>();
 		map.put("page", "1");
 		map.put("count", "20");
 		//执行网络请求
-		new HttpHelper(context).get(data.get(i).getUrl(), map,false).result(new HttpListener() {
+		new HttpHelper(context).get(data.get(i).getUrl(), map,true).result(new HttpListener() {
 			@Override
 			public void success(String data) {
 				movieItem = new Gson().fromJson(data, MovieItem.class);
@@ -97,12 +102,13 @@ public class MoviePagerAdapter extends RecyclerView.Adapter<MoviePagerAdapter.My
 	public class MyViewHolder extends RecyclerView.ViewHolder {
 		TextView title;
 		RecyclerView recyclerView;
-
+		RelativeLayout layoutTitle;
 		public MyViewHolder(@NonNull View itemView) {
 			super(itemView);
 
 			title = itemView.findViewById(R.id.textName);
 			recyclerView = itemView.findViewById(R.id.recycleShow);
+		    layoutTitle=itemView.findViewById(R.id.layoutTitle);
 		}
 	}
 }

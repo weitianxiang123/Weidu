@@ -26,13 +26,19 @@ public class HttpHelper {
     private static String BASE_URL = "http://mobile.bwstudent.com/movieApi/";
     private boolean isLogin;
     private RootMessage rootMessage;
+    private  String sessionId;
+    private  int userId;
 
     public HttpHelper(Context context){
         this.context=context;
 
         //获取用户登陆信息
          isLogin();
-
+          if (isLogin)
+          {
+              sessionId = rootMessage.getResult().getSessionId();
+              userId = rootMessage.getResult().getUserId();
+          }
         Retrofit retrofit = new Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(BASE_URL)
@@ -140,7 +146,7 @@ public class HttpHelper {
     }
 
 
-    public HttpHelper  lrPost(String url,Map<String, String> map)
+    public HttpHelper lrPost(String url,Map<String, String> map)
     {
         if (map==null){
             map = new HashMap<>();

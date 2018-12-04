@@ -1,19 +1,28 @@
 package com.bw.movie.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.LoginActivity;
 import com.bw.movie.model.MovieEvaluate;
+import com.bw.movie.net.HttpHelper;
+import com.bw.movie.net.HttpListener;
+import com.bw.movie.net.HttpUrl;
+import com.bw.movie.utils.ShareUtil;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MovieEvaluateAdapter extends RecyclerView.Adapter<MovieEvaluateAdapter.MyViewHolder> {
 	private Context context;
@@ -48,6 +57,59 @@ public class MovieEvaluateAdapter extends RecyclerView.Adapter<MovieEvaluateAdap
 		myViewHolder.imageHead.setImageURI(resultBean.getCommentHeadPic());
 		myViewHolder.textName.setText(resultBean.getCommentUserName());
 		myViewHolder.textEvaluate.setText(resultBean.getCommentContent());
+		myViewHolder.textGreatNum.setText(resultBean.getGreatNum()+"");
+		myViewHolder.textEvaluateNum.setText(resultBean.getReplyNum()+"");
+
+		if (resultBean.getIsGreat()==0)
+		{//0为否，1为是
+			myViewHolder.imageGreat.setImageResource(R.drawable.com_icon_praise_default);
+		}else
+		{
+            myViewHolder.imageGreat.setImageResource(R.drawable.com_icon_praise_selected);
+		}
+		myViewHolder.imageGreat.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+				if (ShareUtil.isLogin(context))
+				{
+					Map<String,String> fMap=new HashMap<>();
+					fMap.put("commentId",resultBean.getCommentId()+"");
+					new HttpHelper(context).lrHead( HttpUrl.STRING_GREAT_MOVIE,fMap,null).result(new HttpListener() {
+						@Override
+						public void success(String data) {
+
+							if (data.contains("不能重复点赞"))
+							{
+								Toast.makeText(context, "不能重复点赞", Toast.LENGTH_SHORT).show();
+
+							}else if (data.contains("点赞成功"))
+							{
+								myViewHolder.textGreatNum.setText(resultBean.getGreatNum()+1+"");
+								myViewHolder.imageGreat.setImageResource(R.drawable.com_icon_praise_selected);
+								Toast.makeText(context, "赞", Toast.LENGTH_SHORT).show();
+							}
+
+							//请求成功
+						}
+
+						@Override
+						public void fail(String error) {
+							Toast.makeText(context, ""+error, Toast.LENGTH_SHORT).show();
+						}
+					});
+
+
+				}else
+				{
+					context.startActivity(new Intent(context, LoginActivity.class));
+				}
+
+			}
+		});
+
+
+
 		myViewHolder.imageEvalute.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -101,7 +163,9 @@ public class MovieEvaluateAdapter extends RecyclerView.Adapter<MovieEvaluateAdap
 		TextView textEvaluate;
 		TextView textTime;
 		ImageView imageEvalute;
-
+		ImageView imageGreat;
+		TextView textGreatNum;
+		TextView textEvaluateNum;
 		public MyViewHolder(@NonNull View itemView) {
 			super(itemView);
 
@@ -110,13 +174,14 @@ public class MovieEvaluateAdapter extends RecyclerView.Adapter<MovieEvaluateAdap
 			textEvaluate=itemView.findViewById(R.id.textEvaluate);
 			textTime=itemView.findViewById(R.id.textTime);
 			imageEvalute=itemView.findViewById(R.id.imageEvaluate);
-
+            imageGreat=itemView.findViewById(R.id.imageGreat);
+			textGreatNum=itemView.findViewById(R.id.textGreatNum);
+			textEvaluateNum=itemView.findViewById(R.id.textEvaluateNum);
 		}
 	}
 
 
 	public interface ClickEvaluateListener{
 		public void clickEvaluate(int id);
-
 	}
 }

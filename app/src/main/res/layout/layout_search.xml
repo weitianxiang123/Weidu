@@ -42,7 +42,9 @@
             android:layout_height="@dimen/dp_24"
             android:layout_toRightOf="@id/search_img"
             android:textColor="#f2f2f2"
-            android:textSize="@dimen/sp_12" />
+            android:textSize="@dimen/sp_12"
+            android:background="#00ffffff"
+            />
 
         <TextView
             android:id="@+id/toSearch"
