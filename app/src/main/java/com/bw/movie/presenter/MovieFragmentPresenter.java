@@ -112,7 +112,6 @@ private FragmentManager fragmentManager;
 				ShareUtil.saveLogin(data,context);
 				isLogin();//刷新，存储用户数据
 			}
-
 			@Override
 			public void fail(String error) {
 				Toast.makeText(context, ""+error, Toast.LENGTH_SHORT).show();

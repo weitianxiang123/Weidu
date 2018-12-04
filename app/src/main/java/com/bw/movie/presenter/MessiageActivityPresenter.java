@@ -55,6 +55,7 @@ public class MessiageActivityPresenter extends AppDelegate {
 
     @Override
     public void initContext(Context context) {
+        super.initContext(context);
         this.context = context;
     }
 
