@@ -26,13 +26,19 @@ public class HttpHelper {
     private static String BASE_URL = "http://mobile.bwstudent.com/movieApi/";
     private boolean isLogin;
     private RootMessage rootMessage;
+    private  String sessionId;
+    private  int userId;
 
     public HttpHelper(Context context){
         this.context=context;
 
         //获取用户登陆信息
          isLogin();
-
+          if (isLogin)
+          {
+              sessionId = rootMessage.getResult().getSessionId();
+              userId = rootMessage.getResult().getUserId();
+          }
         Retrofit retrofit = new Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(BASE_URL)
@@ -105,7 +111,7 @@ public class HttpHelper {
             if (rootMessage!=null)
             {
 
-             weatherHead(url,map,true);
+                weatherHead(url,map,true);
                 return this;
             }
         }
@@ -118,10 +124,10 @@ public class HttpHelper {
     }
 
 
+
     //执行带请求头的请求
     public void weatherHead(String url,Map<String,String> map,boolean isPost){
-        String sessionId = rootMessage.getResult().getSessionId();
-        int userId = rootMessage.getResult().getUserId();
+
         if (isPost)
         {
             mbBaseService.headPost(url,map,userId,sessionId)
@@ -140,6 +146,45 @@ public class HttpHelper {
     }
 
 
+    /**
+     *
+     * @param url
+     * @param fMap
+     * @param map
+     * @param isPost  //这个需要的时候再添加
+     * @return
+     *
+     *  //执行带请求头的请求
+     *  这个必须要请求头，必须在登陆状态下使用
+     *
+     */
+    public HttpHelper lrHead(String url,Map<String,String> fMap,Map<String,String> map){
+    	if (fMap==null)
+    		fMap=new HashMap<>();
+    	if (map==null)
+    		map=new HashMap<>();
+
+
+        if (true)
+        {
+            mbBaseService.lrHeadPost(url,fMap,map,userId,sessionId)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(observer);
+        }else
+        {
+
+            Log.i("HttpHelper","weatherHead,我执行了");
+            mbBaseService.headGet(url,map,userId,sessionId)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(observer);
+            //  get未更新
+        }
+
+        return this;
+    }
+
     public HttpHelper lrPost(String url,Map<String, String> map)
     {
         if (map==null){
@@ -151,6 +196,7 @@ public class HttpHelper {
                 .subscribe(observer);
         return this;
     }
+
 
     // 观察者
     private Observer observer = new Observer<ResponseBody>(){

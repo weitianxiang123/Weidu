@@ -102,7 +102,7 @@ private FragmentManager fragmentManager;
 
 		RequestBody phone=Reques、tBody.create(mediaType,"15033705919");
 		RequestBody pwd=RequestBody.create(mediaType,EncryptUtil.encrypt("123qwe"));*/
-		Map<String, String> map2 = new HashMap<>();
+		/*Map<String, String> map2 = new HashMap<>();
 		map2.put("phone","15033705919");
 		map2.put("pwd",EncryptUtil.encrypt("123qwe"));
 
@@ -112,12 +112,11 @@ private FragmentManager fragmentManager;
 				ShareUtil.saveLogin(data,context);
 				isLogin();//刷新，存储用户数据
 			}
-
 			@Override
 			public void fail(String error) {
 				Toast.makeText(context, ""+error, Toast.LENGTH_SHORT).show();
 			}
-		});
+		});*/
 
 		//数据持久化
 

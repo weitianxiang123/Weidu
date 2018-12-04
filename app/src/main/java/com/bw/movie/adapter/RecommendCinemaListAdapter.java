@@ -60,12 +60,19 @@ public class RecommendCinemaListAdapter extends XRecyclerView.Adapter<RecommendC
             }
         });
 
-        myHolder.isFollow.setOnTouchListener(new View.OnTouchListener() {
+        /*myHolder.isFollow.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                // 点击完毕之后关注  取消关注
+
 
                 return true;
+            }
+        });*/
+        myHolder.isFollow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 点击完毕之后关注  取消关注
+                Log.i("sss",2+"");
             }
         });
     }

@@ -1,6 +1,7 @@
 package com.bw.movie.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.BuyTicketDetailActivity;
 import com.bw.movie.mvp.model.CinemaMovie;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -36,10 +38,17 @@ public class CinemaMovieListAdapter extends RecyclerView.Adapter<CinemaMovieList
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyHolder myHolder, int i) {
+    public void onBindViewHolder(@NonNull MyHolder myHolder, final int i) {
         myHolder.image.setImageURI(list.get(i).getImageUrl());
         myHolder.name.setText(list.get(i).getName());
         myHolder.time.setText(list.get(i).getDuration());
+        // 点击条目 将条目的索引传递出去
+        myHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onItemClick(i);
+            }
+        });
     }
 
     @Override
@@ -58,5 +67,14 @@ public class CinemaMovieListAdapter extends RecyclerView.Adapter<CinemaMovieList
             name = itemView.findViewById(R.id.movieName);
             time = itemView.findViewById(R.id.movieLong);
         }
+    }
+
+    // 传递接口
+    public interface OnItemClickListener{
+        void onItemClick(int position);
+    }
+    private OnItemClickListener listener;
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.listener = listener;
     }
 }

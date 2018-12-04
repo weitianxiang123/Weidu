@@ -1,5 +1,7 @@
 package com.bw.movie.mvp.model;
 
+import java.io.Serializable;
+
 public class CinemaInfoBean implements IModel{
 
     /**
@@ -45,7 +47,7 @@ public class CinemaInfoBean implements IModel{
         this.status = status;
     }
 
-    public static class ResultBean {
+    public static class ResultBean implements Serializable{
         /**
          * address : 东城区滨河路乙1号雍和航星园74-76号楼
          * businessHoursContent : 星期一 至 星期日   07:00:00 - 06:30:00

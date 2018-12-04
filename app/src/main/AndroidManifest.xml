@@ -33,9 +33,9 @@
         <activity android:name=".activity.MovieDetailsActivity" />
         <activity android:name=".activity.CinemaSearchActivity" />
         <activity android:name=".activity.RegActivity" />
-        <activity android:name=".activity.FeedBackSuccessActivity"></activity>
-        <activity android:name=".activity.GuiLoginActivity"></activity>
-        <activity android:name=".activity.GuiRegActivity"></activity>
+        <activity android:name=".activity.FeedBackSuccessActivity" />
+        <activity android:name=".activity.SelectSeatActivity" />
+        <activity android:name=".activity.MovieListActivity"></activity>
     </application>
 
 </manifest>

@@ -43,6 +43,9 @@ public interface BaseService {
                                       @Header("sessionId") String sessionId);
 
 
+
+
+
   /*  @POST
     @Multipart
     @Headers({"ak:0110010010000","Content-Type:application/x-www-form-urlencoded"})
@@ -52,6 +55,12 @@ public interface BaseService {
     @POST
     @Headers({"ak:0110010010000","Content-Type:application/x-www-form-urlencoded"})
     Observable<ResponseBody> lrPost(@Url String url, @FieldMap Map<String, String> map);
+
+    @FormUrlEncoded
+    @POST
+    @Headers({"ak:0110010010000","Content-Type:application/x-www-form-urlencoded"})
+    Observable<ResponseBody> lrHeadPost(@Url String url, @FieldMap Map<String, String> fMap,@QueryMap Map<String,String> map,@Header("userId") int userId, @Header("sessionId") String sessionId);
+
 
     @GET
     Observable<ResponseBody> mineGet(@Url String url, @QueryMap Map<String, String> map, @HeaderMap Map<String, String> headMap);
