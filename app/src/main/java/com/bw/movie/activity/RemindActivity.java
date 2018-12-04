@@ -11,4 +11,5 @@ public class RemindActivity extends BaseActivity<RemindActivityPresenter> {
         return RemindActivityPresenter.class;
     }
 
+
 }

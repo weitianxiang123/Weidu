@@ -111,7 +111,7 @@ public class HttpHelper {
             if (rootMessage!=null)
             {
 
-                weatherHead(url,map,true);
+             weatherHead(url,map,true);
                 return this;
             }
         }
@@ -124,10 +124,10 @@ public class HttpHelper {
     }
 
 
-
     //执行带请求头的请求
     public void weatherHead(String url,Map<String,String> map,boolean isPost){
-
+        String sessionId = rootMessage.getResult().getSessionId();
+        int userId = rootMessage.getResult().getUserId();
         if (isPost)
         {
             mbBaseService.headPost(url,map,userId,sessionId)
@@ -145,7 +145,6 @@ public class HttpHelper {
         }
     }
 
-
     /**
      *
      * @param url
@@ -159,10 +158,10 @@ public class HttpHelper {
      *
      */
     public HttpHelper lrHead(String url,Map<String,String> fMap,Map<String,String> map){
-    	if (fMap==null)
-    		fMap=new HashMap<>();
-    	if (map==null)
-    		map=new HashMap<>();
+        if (fMap==null)
+            fMap=new HashMap<>();
+        if (map==null)
+            map=new HashMap<>();
 
 
         if (true)
@@ -184,7 +183,6 @@ public class HttpHelper {
 
         return this;
     }
-
     public HttpHelper lrPost(String url,Map<String, String> map)
     {
         if (map==null){
@@ -196,7 +194,6 @@ public class HttpHelper {
                 .subscribe(observer);
         return this;
     }
-
 
     // 观察者
     private Observer observer = new Observer<ResponseBody>(){

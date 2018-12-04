@@ -124,6 +124,10 @@
 	<dimen name="dp_150">200.0000dp</dimen>
 	<dimen name="dp_105">140.0000dp</dimen>
 	<dimen name="dp_103">137.3333dp</dimen>
+	<dimen name="dp_130">173.3333dp</dimen>
+	<dimen name="dp_142">189.3333dp</dimen>
+	<dimen name="dp_467">622.6667dp</dimen>
+	<dimen name="dp_115">153.3333dp</dimen>
 	<dimen name="dp_109">145.3333dp</dimen>
 	<dimen name="dp_128">170.6667dp</dimen>
 	<dimen name="dp_148">197.3333dp</dimen>
