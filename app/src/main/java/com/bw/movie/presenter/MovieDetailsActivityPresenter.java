@@ -33,6 +33,8 @@ import com.bw.movie.model.MovieDetatil;
 import com.bw.movie.model.MoviePeopleEvaluate;
 import com.bw.movie.model.RootMessage;
 import com.bw.movie.mvp.view.AppDelegate;
+import com.bw.movie.net.HttpHelper;
+import com.bw.movie.net.HttpListener;
 import com.bw.movie.net.HttpUrl;
 import com.facebook.common.util.UriUtil;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -87,6 +89,9 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
 	private int peoplePage;
 	private int count;
 	private int peopleEvaluateId;
+    private boolean isLoadMore;
+    private boolean isRefrush;
+	private XRecyclerView evaluateRecycle;
 
 	@Override
 	public int getLayout() {
@@ -141,7 +146,7 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
 			public void onClick(View v) {
 				imageEvaluateBottom.setVisibility(View.GONE);
 				layoutEdit.setVisibility(View.VISIBLE);
-				showSoftInputFromWindow(activity,editEvaluate);//弹出键盘
+				/*showSoftInputFromWindow(activity,editEvaluate);//弹出键盘,没什么卵用*/
 			}
 		});
         textSend.setOnClickListener(new View.OnClickListener() {
@@ -155,28 +160,80 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
 				}else
 				{
 					//发送评论
-					Map<String,String> map=new HashMap<>();
-					map.put("movieId",movieDetatil.getResult().getId()+"");
-                    map.put("commentContent",editStr);
-					Toast.makeText(context, ""+movieDetatil.getResult().getId(), Toast.LENGTH_SHORT).show();
-					//执行网络请求
-					postString(SEND_EVALUATE, HttpUrl.STRING_ADD_EVALUATE_MOVIE,map,true);
-                    page =1;
+
+					//登陆后执行网络请求
+					if (isLogin)
+					{
+						Map<String,String> fMap=new HashMap<>();
+						fMap.put("movieId",movieDetatil.getResult().getId()+"");
+						fMap.put("commentContent",editStr);
+						Toast.makeText(context, ""+movieDetatil.getResult().getId(), Toast.LENGTH_SHORT).show();
+						new HttpHelper(context).lrHead( HttpUrl.STRING_ADD_EVALUATE_MOVIE,fMap,null).result(new HttpListener() {
+							@Override
+							public void success(String data) {
+                                //请求成功
+								Toast.makeText(context, ""+data, Toast.LENGTH_SHORT).show();
+								//网络请求
+								Map<String,String> map=new HashMap<>();
+								map.put("movieId",movieId+"");
+								map.put("page",""+page);
+								map.put("count",""+count);
+								getString(EVALUATE,HttpUrl.STRING_EVALUATE_MOVIE,map,true);
+							}
+
+							@Override
+							public void fail(String error) {
+								Toast.makeText(context, ""+error, Toast.LENGTH_SHORT).show();
+							}
+						});
+
+						page =1;
+						imageEvaluateBottom.setVisibility(View.VISIBLE);
+						layoutEdit.setVisibility(View.GONE);
+					}else
+					{
+                       //去登陆
+						context.startActivity(new Intent(context,LoginActivity.class));
+					}
+				/*	postString(SEND_EVALUATE, HttpUrl.STRING_ADD_EVALUATE_MOVIE,map,true);*/
+
 				}
-				imageEvaluateBottom.setVisibility(View.VISIBLE);
-				layoutEdit.setVisibility(View.GONE);
+
 
 			}
 		});
-
 		title.setText("影评");
 
 		//电影评论
-		XRecyclerView evaluateRecycle= showView.findViewById(R.id.recycleMovie);
+		evaluateRecycle = showView.findViewById(R.id.recycleMovie);
+		evaluateRecycle.setLoadingMoreEnabled(true);
+		evaluateRecycle.setPullRefreshEnabled(true);
 		evaluateRecycle.setLayoutManager(new LinearLayoutManager(context));
 		movieEvaluateAdapter = new MovieEvaluateAdapter(context);
 		evaluateRecycle.setAdapter(movieEvaluateAdapter);
-
+        //下拉刷新和上拉加载
+		evaluateRecycle.setLoadingListener(new XRecyclerView.LoadingListener() {
+			@Override
+			public void onRefresh() {
+               page=1;
+               isRefrush=true;
+				Map<String,String> map=new HashMap<>();
+				map.put("movieId",movieId+"");
+				map.put("page",""+ page);
+				map.put("count",""+ count);
+				getString(EVALUATE,HttpUrl.STRING_EVALUATE_MOVIE,map,true);
+			}
+			@Override
+			public void onLoadMore() {
+               page++;
+               isLoadMore=true;
+				Map<String,String> map=new HashMap<>();
+				map.put("movieId",movieId+"");
+				map.put("page",""+ page);
+				map.put("count",""+ count);
+				getString(EVALUATE,HttpUrl.STRING_EVALUATE_MOVIE,map,true);
+			}
+		});
         //网络请求
 		Map<String,String> map=new HashMap<>();
 		map.put("movieId",movieId+"");
@@ -215,26 +272,61 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
 				 showSoftInputFromWindow(activity,editEvaluatePeople);//弹出键盘
 			 }
 		 });
+
+         //发送对用户的评论
 		textSendPeople.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//发送评论
+
+
 				String editStr = editEvaluatePeople.getText().toString();
 				if (TextUtils.isEmpty(editStr))
 				{
 					Toast.makeText(context, "评论不能为空", Toast.LENGTH_SHORT).show();
 				}else
 				{
-					//发送评论
+					//登陆后执行网络请求
+					if (isLogin)
+					{
+						Map<String,String> fMap=new HashMap<>();
+						fMap.put("commentId",peopleEvaluateId+"");
+						fMap.put("replyContent",editStr);
+						new HttpHelper(context).lrHead( HttpUrl.STRING_ADD_PEOPLE_EVALUATE_MOVIE,fMap,null).result(new HttpListener () {
+							@Override
+							public void success(String data) {
+								//请求成功
+								Toast.makeText(context, ""+data, Toast.LENGTH_SHORT).show();
+								//网络请求
+								Map<String,String> map2=new HashMap<>();
+								map2.put("commentId",peopleEvaluateId+"");
+								map2.put("page",""+ peoplePage);
+								map2.put("count",""+ count);
+								getString(PEOPLE_EVALUATE,HttpUrl.STRING_PEOPLE_EVALUATE_MOVIE,map2,true);
+							}
+
+							@Override
+							public void fail(String error) {
+								Toast.makeText(context, ""+error, Toast.LENGTH_SHORT).show();
+							}
+						});
+
+						peoplePage =1;
+						imageEvaluateBottomPeople.setVisibility(View.VISIBLE);
+						layoutEditPeople.setVisibility(View.GONE);
+					}else
+					{
+						//去登陆
+						context.startActivity(new Intent(context,LoginActivity.class));
+					}
+					/*//发送评论
 					Map<String,String> map=new HashMap<>();
 					map.put("commentId",peopleEvaluateId+"");
 					map.put("replyContent",editStr);
 
 					//执行网络请求
-					postString(SEND_PEOPLE_EVALUATE, HttpUrl.STRING_ADD_PEOPLE_EVALUATE_MOVIE,map,true);
+					postString(SEND_PEOPLE_EVALUATE, HttpUrl.STRING_ADD_PEOPLE_EVALUATE_MOVIE,map,true);*/
 				}
-				imageEvaluateBottomPeople.setVisibility(View.VISIBLE);
-				layoutEditPeople.setVisibility(View.GONE);
+
 
 			}
 		});
@@ -249,6 +341,7 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
 
 				//网络请求
 				Map<String,String> map=new HashMap<>();
+
 				map.put("commentId",peopleEvaluateId+"");
 				map.put("page",""+ peoplePage);
 				map.put("count",""+ count);
@@ -260,8 +353,15 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
 
 	}
 
+
+	//刷新页面数据
+	public void refushUserData(){
+
+		isLogin();
+	}
+
 	//弹出软键盘
-	public static void showSoftInputFromWindow(Activity activity, EditText editText) {
+	public  void showSoftInputFromWindow(Activity activity, EditText editText) {
 		editText.setFocusable(true);
 		editText.setFocusableInTouchMode(true);
 		editText.requestFocus();
@@ -381,9 +481,23 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
 				drawPage(movieDetatil);
 				break;
 			case EVALUATE:
+				if (isLoadMore)
+				{//上拉加载
+					MovieEvaluate movie = new Gson().fromJson(data, MovieEvaluate.class);
+					movieEvaluate.getResult().addAll(movie.getResult());
+					movieEvaluateAdapter.setData(movieEvaluate);
+					movieEvaluateAdapter.notifyDataSetChanged();
+					isLoadMore=false;
+                     evaluateRecycle.loadMoreComplete();
+                     return;
+				}
 				movieEvaluate = new Gson().fromJson(data, MovieEvaluate.class);
 				movieEvaluateAdapter.setData(movieEvaluate);
 				movieEvaluateAdapter.notifyDataSetChanged();
+				if (isRefrush)  //上拉刷新
+				{
+					evaluateRecycle.refreshComplete();
+				}
 
 				break;
 			case PEOPLE_EVALUATE:
@@ -400,23 +514,11 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
 				break;
 
 			case SEND_EVALUATE:
-			/*	Toast.makeText(context, ""+data, Toast.LENGTH_SHORT).show();*/
-				//网络请求
-				Map<String,String> map=new HashMap<>();
-				map.put("movieId",movieId+"");
-				map.put("page",""+page);
-				map.put("count",""+count);
-				getString(EVALUATE,HttpUrl.STRING_EVALUATE_MOVIE,map,true);
+
 				break;
 
 			case SEND_PEOPLE_EVALUATE:
-				Toast.makeText(context, ""+data, Toast.LENGTH_SHORT).show();
-				//网络请求
-				Map<String,String> map2=new HashMap<>();
-				map2.put("commentId",peopleEvaluateId+"");
-				map2.put("page",""+ peoplePage);
-				map2.put("count",""+ count);
-				getString(PEOPLE_EVALUATE,HttpUrl.STRING_PEOPLE_EVALUATE_MOVIE,map2,true);
+
 				break;
 
 		}
@@ -509,7 +611,6 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
 	@Override
 	public void rootMessage(boolean isLogin, RootMessage rootMessage) {
 		super.rootMessage(isLogin, rootMessage);
-
 		this.isLogin = isLogin;
 		this.rootMessage = rootMessage;
 	}

@@ -139,11 +139,13 @@
 	<dimen name="dp_152">173.5333dp</dimen>
 	<dimen name="dp_158">180.3833dp</dimen>
 	<dimen name="dp_178">203.2167dp</dimen>
+	<dimen name="dp_123">140.4250dp</dimen>
 	<dimen name="dp_223">254.5917dp</dimen>
 	<dimen name="dp_270">308.2500dp</dimen>
 	<dimen name="dp_192">219.2000dp</dimen>
 	<dimen name="dp_170">194.0833dp</dimen>
 	<dimen name="dp_320">365.3333dp</dimen>
+	<dimen name="dp_f20">-22.8333dp</dimen>
 	<dimen name="dp_370">422.4167dp</dimen>
 	<dimen name="dp_410">468.0833dp</dimen>
 	<dimen name="dp_190">216.9167dp</dimen>

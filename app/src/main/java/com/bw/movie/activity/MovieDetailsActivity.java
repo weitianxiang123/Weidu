@@ -40,7 +40,7 @@ public class MovieDetailsActivity extends BaseActivity<MovieDetailsActivityPrese
      @BindView(R.id.layoutFather)
 	RelativeLayout layoutFather;
 
-    RecyclerView re;
+
 
 
 	@Override
@@ -83,6 +83,14 @@ public class MovieDetailsActivity extends BaseActivity<MovieDetailsActivityPrese
 
 		}
 	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		delegate.refushUserData();
+	}
+
 
 	@Override
 	public void onBackPressed() {

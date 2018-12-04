@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="@dimen/dp_24"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_height="@dimen/dp_24">
+        <ImageView
+            android:id="@+id/toLocation"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:src="@drawable/detail_icon_location_default"/>
+        <TextView
+            android:id="@+id/city"
+            android:textSize="14sp"
+            android:textColor="#333333"
+            android:text="北京"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/dp_6"
+            android:layout_height="match_parent" />
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"/>
+
+        <com.bw.movie.cview.MySearchView
+            android:id="@+id/search"
+            android:layout_width="@dimen/dp_220"
+            android:layout_height="@dimen/dp_24">
+
+        </com.bw.movie.cview.MySearchView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_height="@dimen/dp_25">
+
+        <TextView
+            android:id="@+id/textHot"
+            android:text="热门电影"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_width="@dimen/dp_83"
+            android:layout_height="@dimen/dp_25"
+            android:layout_marginRight="@dimen/dp_32"
+            android:textColor="#333333"
+          />
+
+        <TextView
+            android:id="@+id/textNow"
+            android:text="正在热映"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_width="@dimen/dp_83"
+            android:layout_height="@dimen/dp_25"
+            android:layout_marginRight="@dimen/dp_32"
+            android:textColor="#333333"
+          />
+        <TextView
+            android:id="@+id/textWill"
+            android:text="即将上映"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_width="@dimen/dp_83"
+            android:layout_height="@dimen/dp_25"
+            android:textColor="#333333"
+            android:background="@drawable/cinema_txt_default"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/dp_24"
+        android:paddingRight="@dimen/dp_24">
+       <com.jcodecraeer.xrecyclerview.XRecyclerView
+           android:id="@+id/xrecycleView"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+       </com.jcodecraeer.xrecyclerview.XRecyclerView>
+
+    </RelativeLayout>
+
+</LinearLayout>
