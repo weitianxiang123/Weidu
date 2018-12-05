@@ -17,56 +17,44 @@ import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.cview.SeatTable;
+import com.bw.movie.mvp.base.BaseActivity;
+import com.bw.movie.presenter.SelectSeatActivityPresenter;
 import com.bw.movie.utils.LocationUtils;
 
 import java.io.IOException;
 import java.util.List;
 
-public class SelectSeatActivity extends AppCompatActivity {
-	public SeatTable seatTableView;
-	private Location location;
+import butterknife.BindView;
+
+public class SelectSeatActivity extends BaseActivity<SelectSeatActivityPresenter> {
+@BindView(R.id.seatView)
+SeatTable seatTable;
+
+
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+	public Class<SelectSeatActivityPresenter> getClassDelegate() {
+		return SelectSeatActivityPresenter.class;
+	}
 
-		setContentView(R.layout.activity_select_seat);
-
-		Location location = LocationUtils.getInstance(this).showLocation();
-
-
-		if(location!=null)
-		{
-			Toast.makeText(this, ""+location.getLongitude(), Toast.LENGTH_SHORT).show();
-			Geocoder geocoder=new Geocoder(this);
-
-			try {
-				List<Address> fromLocation = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-				Address address = fromLocation.get(0);
-
-				Toast.makeText(this, ""+address.getFeatureName(), Toast.LENGTH_SHORT).show();
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-
-
-		seatTableView = (SeatTable) findViewById(R.id.seatView);
-		seatTableView.setScreenName("8号厅荧幕");//设置屏幕名称
-		seatTableView.setMaxSelected(3);//设置最多选中
-
-		seatTableView.setSeatChecker(new SeatTable.SeatChecker() {
+	@Override
+	public void initView() {
+		super.initView();
+		seatTable.setScreenName("哈哈影城");
+		seatTable.setMaxSelected(5);
+		seatTable.setSeatChecker(new SeatTable.SeatChecker() {
 
 			@Override
 			public boolean isValidSeat(int row, int column) {
-				if(column==2) {
+				if((row==3||row==4)&&column==3) {
 					return false;
 				}
+
 				return true;
 			}
 
 			@Override
 			public boolean isSold(int row, int column) {
+				//已售
 				if(row==6&&column==6){
 					return true;
 				}
@@ -75,11 +63,15 @@ public class SelectSeatActivity extends AppCompatActivity {
 
 			@Override
 			public void checked(int row, int column) {
+             //选中
+
 
 			}
 
 			@Override
 			public void unCheck(int row, int column) {
+             //未选中
+
 			}
 
 			@Override
@@ -88,11 +80,66 @@ public class SelectSeatActivity extends AppCompatActivity {
 			}
 
 		});
-		seatTableView.setData(10,15);
+
+		seatTable.setData(10,15);
+	delegate.initView(seatTable);
+
 	}
+}
 
 
+/**
+ *public SeatTable seatTableView;
+ * @Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
 
+setContentView(R.layout.activity_select_seat);
+
+
+seatTableView =  findViewById(R.id.seatView);
+seatTableView.setScreenName("8号厅荧幕");//设置屏幕名称
+seatTableView.setMaxSelected(3);//设置最多选中
+seatTableView.setSeatChecker(new SeatTable.SeatChecker() {
+
+@Override
+public boolean isValidSeat(int row, int column) {
+if(column==2) {
+return false;
+}
+return true;
+}
+
+@Override
+public boolean isSold(int row, int column) {
+if(row==6&&column==6){
+return true;
+}
+return false;
+}
+
+@Override
+public void checked(int row, int column) {
+//选中
 
 
 }
+
+@Override
+public void unCheck(int row, int column) {
+//未选中
+
+}
+
+@Override
+public String[] checkedSeatTxt(int row, int column) {
+return null;
+}
+
+});
+seatTableView.setData(10,15);
+}
+
+
+ *
+ */
