@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
         android:id="@+id/bgImage"
@@ -19,7 +20,8 @@
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/cinema_logo"
             android:layout_width="@dimen/dp_70"
-            android:layout_height="@dimen/dp_70" />
+            android:layout_height="@dimen/dp_70"
+            app:roundedCornerRadius="@dimen/dp_4"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -37,7 +39,7 @@
 
             <TextView
                 android:id="@+id/cinema_location"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/dp_186"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cinema_name"
                 android:layout_marginTop="@dimen/dp_10"
@@ -45,14 +47,14 @@
                 android:textColor="#FFFFFF"
                 android:textSize="@dimen/sp_12" />
 
+
             <ImageView
                 android:id="@+id/showInfo"
                 android:layout_width="@dimen/dp_16"
                 android:layout_height="@dimen/dp_16"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:background="#999999"
-                android:src="@drawable/com_icon_collection_default" />
+                android:src="@drawable/com_icon_navigation_default" />
         </RelativeLayout>
     </RelativeLayout>
 
@@ -131,12 +133,13 @@
 
     <!--  弹出详情评论  -->
     <RelativeLayout
+
         android:visibility="gone"
         android:id="@+id/info_alert"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_467"
         android:layout_alignParentBottom="true"
-        android:background="#ffffff"
+        android:background="@drawable/shape_pop"
         android:paddingLeft="@dimen/dp_24"
         android:paddingRight="@dimen/dp_24"
         android:paddingTop="@dimen/dp_20">
@@ -175,11 +178,33 @@
             android:layout_width="@dimen/dp_24"
             android:layout_height="@dimen/dp_24"
             android:layout_alignParentRight="true"
-            android:src="@drawable/com_icon_my_default" />
+            android:src="@drawable/com_icon_down_default" />
+
+        <LinearLayout
+            android:id="@+id/line_tab"
+            android:layout_marginTop="@dimen/dp_6"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_3"
+            android:layout_below="@id/info_tab"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <View
+                android:id="@+id/line_detail"
+                android:layout_width="@dimen/dp_32"
+                android:layout_height="match_parent"
+                android:background="@drawable/cinema_txt_select"
+                android:layout_marginRight="@dimen/dp_115"/>
+            <View
+                android:id="@+id/line_comment"
+                android:layout_width="@dimen/dp_32"
+                android:layout_height="match_parent"
+                />
+        </LinearLayout>
+
 
         <RelativeLayout
             android:id="@+id/info_content"
-            android:layout_below="@id/info_tab"
+            android:layout_below="@id/line_tab"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/dp_10">
@@ -191,5 +216,5 @@
             </android.support.v4.view.ViewPager>
         </RelativeLayout>
     </RelativeLayout>
-
+    <include layout="@layout/include_finish_this" />
 </RelativeLayout>

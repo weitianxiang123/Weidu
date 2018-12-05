@@ -87,7 +87,7 @@ public class HttpUrl {
     public static final String CINEMA_COMMENT_ALL = "cinema/v1/findAllCinemaComment";
     //影院评论
     //影院评论点赞
-
+    public static final String CINEMA_COMMENT_GREAT = "cinema/v1/verify/cinemaCommentGreat";
     //意见反馈
     public static final String APP_FEED_BACK = "tool/v1/verify/recordFeedBack";
     //查询新版本

@@ -37,7 +37,7 @@ public class CinemaCommentListAdapter extends XRecyclerView.Adapter<CinemaCommen
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyHolder myHolder, int i) {
+    public void onBindViewHolder(@NonNull MyHolder myHolder,final int i) {
         CinemaCommentBean.ResultBean bean = list.get(i);
         myHolder.commentHeadPic.setImageURI(bean.getCommentHeadPic());
         myHolder.commentUserName.setText(bean.getCommentUserName());
@@ -46,16 +46,16 @@ public class CinemaCommentListAdapter extends XRecyclerView.Adapter<CinemaCommen
         myHolder.greatNum.setText(bean.getGreatNum()+"");
         if (bean.getIsGreat()==1){
             // 已经点赞
-
+            myHolder.isGreat.setImageResource(R.drawable.com_icon_praise_selected);
         }else{
             // 没有点赞
-
+            myHolder.isGreat.setImageResource(R.drawable.com_icon_praise_default);
         }
         myHolder.isGreat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // 点击  点赞  请求点赞接口
-
+                listener.onGreat(i);
             }
         });
 
@@ -79,5 +79,13 @@ public class CinemaCommentListAdapter extends XRecyclerView.Adapter<CinemaCommen
             greatNum = itemView.findViewById(R.id.greatNum);
             isGreat = itemView.findViewById(R.id.isGreat);
         }
+    }
+    // 传递接口
+    private OnGreatListener listener;
+    public void setOnGreatListener(OnGreatListener listener){
+        this.listener = listener;
+    }
+    public interface OnGreatListener{
+        void onGreat(int position);
     }
 }

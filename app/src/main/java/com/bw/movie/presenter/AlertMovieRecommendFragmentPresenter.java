@@ -3,10 +3,12 @@ package com.bw.movie.presenter;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.adapter.CinemaCommentListAdapter;
 import com.bw.movie.mvp.model.CinemaCommentBean;
+import com.bw.movie.mvp.model.CinemaFollowMessageBean;
 import com.bw.movie.mvp.view.AppDelegate;
 import com.bw.movie.net.HttpUrl;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -16,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AlertMovieRecommendFragmentPresenter extends AppDelegate{
+public class AlertMovieRecommendFragmentPresenter extends AppDelegate implements CinemaCommentListAdapter.OnGreatListener {
     private Context context;
     private XRecyclerView mRecyclerList;
     private int cinemaId;
@@ -53,7 +55,10 @@ public class AlertMovieRecommendFragmentPresenter extends AppDelegate{
         map.put("cinemaId",cinemaId+"");
         map.put("page",page+"");
         map.put("count",10+"");
-        getBean(0, HttpUrl.CINEMA_COMMENT_ALL,map, CinemaCommentBean.class,false);// 此处要改为true
+        getBean(0, HttpUrl.CINEMA_COMMENT_ALL,map, CinemaCommentBean.class,true);// 此处要改为true
+
+        // 监听点赞
+        commentListAdapter.setOnGreatListener(this);
     }
 
     @Override
@@ -65,6 +70,29 @@ public class AlertMovieRecommendFragmentPresenter extends AppDelegate{
                 list = commentBean.getResult();
                 commentListAdapter.setList(list);
                 break;
+            case 1:
+                CinemaFollowMessageBean messageBean = (CinemaFollowMessageBean) bean;
+                Toast.makeText(context,messageBean.getMessage(),Toast.LENGTH_SHORT).show();
+                if ("点赞成功".equals(messageBean.getMessage())){
+                    refresh();
+                }
+                break;
         }
+    }
+
+    private void refresh() {
+        Map<String,String> map = new HashMap<>();
+        map.put("cinemaId",cinemaId+"");
+        map.put("page",page+"");
+        map.put("count",10+"");
+        getBean(0, HttpUrl.CINEMA_COMMENT_ALL,map, CinemaCommentBean.class,true);// 此处要改为true
+    }
+
+    @Override
+    public void onGreat(int position) {
+        int commentId = list.get(position).getCommentId();
+        Map<String, String> map = new HashMap<>();
+        map.put("commentId",commentId+"");
+        postBean(1,HttpUrl.CINEMA_COMMENT_GREAT,map, CinemaFollowMessageBean.class,true);
     }
 }

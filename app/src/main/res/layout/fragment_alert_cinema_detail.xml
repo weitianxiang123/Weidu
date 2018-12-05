@@ -37,7 +37,7 @@
         <ImageView
             android:layout_width="@dimen/dp_24"
             android:layout_height="@dimen/dp_24"
-            android:src="@drawable/detail_icon_location_default" />
+            android:src="@drawable/cinema_detail_icon_phone_default" />
 
         <TextView
             android:id="@+id/cinema_phone"
@@ -59,7 +59,7 @@
         <ImageView
             android:layout_width="@dimen/dp_24"
             android:layout_height="@dimen/dp_24"
-            android:src="@drawable/detail_icon_location_default" />
+            android:src="@drawable/cinema_detail_icon_route_default" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -67,6 +67,7 @@
             android:layout_marginLeft="@dimen/dp_10"
             android:text="乘车路线"
             android:textColor="#333333"
+            android:gravity="center_vertical"
             android:textSize="@dimen/sp_12" />
     </LinearLayout>
 
