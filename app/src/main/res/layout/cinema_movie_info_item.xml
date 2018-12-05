@@ -5,6 +5,7 @@
     android:gravity="center">
 
     <RelativeLayout
+        android:background="@drawable/cinema_list_item_bg"
         android:layout_width="@dimen/dp_312"
         android:layout_height="@dimen/dp_70"
         android:layout_marginBottom="@dimen/dp_20"
@@ -29,6 +30,7 @@
             android:layout_below="@id/screeningHall"
             android:layout_width="wrap_content"
             android:gravity="center_vertical"
+            android:orientation="horizontal"
             android:layout_height="match_parent">
             <TextView
                 android:id="@+id/beginTime"
@@ -47,22 +49,23 @@
             <TextView
                 android:id="@+id/endTime"
                 android:layout_width="wrap_content"
-                android:textSize="@dimen/sp_18"
+                android:textSize="18sp"
                 android:layout_height="wrap_content"
                 android:text="17:50"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/sp_14"
+                android:textSize="14sp"
+                android:layout_marginTop="@dimen/dp_1"
                 android:layout_marginLeft="3dp"
-                android:layout_marginTop="4dp"
                 android:text="end"/>
         </LinearLayout>
         <ImageView
             android:id="@+id/into"
-            android:src="@drawable/com_icon_my_default"
+            android:src="@drawable/com_icon_next_default"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:padding="@dimen/dp_6"
             android:layout_width="@dimen/dp_24"
             android:layout_height="@dimen/dp_24" />
         <TextView

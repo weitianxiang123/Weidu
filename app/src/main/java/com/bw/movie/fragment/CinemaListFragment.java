@@ -24,4 +24,10 @@ public class CinemaListFragment extends BaseFragment<CinemaListFragmentPresenter
         boolean flag = arguments.getBoolean("flag");
         delegate.initView(mCinemaList,flag);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        delegate.refresh();
+    }
 }

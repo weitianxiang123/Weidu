@@ -80,6 +80,33 @@ public class CinemaFragmentPresenter extends AppDelegate{
                 return fragments.size();
             }
         });
+        // 切换按钮背景
+        cinemaPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                if (i==0){
+                    recommendCinema.setBackgroundResource(R.drawable.cinema_txt_select);
+                    recommendCinema.setTextColor(context.getResources().getColor(R.color.colorFFF));
+                    nearbyCinema.setBackgroundResource(R.drawable.cinema_txt_default);
+                    nearbyCinema.setTextColor(context.getResources().getColor(R.color.color333));
+                }else {
+                    nearbyCinema.setBackgroundResource(R.drawable.cinema_txt_select);
+                    nearbyCinema.setTextColor(context.getResources().getColor(R.color.colorFFF));
+                    recommendCinema.setBackgroundResource(R.drawable.cinema_txt_default);
+                    recommendCinema.setTextColor(context.getResources().getColor(R.color.color333));
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
         // 搜索
         search.setOnSearchListener(new MySearchView.OnSearchListener() {
             @Override
@@ -94,9 +121,13 @@ public class CinemaFragmentPresenter extends AppDelegate{
     public void toRecommend() {
         // 翻页到推荐电影
         cinemaPager.setCurrentItem(0);
+        CinemaListFragment fragment = (CinemaListFragment) fragments.get(0);
+        fragment.onResume();
     }
 
     public void toNearby() {
         cinemaPager.setCurrentItem(1);
+        CinemaListFragment fragment = (CinemaListFragment) fragments.get(1);
+        fragment.onResume();
     }
 }
