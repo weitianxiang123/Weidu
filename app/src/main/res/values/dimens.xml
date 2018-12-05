@@ -128,12 +128,13 @@
     <dimen name="dp_142">142dp</dimen>
     <dimen name="dp_467">467dp</dimen>
     <dimen name="dp_115">115dp</dimen>
-
+    <dimen name="dp_300">300dp</dimen>
     <dimen name="dp_109">109dp</dimen>
     <dimen name="dp_128">128dp</dimen>
     <dimen name="dp_148">148dp</dimen>
     <dimen name="dp_149">149dp</dimen>
     <dimen name="dp_f30">-30dp</dimen>
+    <dimen name="dp_f50">-50dp</dimen>
     <dimen name="dp_111">111dp</dimen>
     <dimen name="dp_205">205dp</dimen>
     <dimen name="dp_284">284dp</dimen>

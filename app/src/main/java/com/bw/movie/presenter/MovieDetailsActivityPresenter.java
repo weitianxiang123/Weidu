@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.CinemaByIdActivity;
 import com.bw.movie.activity.LoginActivity;
 import com.bw.movie.model.MovieEvaluate;
 import com.bw.movie.adapter.MovieAdvandeAdapter;
@@ -127,6 +128,19 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
 
 
 	}
+
+	public void findCinema(){
+
+		if (movieDetatil!=null)
+		{//跳到CinemaByIdActivity
+			Intent intent = new Intent(context, CinemaByIdActivity.class);
+			intent.putExtra("movieName",movieDetatil.getResult().getName());
+			intent.putExtra("movieId",movieDetatil.getResult().getId());
+			context.startActivity(intent);
+		}
+
+	}
+
 
 	//展示影评页面
 	public void showEvaluatePop(){
@@ -574,7 +588,7 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
 
 		Map<String, String> map = new HashMap<>();
 		map.put("movieId", movieDetatil.getResult().getId() + "");
-		if (movieDetatil != null && movieDetatil.getResult().isFollowMovie())//true为为关注
+		if (movieDetatil != null && movieDetatil.getResult().isFollowMovie())//true为没关注
 		{
 			//设置关注
 			movieDetatil.getResult().setFollowMovie(false);

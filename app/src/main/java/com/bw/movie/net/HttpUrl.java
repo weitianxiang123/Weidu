@@ -66,7 +66,9 @@ public class HttpUrl {
     //根据电影ID和影院ID查询电影排期列表
     public static final String CINEMA_MOVIE_INFO = "movie/v1/findMovieScheduleList";
     //根据电影ID查询当前排片该电影的影院列表
+    public static final String STRING_CINEMA_BY_ID="movie/v1/findCinemasListByMovieId";
     //购票下单
+    public static final String STRING_ORDERS_MOVIE="movie/v1/verify/buyMovieTicket";
     //支付【支持微信和支付宝支付】
 
     //查询推荐影院信息
