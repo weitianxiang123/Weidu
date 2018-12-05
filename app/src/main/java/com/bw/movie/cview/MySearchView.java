@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -45,6 +46,12 @@ public class MySearchView extends RelativeLayout implements View.OnClickListener
         faker.setOnClickListener(this);
         img.setOnClickListener(this);
         toSearch.setOnClickListener(this);
+        content.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+            }
+        });
         addView(view);
     }
 
@@ -72,10 +79,10 @@ public class MySearchView extends RelativeLayout implements View.OnClickListener
     // 点击跳转到搜索展示页
     private void toSearchCinema() {
         String txt = editTxt.getText().toString().trim();
-        if (TextUtils.isEmpty(txt)){
+        /*if (TextUtils.isEmpty(txt)){
             Toast.makeText(context,"输入为空",Toast.LENGTH_SHORT).show();
             return;
-        }
+        }*/
         // 传递搜索内容
         if (listener!=null){
             listener.Search(txt);

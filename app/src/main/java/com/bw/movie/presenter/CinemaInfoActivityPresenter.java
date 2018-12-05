@@ -148,6 +148,9 @@ public class CinemaInfoActivityPresenter extends AppDelegate implements CoverFlo
             }
         });
 
+
+
+
     }
 
     private void initFragments() {
