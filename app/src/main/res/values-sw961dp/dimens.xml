@@ -128,6 +128,7 @@
 	<dimen name="dp_142">379.0611dp</dimen>
 	<dimen name="dp_467">1246.6306dp</dimen>
 	<dimen name="dp_115">306.9861dp</dimen>
+	<dimen name="dp_f50">-133.4722dp</dimen>
 	<dimen name="dp_109">290.9694dp</dimen>
 	<dimen name="dp_128">341.6889dp</dimen>
 	<dimen name="dp_148">395.0778dp</dimen>
@@ -146,6 +147,7 @@
 	<dimen name="dp_123">328.3417dp</dimen>
 	<dimen name="dp_223">595.2861dp</dimen>
 	<dimen name="dp_270">720.7500dp</dimen>
+	<dimen name="dp_300">800.8333dp</dimen>
 	<dimen name="dp_192">512.5333dp</dimen>
 	<dimen name="dp_170">453.8056dp</dimen>
 	<dimen name="dp_320">854.2222dp</dimen>
@@ -155,5 +157,4 @@
 	<dimen name="dp_190">507.1944dp</dimen>
 	<dimen name="dp_340">907.6111dp</dimen>
 	<dimen name="dp_480">1281.3333dp</dimen>
-	<dimen name="dp_300">800.8333dp</dimen>
 </resources>
