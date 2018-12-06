@@ -27,6 +27,7 @@
             android:layout_toRightOf="@+id/ima_view1"
             android:background="@drawable/shape_login"
             android:hint="手机号"
+            android:textColor="#ffffff"
             android:paddingLeft="@dimen/dp_10"
             android:textColorHint="#FFFFFF" />
 
@@ -58,6 +59,7 @@
             android:layout_toRightOf="@+id/ima_view2"
             android:background="@drawable/shape_login"
             android:hint="登录密码"
+            android:textColor="#ffffff"
             android:paddingLeft="@dimen/dp_10"
             android:textColorHint="#FFFFFF" />
 
