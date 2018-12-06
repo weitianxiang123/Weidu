@@ -146,7 +146,6 @@
 	<dimen name="dp_123">182.1083dp</dimen>
 	<dimen name="dp_223">330.1639dp</dimen>
 	<dimen name="dp_270">399.7500dp</dimen>
-	<dimen name="dp_300">444.1667dp</dimen>
 	<dimen name="dp_192">284.2667dp</dimen>
 	<dimen name="dp_170">251.6944dp</dimen>
 	<dimen name="dp_320">473.7778dp</dimen>
@@ -156,4 +155,5 @@
 	<dimen name="dp_190">281.3056dp</dimen>
 	<dimen name="dp_340">503.3889dp</dimen>
 	<dimen name="dp_480">710.6667dp</dimen>
+	<dimen name="dp_300">444.1667dp</dimen>
 </resources>

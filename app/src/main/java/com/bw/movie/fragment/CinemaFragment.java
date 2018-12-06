@@ -46,6 +46,7 @@ public class CinemaFragment extends BaseFragment<CinemaFragmentPresenter>{
         switch (view.getId()){
             case R.id.recommendCinema:
                 delegate.toRecommend();
+
                 break;
             case R.id.nearbyCinema:
                 delegate.toNearby();

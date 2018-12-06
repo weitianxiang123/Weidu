@@ -17,7 +17,7 @@ public class MovieFragment extends BaseFragment<MovieFragmentPresenter> {
 
 	@BindView(R.id.xRefresh)
 	XRecyclerView xRecyclerView;
-	@Override
+
 	public Class<MovieFragmentPresenter> getClassDelegate() {
 
 		return MovieFragmentPresenter.class;

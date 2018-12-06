@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:paddingTop="@dimen/dp_10">
 
@@ -12,6 +13,7 @@
         android:orientation="horizontal">
 
         <com.facebook.drawee.view.SimpleDraweeView
+            app:roundedCornerRadius="@dimen/dp_15"
             android:id="@+id/commentHeadPic"
             android:layout_width="@dimen/dp_40"
             android:layout_height="@dimen/dp_40"
@@ -67,7 +69,7 @@
             android:layout_height="@dimen/dp_16"
             android:layout_marginRight="@dimen/dp_6"
             android:layout_toLeftOf="@id/greatNum"
-            android:src="@drawable/detail_icon_location_default" />
+            android:src="@drawable/com_icon_praise_default" />
     </RelativeLayout>
 
     <View

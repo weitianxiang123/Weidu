@@ -8,7 +8,7 @@
     >
     <RelativeLayout
         android:layout_marginTop="@dimen/dp_80"
-        android:layout_width="@dimen/dp_300"
+        android:layout_width="@dimen/dp_312"
         android:gravity="center"
         android:layout_height="@dimen/dp_40">
         <ImageView

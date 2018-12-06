@@ -66,7 +66,9 @@ public class HttpUrl {
     //根据电影ID和影院ID查询电影排期列表
     public static final String CINEMA_MOVIE_INFO = "movie/v1/findMovieScheduleList";
     //根据电影ID查询当前排片该电影的影院列表
+    public static final String STRING_CINEMA_BY_ID="movie/v1/findCinemasListByMovieId";
     //购票下单
+    public static final String STRING_ORDERS_MOVIE="movie/v1/verify/buyMovieTicket";
     //支付【支持微信和支付宝支付】
 
     //查询推荐影院信息
@@ -80,12 +82,15 @@ public class HttpUrl {
 
 
     //关注影院
+    public static final String CINEMA_FOLLOW = "cinema/v1/verify/followCinema";
     //取消关注影院
+    public static final String CINEMA_FOLLOW_CANCEL = "cinema/v1/verify/cancelFollowCinema";
     //查询影院用户评论列表
     public static final String CINEMA_COMMENT_ALL = "cinema/v1/findAllCinemaComment";
     //影院评论
+    public static final String CINEMA_COMMENT = "cinema/v1/verify/cinemaComment";
     //影院评论点赞
-
+    public static final String CINEMA_COMMENT_GREAT = "cinema/v1/verify/cinemaCommentGreat";
     //意见反馈
     public static final String APP_FEED_BACK = "tool/v1/verify/recordFeedBack";
     //查询新版本

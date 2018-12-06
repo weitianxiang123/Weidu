@@ -77,7 +77,7 @@ public class MovieDetailsActivity extends BaseActivity<MovieDetailsActivityPrese
 				delegate.showEvaluatePop();
 				break;
 			case R.id.textBuy:
-				startActivity(new Intent(this,SelectSeatActivity.class));
+				delegate.findCinema();
 				break;
 
 
