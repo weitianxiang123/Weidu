@@ -14,6 +14,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
@@ -183,6 +184,31 @@ public class HttpHelper {
 
         return this;
     }
+
+
+    public HttpHelper upHeadImage(String url, MultipartBody.Part part){
+
+
+        if (true)
+        {
+            mbBaseService.upHead(url,userId,sessionId,part)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(observer);
+        }else
+        {
+
+     /*       Log.i("HttpHelper","weatherHead,我执行了");
+            mbBaseService.headGet(url,map,userId,sessionId)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(observer);*/
+            //  get未更新
+        }
+
+        return this;
+    }
+
     public HttpHelper lrPost(String url,Map<String, String> map)
     {
         if (map==null){
