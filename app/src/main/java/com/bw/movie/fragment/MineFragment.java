@@ -69,7 +69,7 @@ public class MineFragment extends BaseFragment<MineFragmentPresenter> {
             case R.id.mine_feedback:
                 delegate.tofeedback();
                 break;
-            //最新版本
+            //最新版本9
             case R.id.mine_version:
                 delegate.toversion();
                 break;

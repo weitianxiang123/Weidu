@@ -2,6 +2,7 @@ package com.bw.movie.net;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.bw.movie.model.RootMessage;
 import com.bw.movie.utils.ShareUtil;
@@ -55,10 +56,19 @@ public class HttpHelper {
         if (headMap == null) {
             headMap = new HashMap<>();
         }
-        mbBaseService.mineGet(url, map, headMap)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer);
+        if (isLogin){
+            RootMessage.ResultBean result = ShareUtil.getRootMessage(context).getResult();
+            headMap.put("userId",result.getUserId()+"");
+            headMap.put("sessionId",result.getSessionId());
+            mbBaseService.mineGet(url, map, headMap)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(observer);
+        }else {
+            Toast.makeText(context, "用户当前没有登录", Toast.LENGTH_SHORT).show();
+        }
+
+
         return this;
     }
     //mineGet
@@ -69,10 +79,17 @@ public class HttpHelper {
         if (headMap == null) {
             headMap = new HashMap<>();
         }
-        mbBaseService.minePost(url, map, headMap)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer);
+        if (isLogin){
+            RootMessage.ResultBean result = ShareUtil.getRootMessage(context).getResult();
+            headMap.put("userId",result.getUserId()+"");
+            headMap.put("sessionId",result.getSessionId());
+            mbBaseService.minePost(url, map, headMap)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(observer);
+        }else {
+            Toast.makeText(context, "用户当前没有登录", Toast.LENGTH_SHORT).show();
+        }
         return this;
     }
 
@@ -150,7 +167,6 @@ public class HttpHelper {
      * @param url
      * @param fMap
      * @param map
-     * @param isPost  //这个需要的时候再添加
      * @return
      *
      *  //执行带请求头的请求

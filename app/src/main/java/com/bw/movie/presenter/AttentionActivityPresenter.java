@@ -52,11 +52,13 @@ public class AttentionActivityPresenter extends AppDelegate {
     @Override
     public void initData() {
         super.initData();
+        //往viewpager添加两个fragment
         listFragment.add(new AttentionCinemaFragment());
         listFragment.add(new AttentionMovieFragment());
         MovieViewPagerAdapter movieViewPagerAdapter
                 = new MovieViewPagerAdapter(((AttentionActivity) context).getSupportFragmentManager(), listFragment);
         mViewPager.setAdapter(movieViewPagerAdapter);
+        //给viewpager设置滑动监听
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i1) {
@@ -79,6 +81,9 @@ public class AttentionActivityPresenter extends AppDelegate {
         });
     }
 
+    /**
+     * movie页面相对应的页面操作
+     */
     public void setMovieIndex() {
         mViewPager.setCurrentItem(0);
         //给电影按钮赋值
@@ -88,7 +93,9 @@ public class AttentionActivityPresenter extends AppDelegate {
         mCinemaCinema.setTextColor(Color.BLACK);
         mCinemaCinema.setBackgroundResource(R.drawable.shape_attention_bg);
     }
-
+    /**
+     * Cinema页面相对应的页面操作
+     */
     public void setCinemaIndex() {
         mViewPager.setCurrentItem(1);
         //给电影按钮赋值

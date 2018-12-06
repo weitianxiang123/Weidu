@@ -82,13 +82,14 @@ public class UpdateInfoActivityPresenter extends AppDelegate {
 
 
     /**
-     * 给页面的text赋值
+     * 当第刚进入页面给text赋值
      *
      * @param userInfo
      */
     private void initSetText(RootMessage.ResultBean.UserInfoBean userInfo) {
         mUpdateHead.setImageURI(userInfo.getHeadPic());
         mUpdateName.setText(userInfo.getNickName());
+
         if (userInfo.getSex() == 1) {
             mUpdateSex.setText("男");
         } else {
@@ -108,6 +109,13 @@ public class UpdateInfoActivityPresenter extends AppDelegate {
         initUpdateText(userId, sessionId);
     }
 
+    /**
+     * 修改数据
+     * 更新数据
+     *
+     * @param userId
+     * @param sessionId
+     */
     private void initUpdateText(int userId, String sessionId) {
         Map<String, String> headMap = new HashMap<>();
         headMap.put("userId", userId + "");
@@ -122,8 +130,11 @@ public class UpdateInfoActivityPresenter extends AppDelegate {
         } else {
             Toast.makeText(context, "请输入正确的性别", Toast.LENGTH_SHORT).show();
         }
-
+        /*
+        这里的put"email"因为接口问题不得不设置成死数据
+         */
         map.put("email", "123@qq.com");
+        //修改信息的网络请求
         new HttpHelper(context).minePost(HttpUrl.STRING_UPDATA_USER, map, headMap).result(new HttpListener() {
             @Override
             public void success(String data) {
@@ -139,6 +150,10 @@ public class UpdateInfoActivityPresenter extends AppDelegate {
                     map.put("phone", phone);
                     final String encrypt = EncryptUtil.encrypt(possword);
                     map.put("pwd", encrypt);
+                    /**
+                     * 在修改完数据之后重新请求下, 刷新shard里面的用户数据
+                     *
+                     */
                     new HttpHelper(context).lrPost(HttpUrl.STRING_LOGIN, map).result(new HttpListener() {
                         @Override
                         public void success(String data) {

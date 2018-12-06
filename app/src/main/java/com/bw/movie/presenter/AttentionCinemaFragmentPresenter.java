@@ -63,8 +63,10 @@ public class AttentionCinemaFragmentPresenter extends AppDelegate {
         mXRecyclerView.setLayoutManager(manager);
         mXRecyclerView.setAdapter(attentionCinemaAdpter);
         //开启上拉加载 但是当前page只有一页只能关闭加载不然会发生空白
-       // mXRecyclerView.setLoadingMoreEnabled(true);
+        // mXRecyclerView.setLoadingMoreEnabled(true);
+        //开启上拉刷新
         mXRecyclerView.setPullRefreshEnabled(true);
+        //设置xrecyclerview监听
         mXRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
@@ -79,9 +81,14 @@ public class AttentionCinemaFragmentPresenter extends AppDelegate {
         });
     }
 
+    /**
+     * 影片页面的网络请求
+     *
+     * @param page
+     */
     private void doHttp(int page) {
-            Map<String, String> map = new HashMap<>();
-            Map<String, String> headerMap = new HashMap<>();
+        Map<String, String> map = new HashMap<>();
+        Map<String, String> headerMap = new HashMap<>();
         RootMessage rootMessage = ShareUtil.getRootMessage(context);
         RootMessage.ResultBean result = rootMessage.getResult();
         headerMap.put("userId", result.getUserId() + "");
@@ -94,7 +101,7 @@ public class AttentionCinemaFragmentPresenter extends AppDelegate {
                 Log.i("AttentionCinemaFragment", data);
                 AttentionMovieBean attentionCinema = new Gson().fromJson(data, AttentionMovieBean.class);
                 nearbyCinemaList = attentionCinema.getResult();
-                if (nearbyCinemaList.size()==0){
+                if (nearbyCinemaList.size() == 0) {
                     return;
                 }
                 nearbyCinemaListAll.addAll(nearbyCinemaList);
