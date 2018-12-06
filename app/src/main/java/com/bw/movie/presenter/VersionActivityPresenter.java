@@ -51,6 +51,11 @@ public class VersionActivityPresenter extends AppDelegate {
 
     }
 
+    /**
+     * 检查更新的网络请求
+     * @param type
+     * @param data
+     */
     @Override
     public void successString(int type, String data) {
         super.successString(type, data);

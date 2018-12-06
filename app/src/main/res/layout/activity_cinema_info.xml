@@ -133,7 +133,6 @@
 
     <!--  弹出详情评论  -->
     <RelativeLayout
-
         android:visibility="gone"
         android:id="@+id/info_alert"
         android:layout_width="match_parent"

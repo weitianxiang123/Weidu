@@ -36,10 +36,12 @@
         <activity android:name=".activity.CinemaSearchActivity" />
         <activity android:name=".activity.RegActivity" />
         <activity android:name=".activity.FeedBackSuccessActivity" />
-        <activity android:name=".activity.UpdateInfoActivity"></activity>
-        <activity android:name=".activity.SelectSeatActivity"></activity>
-        <activity android:name=".activity.BuyTicketDetailActivity"></activity>
-        <activity android:name=".activity.MovieListActivity"></activity>
+        <activity android:name=".activity.UpdateInfoActivity" />
+        <activity android:name=".activity.SelectSeatActivity" />
+        <activity android:name=".activity.BuyTicketDetailActivity" />
+        <activity android:name=".activity.MovieListActivity" />
+        <activity android:name=".activity.GuiLoginActivity" />
+        <activity android:name=".activity.ResertPassActivity"></activity>
         <activity android:name=".activity.CinemaByIdActivity"></activity>
 
         <activity

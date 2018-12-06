@@ -11,6 +11,10 @@ import com.bw.movie.presenter.AttentionActivityPresenter;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+/**
+ * 我的关注
+ * 张秋阳
+ */
 public class AttentionActivity extends BaseActivity<AttentionActivityPresenter> {
     @BindView(R.id.mine_attention_viewpager)
     ViewPager mViewPager;
@@ -36,9 +40,11 @@ public class AttentionActivity extends BaseActivity<AttentionActivityPresenter> 
         switch (v.getId()) {
             default:
                 break;
+                //点击进入我关注的影片
             case R.id.attention_movie:
                 delegate.setMovieIndex();
                 break;
+                //点击进入我关注的影院
             case R.id.nearby_cinema:
                 delegate.setCinemaIndex();
                 break;
