@@ -70,7 +70,7 @@ public class HttpUrl {
     //购票下单
     public static final String STRING_ORDERS_MOVIE="movie/v1/verify/buyMovieTicket";
     //支付【支持微信和支付宝支付】
-
+    public static final String PAY="movie/v1/verify/pay";
     //查询推荐影院信息
     public static final String RECOMMEND_CINEMA = "cinema/v1/findRecommendCinemas";
     //查询电影信息明细
