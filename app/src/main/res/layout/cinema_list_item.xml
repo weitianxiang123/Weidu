@@ -36,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:text="影院名称"
                 android:textColor="#333333"
+                android:maxLines="1"
                 android:textSize="@dimen/sp_14" />
 
             <TextView
