@@ -3,9 +3,9 @@
     package="com.bw.movie">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:name=".application.App"
         android:allowBackup="true"
@@ -36,13 +36,27 @@
         <activity android:name=".activity.CinemaSearchActivity" />
         <activity android:name=".activity.RegActivity" />
         <activity android:name=".activity.FeedBackSuccessActivity" />
-        <activity android:name=".activity.UpdateInfoActivity"></activity>
-        <activity android:name=".activity.SelectSeatActivity"></activity>
-        <activity android:name=".activity.BuyTicketDetailActivity"></activity>
-        <activity android:name=".activity.MovieListActivity"></activity>
-        <activity android:name=".activity.GuiLoginActivity"></activity>
-        <activity android:name=".activity.GuiRegActivity"></activity>
+        <activity android:name=".activity.UpdateInfoActivity" />
+        <activity android:name=".activity.SelectSeatActivity" />
+        <activity android:name=".activity.BuyTicketDetailActivity" />
+        <activity android:name=".activity.MovieListActivity" />
+        <activity android:name=".activity.GuiLoginActivity" />
+        <activity android:name=".activity.ResertPassActivity"></activity>
+        <activity android:name=".activity.CinemaByIdActivity"></activity>
 
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="wxb3852e6a6b7d9516" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

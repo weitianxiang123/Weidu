@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.ResertPassActivity;
 import com.bw.movie.activity.UpdateInfoActivity;
 import com.bw.movie.model.LoginBean;
 import com.bw.movie.model.RootMessage;
@@ -90,9 +91,12 @@ public class MessiageActivityPresenter extends AppDelegate {
         this.btStartButton = btStartButton;
     }
 
-
+    /**
+     * 给修改按钮设置动画
+     * 看起来更加美观
+     */
     public void OnLongTouch() {
-        objectAnimator2=ObjectAnimator.ofFloat(btStartButton,"alpha",1,0.5F,0,0.5F,1);
+        objectAnimator2 = ObjectAnimator.ofFloat(btStartButton, "alpha", 1, 0.5F, 0, 0.5F, 1);
         objectAnimator2.setDuration(10000);
         objectAnimator2.setRepeatCount(10);
         objectAnimator2.start();
@@ -100,11 +104,17 @@ public class MessiageActivityPresenter extends AppDelegate {
         objectAnimator2.cancel();
     }
 
+    /**
+     * 跳转修改页面
+     */
     public void startBt() {
         context.startActivity(new Intent(context, UpdateInfoActivity.class));
         btStartButton.setVisibility(View.GONE);
     }
 
+    /**
+     * onResume方法
+     */
     public void refresh() {
         showsText();
     }
@@ -114,6 +124,9 @@ public class MessiageActivityPresenter extends AppDelegate {
 
     }
 
+    /**
+     * 给页面的数据赋值
+     */
     private void setInfo() {
         RootMessage rootData = ShareUtil.getRootMessage(context);
         userInfo = rootData.getResult().getUserInfo();
@@ -133,5 +146,9 @@ public class MessiageActivityPresenter extends AppDelegate {
         }
         mMessiageMobile.setText(userInfo.getPhone());
         mMessiageEmil.setText(userInfo.getEmail());
+    }
+
+    public void resertPass() {
+        context.startActivity(new Intent(context, ResertPassActivity.class));
     }
 }

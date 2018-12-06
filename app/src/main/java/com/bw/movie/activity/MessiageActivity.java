@@ -59,7 +59,7 @@ public class MessiageActivity extends BaseActivity<MessiageActivityPresenter> {
         delegate.initView(mMessageHead, mMessiageName, mMessiageSex, mMessiageData, mMessiageMobile, mMessiageEmil, mUserExit, btStartButton);
     }
 
-    @OnClick({R.id.user_exit,R.id.update_bt_start})
+    @OnClick({R.id.user_exit,R.id.update_bt_start,R.id.messiage_info_resert})
     public void onClick(View v) {
         switch (v.getId()) {
             default:
@@ -68,12 +68,23 @@ public class MessiageActivity extends BaseActivity<MessiageActivityPresenter> {
                 //点击退出
                 delegate.exitUser();
                 break;
+                //点击进入修改页面
             case R.id.update_bt_start:
                 delegate.startBt();
                 break;
+                //点击进入充值密码页面
+            case R.id.messiage_info_resert:
+                delegate.resertPass();
+                break;
+
         }
     }
 
+    /**
+     * 设置长按事件长按显示修改按钮
+     * @param view
+     * @return
+     */
     @OnLongClick({R.id.update_layout,R.id.update_layout2})
     public boolean OnLongClick(View view) {
         switch (view.getId()) {

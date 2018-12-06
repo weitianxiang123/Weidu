@@ -1,6 +1,7 @@
 package com.bw.movie.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.SelectSeatActivity;
 import com.bw.movie.mvp.model.CinemaMovieInfoBean;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -42,6 +44,16 @@ public class CinemaMovieInfoAdapter extends XRecyclerView.Adapter<CinemaMovieInf
         myHolder.endTime.setText(bean.getEndTime());
         myHolder.price.setText(bean.getPrice()+"");
 
+        myHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, SelectSeatActivity.class);
+                intent.putExtra("scheduleId",bean.getId());
+                intent.putExtra("price",bean.getPrice());
+                context.startActivity(intent);
+
+            }
+        });
     }
 
     @Override

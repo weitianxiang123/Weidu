@@ -16,7 +16,7 @@ public class HttpUrl {
     //上传用户头像
     public static final String STRING_BTN_HEAD = "user/v1/verify/uploadHeadPic";
     //修改密码
-    public static final String STRING_UPDATA = "";
+    public static final String STRING_UPDATA = "user/v1/verify/modifyUserPwd";
     //根据用户ID查询用户信息
     public static final String STRING_ID_SELECT = "";
     //用户签到
@@ -66,9 +66,11 @@ public class HttpUrl {
     //根据电影ID和影院ID查询电影排期列表
     public static final String CINEMA_MOVIE_INFO = "movie/v1/findMovieScheduleList";
     //根据电影ID查询当前排片该电影的影院列表
+    public static final String STRING_CINEMA_BY_ID="movie/v1/findCinemasListByMovieId";
     //购票下单
+    public static final String STRING_ORDERS_MOVIE="movie/v1/verify/buyMovieTicket";
     //支付【支持微信和支付宝支付】
-
+    public static final String PAY="movie/v1/verify/pay";
     //查询推荐影院信息
     public static final String RECOMMEND_CINEMA = "cinema/v1/findRecommendCinemas";
     //查询电影信息明细
@@ -80,12 +82,15 @@ public class HttpUrl {
 
 
     //关注影院
+    public static final String CINEMA_FOLLOW = "cinema/v1/verify/followCinema";
     //取消关注影院
+    public static final String CINEMA_FOLLOW_CANCEL = "cinema/v1/verify/cancelFollowCinema";
     //查询影院用户评论列表
     public static final String CINEMA_COMMENT_ALL = "cinema/v1/findAllCinemaComment";
     //影院评论
+    public static final String CINEMA_COMMENT = "cinema/v1/verify/cinemaComment";
     //影院评论点赞
-
+    public static final String CINEMA_COMMENT_GREAT = "cinema/v1/verify/cinemaCommentGreat";
     //意见反馈
     public static final String APP_FEED_BACK = "tool/v1/verify/recordFeedBack";
     //查询新版本
@@ -93,7 +98,9 @@ public class HttpUrl {
     //查询系统消息列表
     public static final String SYSM_SGLIST = "tool/v1/verify/findAllSysMsgList";
     //系统消息读取状态修改
+    public static  final String MSG_STATUS = "tool/v1/verify/changeSysMsgStatus";
     //查询用户当前未读消息数量
+    public static  final  String MESSAGE_CONTENT = "tool/v1/verify/findUnreadMessageCount";
     //上传信鸽推送token
     //微信分享
 

@@ -64,6 +64,10 @@ public class UpdateInfoActivity extends BaseActivity<UpdateInfoActivityPresenter
         delegate.initView(mUpdateHead,mUpdateLayout,mUpdateName,mUpdateSex,mUpdateData,mUpdateMobile,mUpdateEmil);
     }
 
+    /**
+     * 点击确定修改信息
+     * @param v
+     */
     @OnClick(R.id.save_updata_info)
     public void onClick(View v) {
         switch (v.getId()) {

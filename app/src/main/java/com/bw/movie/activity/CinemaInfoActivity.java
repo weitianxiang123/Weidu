@@ -1,6 +1,7 @@
 package com.bw.movie.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import recycler.coverflow.RecyclerCoverFlow;
+
 /*
 * 影院详情页面
 * */
@@ -44,6 +46,10 @@ public class CinemaInfoActivity extends BaseActivity<CinemaInfoActivityPresenter
     ImageView closeImg;
     @BindView(R.id.info_pager)
     ViewPager info_pager;
+    @BindView(R.id.line_detail)
+    View lineDetail;
+    @BindView(R.id.line_comment)
+    View lineComment;
 
     @Override
     public Class<CinemaInfoActivityPresenter> getClassDelegate() {
@@ -68,10 +74,14 @@ public class CinemaInfoActivity extends BaseActivity<CinemaInfoActivityPresenter
             case R.id.txt_to_detail:
                 // 前往详情
                 delegate.toDetails();
+                lineDetail.setBackgroundResource(R.drawable.cinema_txt_select);
+                lineComment.setBackgroundResource(R.color.colorFFF);
                 break;
             case R.id.txt_to_comment:
                 // 前往评论
                 delegate.toComment();
+                lineComment.setBackgroundResource(R.drawable.cinema_txt_select);
+                lineDetail.setBackgroundResource(R.color.colorFFF);
                 break;
             case R.id.cinema_logo:
                 // 展开弹出框
