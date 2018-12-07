@@ -42,9 +42,8 @@
         <activity android:name=".activity.BuyTicketDetailActivity" />
         <activity android:name=".activity.MovieListActivity" />
         <activity android:name=".activity.GuiLoginActivity" />
-        <activity android:name=".activity.ResertPassActivity"></activity>
-        <activity android:name=".activity.CinemaByIdActivity"></activity>
-
+        <activity android:name=".activity.ResertPassActivity" />
+        <activity android:name=".activity.CinemaByIdActivity" />
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:exported="true"
@@ -58,6 +57,7 @@
                 <data android:scheme="wxb3852e6a6b7d9516" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.NetNoneActivity"></activity>
     </application>
 
 </manifest>

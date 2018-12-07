@@ -18,6 +18,7 @@ import com.bw.movie.model.MovieItem;
 import com.bw.movie.model.MoviePage;
 import com.bw.movie.net.HttpHelper;
 import com.bw.movie.net.HttpListener;
+import com.bw.movie.net.HttpSaveUtil;
 import com.google.gson.Gson;
 
 import java.net.ConnectException;
@@ -76,15 +77,16 @@ public class MoviePagerAdapter extends RecyclerView.Adapter<MoviePagerAdapter.My
 		//执行网络请求
 		new HttpHelper(context).get(data.get(i).getUrl(), map,true).result(new HttpListener() {
 			@Override
-			public void success(String data) {
-				movieItem = new Gson().fromJson(data, MovieItem.class);
+			public void success(String d) {
+				movieItem = new Gson().fromJson(d, MovieItem.class);
+				HttpSaveUtil.save(data.get(i).getUrl(),d);
 				adapter.setData(movieItem);
 				adapter.notifyDataSetChanged();
 			}
 
 			@Override
 			public void fail(String error) {
-				Toast.makeText(context, "请联系程序猿小哥哥", Toast.LENGTH_SHORT).show();
+				Toast.makeText(context, ""+error, Toast.LENGTH_SHORT).show();
 			}
 		});
 
