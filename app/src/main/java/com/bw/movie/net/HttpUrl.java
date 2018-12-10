@@ -14,7 +14,7 @@ public class HttpUrl {
     //修改用户信息
     public static final String STRING_UPDATA_USER = "user/v1/verify/modifyUserInfo";
     //上传用户头像
-    public static final String STRING_BTN_HEAD = "";
+    public static final String STRING_BTN_HEAD = "user/v1/verify/uploadHeadPic";
     //修改密码
     public static final String STRING_UPDATA = "user/v1/verify/modifyUserPwd";
     //根据用户ID查询用户信息

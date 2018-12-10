@@ -1,10 +1,15 @@
 package com.bw.movie.net;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.bw.movie.activity.MainActivity;
+import com.bw.movie.activity.NetNoneActivity;
 import com.bw.movie.model.RootMessage;
+import com.bw.movie.utils.NetUtils;
 import com.bw.movie.utils.ShareUtil;
 
 import java.io.IOException;
@@ -15,6 +20,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
@@ -27,8 +33,9 @@ public class HttpHelper {
     private static String BASE_URL = "http://mobile.bwstudent.com/movieApi/";
     private boolean isLogin;
     private RootMessage rootMessage;
-    private  String sessionId;
-    private  int userId;
+    private String sessionId;
+    private int userId;
+    private String url;
 
     public HttpHelper(Context context){
         this.context=context;
@@ -50,6 +57,12 @@ public class HttpHelper {
 
     //mineGet
     public HttpHelper mineGet(String url, Map<String, String> map, Map<String, String> headMap) {
+        if (NetUtils.getNetWorkState(context)==NetUtils.NETWORK_NONE)
+        {
+            this.url=url;
+            return  this;
+        }
+
         if (map == null) {
             map = new HashMap<>();
         }
@@ -73,6 +86,12 @@ public class HttpHelper {
     }
     //mineGet
     public HttpHelper minePost(String url, Map<String, String> map, Map<String, String> headMap) {
+
+        if (NetUtils.getNetWorkState(context)==NetUtils.NETWORK_NONE)
+        {
+            this.url=url;
+            return  this;
+        }
         if (map == null) {
             map = new HashMap<>();
         }
@@ -95,6 +114,11 @@ public class HttpHelper {
 
     // Get请求
     public HttpHelper get(String url, Map<String,String> map,boolean weatherHead){
+        if (NetUtils.getNetWorkState(context)==NetUtils.NETWORK_NONE)
+        {
+            this.url=url;
+            return  this;
+        }
         if (map==null){
             map = new HashMap<>();
         }
@@ -118,6 +142,11 @@ public class HttpHelper {
 
     // Post请求
     public HttpHelper post(String url, Map<String,String> map,boolean weatherHead){
+        if (NetUtils.getNetWorkState(context)==NetUtils.NETWORK_NONE)
+        {
+            this.url=url;
+            return  this;
+        }
         if (map==null){
             map = new HashMap<>();
         }
@@ -143,6 +172,7 @@ public class HttpHelper {
 
     //执行带请求头的请求
     public void weatherHead(String url,Map<String,String> map,boolean isPost){
+
         String sessionId = rootMessage.getResult().getSessionId();
         int userId = rootMessage.getResult().getUserId();
         if (isPost)
@@ -174,6 +204,11 @@ public class HttpHelper {
      *
      */
     public HttpHelper lrHead(String url,Map<String,String> fMap,Map<String,String> map){
+        if (NetUtils.getNetWorkState(context)==NetUtils.NETWORK_NONE)
+        {
+            this.url=url;
+            return  this;
+        }
         if (fMap==null)
             fMap=new HashMap<>();
         if (map==null)
@@ -199,8 +234,38 @@ public class HttpHelper {
 
         return this;
     }
+
+
+    public HttpHelper upHeadImage(String url, MultipartBody.Part part){
+
+
+        if (true)
+        {
+            mbBaseService.upHead(url,userId,sessionId,part)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(observer);
+        }else
+        {
+
+     /*       Log.i("HttpHelper","weatherHead,我执行了");
+            mbBaseService.headGet(url,map,userId,sessionId)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(observer);*/
+            //  get未更新
+        }
+
+        return this;
+    }
+
     public HttpHelper lrPost(String url,Map<String, String> map)
     {
+        if (NetUtils.getNetWorkState(context)==NetUtils.NETWORK_NONE)
+        {
+            this.url=url;
+            return  this;
+        }
         if (map==null){
             map = new HashMap<>();
         }
@@ -240,11 +305,39 @@ public class HttpHelper {
         }
     };
 
+
     // 传递接口
     private HttpListener listener;
+
     public void result(HttpListener listener){
-        this.listener = listener;
+        //判断是否有网络
+        if (NetUtils.getNetWorkState(context)==NetUtils.NETWORK_NONE)
+        {//如果没有网
+            Log.i("saveUtil","没有网络啊");
+            if (!(context instanceof MainActivity))
+            {//如果不是MainActivity
+                context.startActivity(new Intent(context, NetNoneActivity.class));
+                listener.fail("没有网络哦");
+                Activity activity=(Activity)context;
+                activity.finish();
+            }else
+            {
+
+                String s = HttpSaveUtil.get(url);
+                if (s!=null)
+                listener.success(s);
+                else
+                listener.fail("网络开小差了");
+            }
+        }else
+        {
+            this.listener = listener;
+        }
+
     }
+
+
+
 
 
     public void isLogin(){

@@ -6,8 +6,10 @@ import java.util.Map;
 
 
 import io.reactivex.Observable;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
+import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -46,7 +48,12 @@ public interface BaseService {
 
 
 
-
+    //上传头像
+    @Multipart
+    @POST
+    @Headers("ak:0110010010000")
+    Observable<ResponseBody> upHead(@Url String url, @Header("userId") int userId,
+                                    @Header("sessionId") String sessionId, @Part MultipartBody.Part part);
 
   /*  @POST
     @Multipart
