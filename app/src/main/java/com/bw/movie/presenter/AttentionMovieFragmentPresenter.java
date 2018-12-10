@@ -49,9 +49,13 @@ public class AttentionMovieFragmentPresenter extends AppDelegate {
         mXRecyclerView.setLayoutManager(manager);
         mXRecyclerView.setAdapter(attentionMovieAdpter);
         // mXRecyclerView.setLoadingMoreEnabled(true);
+        //开始下拉刷新
         mXRecyclerView.setPullRefreshEnabled(true);
     }
 
+    /**
+     * 影院页面的网络请求
+     */
     private void doHttp() {
         Map<String, String> map = new HashMap<>();
         Map<String, String> headerMap = new HashMap<>();

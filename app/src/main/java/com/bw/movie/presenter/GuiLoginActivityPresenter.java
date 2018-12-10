@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.GuiLoginActivity;
 import com.bw.movie.activity.GuiRegActivity;
 import com.bw.movie.activity.HandelActivity;
 import com.bw.movie.activity.MessiageActivity;
@@ -27,6 +29,9 @@ import com.bw.movie.net.HttpUrl;
 import com.bw.movie.utils.EncryptUtil;
 import com.bw.movie.utils.ShareUtil;
 import com.google.gson.Gson;
+import com.tencent.mm.opensdk.modelmsg.SendAuth;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,6 +56,7 @@ public class GuiLoginActivityPresenter extends AppDelegate {
     private String account;
     private String password;
     private ImageView btn_weixin;
+    private IWXAPI api;
 
     @Override
     public int getLayout() {
@@ -69,6 +75,7 @@ public class GuiLoginActivityPresenter extends AppDelegate {
     @Override
     public void initData() {
         super.initData();
+        api = WXAPIFactory.createWXAPI(context, "wxb3852e6a6b7d9516");
         btnskip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,7 +96,12 @@ public class GuiLoginActivityPresenter extends AppDelegate {
         btn_weixin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context,"目前微信登录正在维护",Toast.LENGTH_LONG).show();
+                //Toast.makeText(context,"目前微信登录正在维护",Toast.LENGTH_LONG).show();
+                SendAuth.Req req = new SendAuth.Req();
+                req.scope = "snsapi_userinfo";
+                Log.i("登录",req.toString());
+                api.sendReq(req);
+                ((GuiLoginActivity)context).finish();
             }
         });
         btn_login.setOnClickListener(new View.OnClickListener() {

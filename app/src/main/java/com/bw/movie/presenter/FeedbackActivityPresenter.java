@@ -51,12 +51,17 @@ public class FeedbackActivityPresenter extends AppDelegate {
 
     }
 
+    /**
+     * 反馈页面的网络请求
+     */
     public void feedBack() {
         String s = mFeedBackEd.getText().toString();
+        //判断如数内容不能为空
         if (TextUtils.isEmpty(s)) {
             Toast.makeText(context, "亲！反馈内容不能为空", Toast.LENGTH_SHORT).show();
             return;
         }
+
         Map<String, String> map = new HashMap<>();
         Map<String, String> headerMap = new HashMap<>();
         RootMessage.ResultBean result = ShareUtil.getRootMessage(context).getResult();

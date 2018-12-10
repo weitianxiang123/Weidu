@@ -38,6 +38,9 @@ public class MineFragmentPresenter extends AppDelegate {
         this.context = context;
     }
 
+    /**
+     * 我的信息
+     */
     public void tomessiage() {
         //判断当前登录状态
         if (ShareUtil.isLogin(context)) {
@@ -49,6 +52,9 @@ public class MineFragmentPresenter extends AppDelegate {
         }
     }
 
+    /**
+     * 我的关注
+     */
     public void toattention() {
         if (ShareUtil.isLogin(context)) {
             context.startActivity(new Intent(context, AttentionActivity.class));
@@ -57,7 +63,9 @@ public class MineFragmentPresenter extends AppDelegate {
         }
     }
 
-
+    /**
+     * 购票记录
+     */
     public void torccord() {
         if (ShareUtil.isLogin(context)) {
             context.startActivity(new Intent(context, RccordActivity.class));
@@ -66,6 +74,9 @@ public class MineFragmentPresenter extends AppDelegate {
         }
     }
 
+    /**
+     * 反馈
+     */
     public void tofeedback() {
         if (ShareUtil.isLogin(context)) {
             context.startActivity(new Intent(context, FeedbackActivity.class));
@@ -74,6 +85,9 @@ public class MineFragmentPresenter extends AppDelegate {
         }
     }
 
+    /**
+     * 检查更新
+     */
     public void toversion() {
         if (ShareUtil.isLogin(context)) {
             context.startActivity(new Intent(context, VersionActivity.class));
@@ -82,6 +96,9 @@ public class MineFragmentPresenter extends AppDelegate {
         }
     }
 
+    /**
+     * 系统消息
+     */
     public void toremind() {
         if (ShareUtil.isLogin(context)) {
             context.startActivity(new Intent(context, RemindActivity.class));

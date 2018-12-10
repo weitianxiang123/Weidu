@@ -133,6 +133,62 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_73"
         android:layout_alignParentBottom="true"
-        android:background="#000000"
-        ></RelativeLayout>
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginRight="@dimen/dp_24"
+        android:background="#f0f"
+        >
+<TextView
+    android:id="@+id/textTotal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="合计:"
+    android:textSize="@dimen/sp_14"
+    android:textColor="#333333"
+    android:layout_alignParentBottom="true"
+    android:layout_marginBottom="@dimen/dp_20"
+    android:layout_marginLeft="@dimen/dp_34"
+
+    />
+        <TextView
+            android:id="@+id/textFlag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_18"
+            android:textColor="#666666"
+            android:text="￥"
+            android:layout_toRightOf="@id/textTotal"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp_20"
+            />
+        <TextView
+            android:id="@+id/textPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_18"
+            android:textColor="#666666"
+            android:text="0.00"
+            android:layout_toRightOf="@id/textFlag"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp_20"
+            />
+
+<ImageView
+    android:id="@+id/imageConform"
+    android:layout_width="@dimen/dp_50"
+    android:layout_height="@dimen/dp_50"
+    android:src="@drawable/group_2"
+    android:layout_toRightOf="@id/textPrice"
+    android:layout_marginLeft="@dimen/dp_50"
+     android:layout_centerVertical="true"
+    />
+<ImageView
+    android:id="@+id/imageCancel"
+    android:layout_width="@dimen/dp_38"
+    android:layout_height="@dimen/dp_38"
+    android:src="@drawable/group_3"
+    android:layout_toRightOf="@id/imageConform"
+    android:layout_marginLeft="@dimen/dp_20"
+    android:layout_centerVertical="true"
+    />
+    </RelativeLayout>
 </RelativeLayout>

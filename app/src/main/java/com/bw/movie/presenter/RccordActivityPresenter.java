@@ -54,6 +54,9 @@ public class RccordActivityPresenter extends AppDelegate {
         doHttp();
     }
 
+    /**
+     * 购片信息页面的网络请求
+     */
     private void doHttp() {
         Map<String, String> map = new HashMap<>();
         Map<String, String> headerMap = new HashMap<>();

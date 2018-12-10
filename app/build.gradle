@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
 android {
+    signingConfigs {
+        debug {
+            keyAlias 'bw_movie'
+            keyPassword '123456'
+            storeFile file('E:/Weidu/app/movie.keystore')
+            storePassword '123456'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.bw.movie"
@@ -14,10 +22,9 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
-
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -38,21 +45,18 @@ dependencies {
     // ButterKnife
     implementation 'com.jakewharton:butterknife:9.0.0-rc1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
-
     //fresco
     implementation 'com.facebook.fresco:fresco:1.11.0'
-
     //xRecycleView
     implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'com.android.support:design:28.0.0'
-
     //旋转木马相册
     implementation 'com.chenlittleping:recyclercoverflow:1.0.6'
-
     //第三方视频播放
     implementation 'cn.jzvd:jiaozivideoplayer:6.4.0'
-
     //Glide
     implementation 'com.github.bumptech.glide:glide:3.7.0'
+    //微信支付
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 }

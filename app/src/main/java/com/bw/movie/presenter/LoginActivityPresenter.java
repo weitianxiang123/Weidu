@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.LoginActivity;
 import com.bw.movie.activity.MessiageActivity;
 import com.bw.movie.activity.RegActivity;
 import com.bw.movie.model.LoginBean;
@@ -27,6 +28,9 @@ import com.bw.movie.utils.Base64;
 import com.bw.movie.utils.EncryptUtil;
 import com.bw.movie.utils.ShareUtil;
 import com.google.gson.Gson;
+import com.tencent.mm.opensdk.modelmsg.SendAuth;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,6 +55,7 @@ public class LoginActivityPresenter extends AppDelegate{
     private String account;
     private String password;
     private ImageView btn_weixin;
+    private IWXAPI api;
 
     @Override
     public int getLayout() {
@@ -69,6 +74,7 @@ public class LoginActivityPresenter extends AppDelegate{
     @Override
     public void initData() {
         super.initData();
+        api = WXAPIFactory.createWXAPI(context, "wxb3852e6a6b7d9516");
         btnskip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,7 +85,13 @@ public class LoginActivityPresenter extends AppDelegate{
         btn_weixin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context,"目前微信登录正在维护",Toast.LENGTH_LONG).show();
+                //Toast.makeText(context,"目前微信登录正在维护",Toast.LENGTH_LONG).show();
+
+                SendAuth.Req req = new SendAuth.Req();
+                req.scope = "snsapi_userinfo";
+                Log.i("登录",req.toString());
+                api.sendReq(req);
+                ((LoginActivity)context).finish();
             }
         });
         pref= PreferenceManager.getDefaultSharedPreferences(context);

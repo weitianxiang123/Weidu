@@ -47,7 +47,11 @@ public class CinemaMovieInfoAdapter extends XRecyclerView.Adapter<CinemaMovieInf
         myHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context, SelectSeatActivity.class));
+                Intent intent = new Intent(context, SelectSeatActivity.class);
+                intent.putExtra("scheduleId",bean.getId());
+                intent.putExtra("price",bean.getPrice());
+                context.startActivity(intent);
+
             }
         });
     }

@@ -66,25 +66,28 @@ public class MainActivityPresenter extends AppDelegate {
         cinemaFragment = new CinemaFragment();
         movieFragment = new MovieFragment();
         fragmentManager = activity.getSupportFragmentManager();
-
+        // 黄玉冬修改处
+        fragmentManager.beginTransaction().add(R.id.contentView,mineFragment).add(R.id.contentView,cinemaFragment).add(R.id.contentView,movieFragment).commit();
         toMovie();
         selectButton(MOVIE);
     }
 
     // 跳转方法
     public void toMine() {
-
-        fragmentManager.beginTransaction().replace(R.id.contentView, mineFragment).commit();
+        fragmentManager.beginTransaction().show(mineFragment).hide(cinemaFragment).hide(movieFragment).commit();
+        //fragmentManager.beginTransaction().replace(R.id.contentView, mineFragment).commit();
 
     }
 
     // 跳转方法
     public void toMovie() {
-        fragmentManager.beginTransaction().replace(R.id.contentView, movieFragment).commit();
+        fragmentManager.beginTransaction().show(movieFragment).hide(cinemaFragment).hide(mineFragment).commit();
+        //fragmentManager.beginTransaction().replace(R.id.contentView, movieFragment).commit();
     }
 
     public void toCinema() {
-        fragmentManager.beginTransaction().replace(R.id.contentView, cinemaFragment).commit();
+        fragmentManager.beginTransaction().show(cinemaFragment).hide(movieFragment).hide(mineFragment).commit();
+        //fragmentManager.beginTransaction().replace(R.id.contentView, cinemaFragment).commit();
     }
 
 
